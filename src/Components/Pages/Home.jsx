@@ -16,7 +16,6 @@ import {
 import Services from "./Services";
 import { ProfilerWrapper } from "./utils/Profiler";
 
-// ✅ All Box Data Combined by Sections
 const sectionBoxes = {
   whyChooseUs: [
     {
