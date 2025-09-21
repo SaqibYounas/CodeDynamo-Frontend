@@ -111,16 +111,16 @@ function Services({ showWhyChoose = true }) {
     <ProfilerWrapper id="Services">
     <>
       {/* Services Section */}
-      <section className="py-16 bg-gradient-to-br from-white via-slate-100 to-gray-200">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+      <section className=" py-16 bg-gradient-to-br">
+        <div className=" container mx-auto px-4">
+          <div className=" text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-800 inline-flex items-center justify-center gap-2">
               <FaTools className="text-blue-600 text-3xl" />
               Our Services
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-6">
+          <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-6">
             {staticServices.map((item, index) => (
               <Box
                 key={index}
@@ -174,7 +174,7 @@ function Services({ showWhyChoose = true }) {
 }
 function Box({ image, title, description, stack = [] }) {
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 text-center flex flex-col items-center group hover:scale-[1] border border-gray-200">
+    <div className="  bg-[#FAFAFA]  p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 text-center flex flex-col items-center group hover:scale-[1] border border-gray-200">
       {/* Image */}
       <div className="mb-3 w-16 h-16 rounded-full flex items-center justify-center overflow-hidden border-2 border-purple-400">
         <img src={image} alt={title} className="object-contain w-12 h-12" />
