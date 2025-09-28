@@ -13,7 +13,7 @@ import {
   FaApple,
   FaMobileAlt,
   FaPaintBrush,
-  FaBug,
+  FaBug,FaCloud,FaRobot
 } from "react-icons/fa";
 
 import { 
@@ -25,54 +25,41 @@ import {
   SiAdobexd
 } from "react-icons/si";
 
-export const staticServices = [
-  {
-    icon: FaLaptopCode,
-    iconColor: "#3C873A",
-    title: "Web Development",
-    description: "Modern, responsive, and scalable websites built to your needs.",
-    stack: [
-      { name: "HTML", icon: FaHtml5, color: "#e34c26" },
-      { name: "CSS", icon: FaCss3Alt, color: "#264de4" },
-      { name: "JavaScript", icon: FaJs, color: "#f0db4f" },
-      { name: "React", icon: FaReact, color: "#61DBFB" },
-      { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
-      { name: "Node.js", icon: FaNodeJs, color: "#3C873A" },
-      { name: "MongoDB", icon: SiMongodb, color: "#4DB33D" },
-    ],
-  },
-  {
-    icon: FaMobileAlt,
-    iconColor: "#02569B",
-    title: "Mobile Apps",
-    description: "High-performance apps for Android and iOS platforms.",
-    stack: [
-      { name: "Flutter", icon: SiFlutter, color: "#02569B" },
-      { name: "React Native", icon: FaReact, color: "#61DBFB" },
-      { name: "Kotlin", icon: FaAndroid, color: "#3DDC84" },
-      { name: "Swift", icon: FaApple, color: "#000000" },
-    ],
-  },
-  {
-    icon: FaPaintBrush,
-    iconColor: "#F24E1E",
-    title: "UI/UX Design",
-    description: "Visually appealing and intuitive user interfaces.",
-    stack: [
-      { name: "Figma", icon: SiFigma, color: "#F24E1E" },
-      { name: "Sketch", icon: SiSketch, color: "#F7B500" },
-      { name: "Adobe XD", icon: SiAdobexd, color: "#FF61F6" },
-    ],
-  },
-  {
-    icon: FaBug,
-    iconColor: "#FF6C37",
-    title: "QA & Testing",
-    description: "Thorough testing to ensure product stability and performance.",
-    stack: [
-      { name: "Postman", icon: FaBug, color: "#FF6C37" },
-      { name: "Selenium", icon: FaBug, color: "#43B02A" },
-      { name: "Jest", icon: FaBug, color: "#99424F" },
-    ],
-  },
-];
+export   const staticServices = [
+    {
+      image:"../../../../public/download (1).jpeg" ,
+      title: "Web Development",
+      description:
+        "A Website is an extension of yourself and we can help you to express it properly. Your website is your number one marketing asset because we live in a digital age.",
+    },
+    {
+    
+      title: "Mobile Apps",
+      description:
+        "A mobile app is an extension of your brand, and we help you bring it to life. In the digital age, your app is your number one engagement tool.",
+    },
+    {
+      
+      title: "UI/UX Design",
+      description:
+        "Your product deserves an interface that speaks for itself. We help you craft UI/UX that connects with users and elevates your brand.",
+    },
+    {
+      
+      title: "QA & Testing",
+      description:
+        "Your software is only as strong as its quality. We ensure your product is reliable,bug-free, and delivers the best user experience.",
+    },
+    {
+      
+      title: "Cloud Services",
+      description:
+        "Your business deserves a secure and scalable digital infrastructure. We help you leverage cloud services to power your growth in the digital age.",
+    },
+    {
+   
+      title: "AI Integration",
+      description:
+        "Your business can be smarter with AI. We help you integrate intelligent solutions that enhance productivity and decision-making.",
+    },
+  ];
