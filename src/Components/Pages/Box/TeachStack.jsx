@@ -6,7 +6,7 @@ export function TechStack() {
 
   return (
     <div className="px-4 py-10 text-center bg-[#f9fafe]">
-      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8">
+      <h2 className="text-xl sm:text-2xl md:text-3xl  mb-8">
         Our <br />
         <b>Tech Stack</b>
       </h2>
@@ -17,11 +17,12 @@ export function TechStack() {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-4 sm:px-6 md:px-8 lg:px-12 py-2 border-b-4 text-sm sm:text-base ${
-              activeTab === tab
-                ? "border-purple-700 text-purple-700 font-bold"
-                : "border-transparent text-gray-700 font-normal"
-            } focus:outline-none cursor-pointer`}
+            className={`px-4 sm:px-6 md:px-8 lg:px-12 py-2 text-sm sm:text-base border-b-4 cursor-pointer transition-all duration-300
+              ${
+                activeTab === tab
+                  ? "border-transparent bg-gradient-to-r from-[#F76680] to-[#57007B] text-white font-bold"
+                  : "border-transparent text-gray-700 font-normal hover:text-[#F76680] hover:border-[#F76680]"
+              }`}
           >
             {tab}
           </button>
