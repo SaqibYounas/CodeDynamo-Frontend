@@ -111,7 +111,7 @@ export default function Home() {
 
   return (
     <ProfilerWrapper id="Home">
-    <div className="min-h-screen bg-gradient-to-r from-[#E0ECFF] to-[#C4DDF9]">
+    <div className="min-h-screen  bg-gradient-to-r from-[#E0ECFF] to-[#C4DDF9]">
 
       {/* Hero Section */}
       <section className="bg-white py-20 shadow-md">
@@ -210,7 +210,7 @@ function renderBoxes(data) {
 // ✅ Single Stylish Box Component
 function Box({ icon, title, description, iconColor = "#2563EB" }) {
   return (
-    <div className="bg-gradient-to-r from-[#E0ECFF] to-[#C4DDF9] p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 text-center flex flex-col items-center group hover:scale-[1] border border-gray-100">
+    <div className="bg-[#F9F9FF] bg-gradient-to-r from-[#E0ECFF] to-[#C4DDF9] p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 text-center flex flex-col items-center group hover:scale-[1] border border-gray-100">
       <div className="mb-3">
         {icon &&
           React.cloneElement(icon, {

@@ -24,10 +24,9 @@ import {
   SiSketch,
   SiAdobexd
 } from "react-icons/si";
-
 export   const staticServices = [
     {
-      image:"../../../../public/download (1).jpeg" ,
+      image:"https://www.flaticon.com/free-icons/digital-services" ,
       title: "Web Development",
       description:
         "A Website is an extension of yourself and we can help you to express it properly. Your website is your number one marketing asset because we live in a digital age.",
