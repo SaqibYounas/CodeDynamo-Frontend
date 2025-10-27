@@ -1,10 +1,9 @@
 import { FaTools } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { ProfilerWrapper } from "./utils/Profiler";
-import { staticServices } from "./data/staticServices";
+import { staticServices } from "./data/Services";
 import { Box } from "./Box/Box";
 import { TechStack } from "./Box/TeachStack";
-function Services({ showWhyChoose = true }) {
+function Services() {
   return (
     <ProfilerWrapper id="Services">
       <>
