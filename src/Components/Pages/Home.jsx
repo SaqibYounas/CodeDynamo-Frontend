@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import Services from "./Services";
 import { ProfilerWrapper } from "./utils/Profiler";
 import { sectionBoxes } from "./data/Home";
-import { Box_Two } from "./Box/Box";
-
+import { TechStack } from "./Box/TeachStack";
+import { Section } from "./Box/Section";
+import { ProjectsSection } from "./common/ProjectSection";
+import {ApproachSection} from "./common/ourDevelopment"
 export default function Home() {
   const text = "Welcome to CodeDynamo";
   const [displayedText, setDisplayedText] = useState("");
@@ -29,38 +31,42 @@ export default function Home() {
   return (
     <ProfilerWrapper id="Home">
       <div className="min-h-screen bg-gradient-to-r from-[#E0ECFF] to-[#C4DDF9]">
-        {/* ✅ Hero Section */}
         <section className="bg-white py-20 shadow-md">
-          <div className="container mx-auto px-4 text-center">
-            <motion.h1
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              className="text-2xl sm:text-3xl md:text-4xl font-bold transform transition-transform hover:scale-105 text-center mb-4 min-h-16"
-            >
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                {displayedText}
-              </span>
-              <span className="animate-pulse text-blue-600">|</span>
-            </motion.h1>
-
-            <p className="text-gray-700 text-lg mb-6">
-              We provide powerful software solutions for your business needs.
-            </p>
-
-            <div className="space-x-4">
-              <Link
-                to="/auth/signup"
-                className="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between">
+            <div className="text-center md:text-left md:w-1/2">
+              <motion.h1
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
               >
-                Get Started
-              </Link>
-              <Link
-                to="/home/services"
-                className="px-6 py-3 border border-blue-600 text-blue-600 rounded hover:bg-blue-50 transition"
-              >
-                View Services
-              </Link>
+                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  {displayedText}
+                </span>
+                <span className="animate-pulse text-blue-600">|</span>
+              </motion.h1>
+
+              <p className="text-gray-700 text-lg mb-6">
+                We create cutting edge software solutions designed to accelerate
+                your business growth.
+              </p>
+
+              <div className="space-x-4 text-center mt-10">
+                <Link
+                  to="/auth/signup"
+                  className="px-10 py-3 bg-[#474BCA] text-white rounded hover:bg-blue-700 transition"
+                >
+                  Get Started
+                </Link>
+              </div>
+            </div>
+
+            <div className="mt-10 md:mt-0 md:w-1/2 flex justify-center">
+              <img
+                src="/Pages/Home.png"
+                alt="Welcome Banner"
+                className="w-[250px] sm:w-[400px] md:w-[500px] lg:w-[627px] h-auto"
+              />
             </div>
           </div>
         </section>
@@ -72,8 +78,7 @@ export default function Home() {
           bg="bg-gradient-to-br from-white via-slate-100 to-gray-200"
         />
 
-        <Services showWhyChoose={false} />
-
+        <Services showTechStack={false} />
         <Section
           title="Proven Track Record"
           boxes={sectionBoxes.trackRecord}
@@ -88,37 +93,9 @@ export default function Home() {
           bg="bg-white"
         />
       </div>
+      <ProjectsSection />
+      <TechStack/>
+      <ApproachSection/>
     </ProfilerWrapper>
-  );
-}
-
-function Section({ title, boxes, cols = 3, bg = "bg-white" }) {
-  return (
-    <section className={`py-16 ${bg}`}>
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-          {title}
-        </h2>
-
-        <div
-          className={`grid gap-8 text-center ${
-            cols === 4
-              ? "md:grid-cols-4 sm:grid-cols-2"
-              : cols === 3
-              ? "md:grid-cols-3 sm:grid-cols-2"
-              : "md:grid-cols-2 sm:grid-cols-1"
-          }`}
-        >
-          {boxes.map((box, index) => (
-            <Box_Two
-              key={index}
-              icon={box.icon}
-              title={box.title}
-              description={box.description}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
   );
 }
