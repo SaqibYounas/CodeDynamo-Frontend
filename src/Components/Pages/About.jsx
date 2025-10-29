@@ -1,103 +1,97 @@
 import React from "react";
-import { FaGlobe, FaUsersCog, FaRocket } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import { ProfilerWrapper } from "./utils/Profiler";
+import { projects, ourStory, aboutCards } from "./data/About";
+import { Box } from "./Box/Box";
 
-// ✅ Card Data in Array
-const aboutData = [
-  {
-    icon: <FaGlobe />,
-    iconColor: "#22c55e",
-    title: "Our Mission",
-    description:
-      "To empower businesses with cutting-edge technology solutions that drive innovation and growth.",
-  },
-  {
-    icon: <FaRocket />,
-    iconColor: "#ef4444",
-    title: "Our Vision",
-    description:
-      "To be the most trusted global partner for custom software development and digital transformation.",
-  },
-  {
-    icon: <FaUsersCog />,
-    iconColor: "#8b5cf6",
-    title: "Our Team",
-    description:
-      "A collaborative team of engineers, designers, and strategists dedicated to delivering quality results.",
-  },
-];
-
-export default function About() {
-  const navigate = useNavigate();
-
+const AboutSection = () => {
   return (
-    <ProfilerWrapper id="About">
-    <div className="min-h-screen bg-gradient-to-br from-white via-slate-100 to-gray-100 py-16 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12 transition-all duration-300">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-            About CodeDynamo
-          </h1>
-          <p className="text-gray-700 text-lg max-w-xl mx-auto">
-            Building intelligent, scalable, and user-focused digital solutions.
-          </p>
-        </div>
+    <>
+      {/* 🔹 Top Section (Light Violet Background) */}
+      <div className="bg-[#F9F9FF]">
+        <div className="max-w-6xl mx-auto px-4 py-12">
+          {/* Heading Section */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-2">About CodeDynamo</h2>
+            <p className="text-gray-600 font-bold">
+              Building intelligent, scalable, and user-focused digital solutions.
+            </p>
+          </div>
 
-        {/* Cards (Mission, Vision, Team) */}
-        <div className="grid gap-8 md:grid-cols-3">
-          {renderCards(aboutData)}
-        </div>
+          {/* About Cards */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {aboutCards.map((card, idx) => (
+              <Box
+                key={idx}
+                icon={card.icon}
+                iconColor={card.iconColor}
+                title={card.title}
+                description={card.description}
+              />
+            ))}
+          </div>
 
-        {/* Company Story */}
-        <div className="mt-16 bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Our Story</h3>
-          <p className="text-gray-700 text-lg leading-relaxed">
-            CodeDynamo was founded with a simple goal — to bridge the gap
-            between ideas and digital innovation. Since our inception, we've
-            helped startups and enterprises alike achieve their business goals
-            by crafting tailor-made software products. Our strength lies in a
-            client-centric approach, agile development methods, and our
-            relentless focus on quality.
-          </p>
+          {/* Our Story Section */}
+          <div
+            className="group p-6 rounded-[25px] shadow-md mb-12 border-2 border-transparent bg-[#FAFAFA] transition-all duration-300 hover:shadow-xl hover:scale-[1]"
+            style={{
+              borderImage: "linear-gradient(to right, #F76680, #57007B) 1",
+              borderImageSlice: 1,
+            }}
+          >
+            <h3
+              className="font-semibold mb-2 text-lg"
+              style={{
+                background: "linear-gradient(to right, #F76680, #57007B)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Our Story
+            </h3>
+
+            <p className="text-gray-600 text-sm transition-all duration-300 group-hover:text-[#57007B]">
+              {ourStory.story}
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="mt-16 text-center text-gray-500 text-sm transition-all duration-300 hover:text-blue-600">
-        Developed by <span className="font-semibold">Saqib</span>
-      </footer>
-    </div></ProfilerWrapper>
-  );
-}
+      {/* 🔹 Bottom Work Section (Light Gray Background) */}
+      <section className="bg-gray-100 py-16 px-6 md:px-16">
+        <div className="text-center mb-8">
+          <div className="h-1 w-24 bg-purple-500 mx-auto rounded"></div>
+          <h2 className="text-3xl font-bold mb-2 p-2">Our Work in Action</h2>
+        </div>
 
-// ✅ Reusable Card Renderer
-function renderCards(data) {
-  return data.map((item, index) => (
-    <Card
-      key={index}
-      icon={item.icon}
-      iconColor={item.iconColor}
-      title={item.title}
-      description={item.description}
-    />
-  ));
-}
+        <div className="flex flex-col gap-12 max-w-6xl mx-auto">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className={`${project.bg} flex flex-col md:flex-row items-center justify-between p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl`}
+            >
+              {/* Left Image Section */}
+              <div className="md:w-1/2 flex justify-center mb-6 md:mb-0">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="rounded-2xl shadow-md w-[380px] md:w-[450px] h-auto object-cover"
+                />
+              </div>
 
-// ✅ Stylish Reusable Card Component
-function Card({ icon, title, description, iconColor = "#2563EB" }) {
-  return (
-    <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 text-center flex flex-col items-center group hover:scale-[1] border border-gray-100">
-      <div className="mb-3">
-        {React.cloneElement(icon, {
-          className:
-            "text-5xl transition-transform duration-300 group-hover:-translate-y-1",
-          style: { color: iconColor },
-        })}
-      </div>
-      <h2 className="text-xl font-bold text-gray-800 mb-2">{title}</h2>
-      <p className="text-gray-700">{description}</p>
-    </div>
+              {/* Right Text Section */}
+              <div className="md:w-1/2 text-center md:text-left space-y-4">
+                <h3 className="text-2xl font-semibold text-gray-800">
+                  {project.title}
+                </h3>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  {project.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
-}
+};
+
+export default AboutSection;

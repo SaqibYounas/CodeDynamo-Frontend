@@ -6,7 +6,7 @@ export default function Layout() {
   return (
     <>
       <ScrollProgressBar />
-      <Outlet /> {/* Yahan sab pages render honge */}
+      <Outlet /> 
     </>
   );
 }
