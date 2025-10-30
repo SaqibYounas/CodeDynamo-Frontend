@@ -1,18 +1,18 @@
 export function Box({ icon, image, title, description }) {
   return (
     <div
-      className="group p-6 rounded-[35px] shadow-md border bg-[#FAFAFA] text-center flex flex-col items-center transition-all duration-300 hover:shadow-xl hover:scale-[1]"
+      className="group flex flex-col items-center rounded-[35px] border bg-[#FAFAFA] p-6 text-center shadow-md transition-all duration-300 hover:scale-[1] hover:shadow-xl"
       style={{
-        borderImage: "linear-gradient(to top, #F76680, #57007B) 1",
+        borderImage: 'linear-gradient(to top, #F76680, #57007B) 1',
       }}
     >
-      <div className="flex justify-center mb-3">
+      <div className="mb-3 flex justify-center">
         {image ? (
-          <div className="w-16 h-16 rounded-full flex items-center justify-center overflow-hidden border-2 border-purple-400 transition-transform duration-300 group-hover:-translate-y-1">
-            <img src={image} alt={title} className="object-contain w-12 h-12" />
+          <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-purple-400 transition-transform duration-300 group-hover:-translate-y-1">
+            <img src={image} alt={title} className="h-12 w-12 object-contain" />
           </div>
         ) : (
-          <div className="w-16 h-16 rounded-full flex items-center justify-center text-2xl border-2 border-purple-400 transition-transform duration-300 group-hover:-translate-y-1">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-purple-400 text-2xl transition-transform duration-300 group-hover:-translate-y-1">
             {icon}
           </div>
         )}
@@ -20,16 +20,16 @@ export function Box({ icon, image, title, description }) {
 
       <h2
         style={{
-          background: "linear-gradient(to right, #F76680, #57007B)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+          background: 'linear-gradient(to right, #F76680, #57007B)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
         }}
-        className="text-xl font-bold mb-2"
+        className="mb-2 text-xl font-bold"
       >
         {title}
       </h2>
 
-      <p className="text-gray-600 mb-4">{description}</p>
+      <p className="mb-4 text-gray-600">{description}</p>
     </div>
   );
 }
@@ -37,32 +37,28 @@ export function Box({ icon, image, title, description }) {
 export function Box_Two({ icon, title, description }) {
   return (
     <div
-      className="group p-6 rounded-[35px] shadow-md bg-[#FAFAFA] text-center flex flex-col items-center 
-      transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border"
+      className="group flex flex-col items-center rounded-[35px] border bg-[#FAFAFA] p-6 text-center shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
       style={{
-        borderImage: "linear-gradient(to top, #F76680, #57007B) 1",
+        borderImage: 'linear-gradient(to top, #F76680, #57007B) 1',
         borderImageSlice: 1,
       }}
     >
-      <div
-        className="w-20 h-20 rounded-full flex items-center justify-center border-2 border-purple-400 
-      transition-transform duration-300 group-hover:-translate-y-1 mb-4 text-4xl text-[#57007B]"
-      >
+      <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full border-2 border-purple-400 text-4xl text-[#57007B] transition-transform duration-300 group-hover:-translate-y-1">
         {icon}
       </div>
 
       <h2
         style={{
-          background: "linear-gradient(to right, #F76680, #57007B)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+          background: 'linear-gradient(to right, #F76680, #57007B)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
         }}
-        className="text-xl font-bold mb-2"
+        className="mb-2 text-xl font-bold"
       >
         {title}
       </h2>
 
-      <p className="text-gray-600 text-sm sm:text-base">{description}</p>
+      <p className="text-sm text-gray-600 sm:text-base">{description}</p>
     </div>
   );
 }

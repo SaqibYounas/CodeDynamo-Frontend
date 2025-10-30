@@ -1,19 +1,19 @@
 // src/components/InvoiceGenerator.jsx
-import React, { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
-import { sendInvoice } from "./Services/sendInvoice";
-import { searchClientID } from "./Services/searchClientID";
-import { InvoicePage } from "./utils/InvoicePage";
-import Loader from "../layouts/Loader";
-import { v4 as uuidv4 } from "uuid";
+import React, { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { sendInvoice } from './Services/sendInvoice';
+import { searchClientID } from './Services/searchClientID';
+import { InvoicePage } from './utils/InvoicePage';
+import Loader from '../layouts/Loader';
+import { v4 as uuidv4 } from 'uuid';
 
 import {
   formatAccountNumber,
   formatIBAN,
   isOnlyLetters,
-} from "./utils/formatAccount";
-import { Loader2 } from "lucide-react";
-import { onlyDateFormatToday, onlyDueFormatToday } from "./utils/formatDate";
+} from './utils/formatAccount';
+import { Loader2 } from 'lucide-react';
+import { onlyDateFormatToday, onlyDueFormatToday } from './utils/formatDate';
 import {
   validateBankName,
   validateAccountNumber,
@@ -21,7 +21,7 @@ import {
   validateAmount,
   validateDueDate,
   validateSwift,
-} from "./utils/inputValidationInvocie";
+} from './utils/inputValidationInvocie';
 // import { uploadImageToCloudinary } from "./utils/cloudinaryUpload";
 
 export default function InvoiceGenerator() {
@@ -29,28 +29,28 @@ export default function InvoiceGenerator() {
   const [errors, setErrors] = useState({});
 
   const [form, setForm] = useState({
-    id: "",
-    name: "",
+    id: '',
+    name: '',
     services: [],
-    amount: "",
-    dueDate: "",
+    amount: '',
+    dueDate: '',
   });
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [filteredClients, setFilteredClients] = useState([]);
   const [selectedClient, setSelectedClient] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [complete, setComplete] = useState("");
+  const [complete, setComplete] = useState('');
 
   const debounceRef = useRef(null);
 
   // state
   const [accountsNumber, setAccountsNumber] = useState({
-    bankName: "Standard Chartered",
-    accountTitle: "Codedynamo Pvt Ltd", // fix typo
-    accountNumberAdmin: "269848688509722",
-    ibanNumber: "PK46HABB6380479872082714",
-    bankNameOther: "",
-    swiftNumber: "SCBLPKKX",
+    bankName: 'Standard Chartered',
+    accountTitle: 'Codedynamo Pvt Ltd', // fix typo
+    accountNumberAdmin: '269848688509722',
+    ibanNumber: 'PK46HABB6380479872082714',
+    bankNameOther: '',
+    swiftNumber: 'SCBLPKKX',
   });
 
   const signatureUrl = import.meta.env.VITE_SIGNATURE_URL;
@@ -63,11 +63,11 @@ export default function InvoiceGenerator() {
 
     // Reset form safely
     setForm({
-      id: "",
-      name: "",
-      services: "",
-      amount: "",
-      dueDate: "",
+      id: '',
+      name: '',
+      services: '',
+      amount: '',
+      dueDate: '',
     });
     setSelectedClient(null);
     // Debounce clear
@@ -87,14 +87,14 @@ export default function InvoiceGenerator() {
           );
         } else {
           setErrors({
-            searchError: "No Client found. Enter a correct Client ID.",
+            searchError: 'No Client found. Enter a correct Client ID.',
           });
           setFilteredClients([]);
         }
       } catch (err) {
-        console.error("Search error:", err);
+        console.error('Search error:', err);
         setErrors({
-          searchError: "Something went wrong while searching client.",
+          searchError: 'Something went wrong while searching client.',
         });
         setFilteredClients([]);
       }
@@ -102,7 +102,7 @@ export default function InvoiceGenerator() {
   };
 
   const BackPage = () => {
-    setInvoiceData("");
+    setInvoiceData('');
   };
 
   // 🎯 Select Client
@@ -130,8 +130,8 @@ export default function InvoiceGenerator() {
     setErrors({});
     let newErrors = {};
     newErrors.bankName = isOnlyLetters(accountsNumber.bankName)
-      ? ""
-      : "Only letters allowed";
+      ? ''
+      : 'Only letters allowed';
     newErrors.accountNumberAdmin = validateAccountNumber(
       accountsNumber.accountNumberAdmin
     );
@@ -140,10 +140,10 @@ export default function InvoiceGenerator() {
     newErrors.amount = validateAmount(form.amount);
     newErrors.dueDate = validateDueDate(form.dueDate);
     newErrors.accountTitle = isOnlyLetters(accountsNumber.accountTitle)
-      ? ""
-      : "Only letters allowed";
+      ? ''
+      : 'Only letters allowed';
 
-    if (Object.values(newErrors).some((err) => err !== "")) {
+    if (Object.values(newErrors).some((err) => err !== '')) {
       setErrors(newErrors);
       return;
     }
@@ -156,7 +156,6 @@ export default function InvoiceGenerator() {
     const transactionId = `TXN-${uuidv4().slice(0, 12)}`;
     const invoiceNo = `CD-INV-${now.getFullYear()}-${uuidv4().slice(0, 8)}`;
 
-
     setInvoiceData({
       invoiceNo,
       transactionId,
@@ -166,13 +165,13 @@ export default function InvoiceGenerator() {
       name: form.name,
       services: form.services,
       amount: parseFloat(form.amount).toFixed(2),
-      status: "Pending Payment",
+      status: 'Pending Payment',
     });
   };
 
   // 📤 Send Invoice
   const sendInvoices = async () => {
-    setComplete("");
+    setComplete('');
     let data = {
       invoiceData,
       accountsNumber,
@@ -181,17 +180,17 @@ export default function InvoiceGenerator() {
     };
 
     setComplete(
-      "📤 Sending your invoice... Please wait and do not close this page."
+      '📤 Sending your invoice... Please wait and do not close this page.'
     );
     setLoading(true);
 
     let sendInvoicesRes = await sendInvoice(data);
 
     if (sendInvoicesRes) {
-      setComplete("✅ Your invoice has been sent successfully! Redirecting...");
+      setComplete('✅ Your invoice has been sent successfully! Redirecting...');
       setLoading(false);
     } else {
-      setComplete("❌ Unable to send invoice. Please try again later.");
+      setComplete('❌ Unable to send invoice. Please try again later.');
       setLoading(false);
     }
   };
@@ -199,22 +198,22 @@ export default function InvoiceGenerator() {
   // ♻ Reset everything
   const clearForm = () => {
     setInvoiceData(null);
-    setForm({ id: "", name: "", services: [], amount: "", dueDate: "" });
+    setForm({ id: '', name: '', services: [], amount: '', dueDate: '' });
     setSelectedClient(null);
-    setSearchTerm("");
+    setSearchTerm('');
   };
 
   const clearFormPending = () => {
-    setForm({ id: "", name: "", services: [], amount: "", dueDate: "" });
+    setForm({ id: '', name: '', services: [], amount: '', dueDate: '' });
     setSelectedClient(null);
-    setSearchTerm("");
+    setSearchTerm('');
   };
 
   return (
-    <div className="lg:pl-64 md:pl-80 p-6 max-w-6xl mx-auto bg-gray-100 min-h-screen">
+    <div className="mx-auto min-h-screen max-w-6xl bg-gray-100 p-6 md:pl-80 lg:pl-64">
       {loading && <Loader />}
 
-      <h1 className="text-3xl font-bold mb-6 text-center">
+      <h1 className="mb-6 text-center text-3xl font-bold">
         💼 Invoice Generator
       </h1>
 
@@ -222,7 +221,7 @@ export default function InvoiceGenerator() {
       {!invoiceData && (
         <motion.form
           onSubmit={generateInvoice}
-          className="space-y-4 bg-white p-6 rounded shadow-lg"
+          className="space-y-4 rounded bg-white p-6 shadow-lg"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -231,21 +230,21 @@ export default function InvoiceGenerator() {
           <div>
             <label className="block font-medium">Search Client by ID</label>
             <input
-              value={searchTerm || ""}
+              value={searchTerm || ''}
               onChange={handleSearch}
               type="text"
-              className="w-full border rounded p-2"
+              className="w-full rounded border p-2"
               placeholder="Type client ID..."
             />
             {loading && (
-              <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 animate-spin text-gray-500" />
+              <Loader2 className="absolute top-1/2 right-3 h-5 w-5 -translate-y-1/2 animate-spin text-gray-500" />
             )}
             {filteredClients.length > 0 ? (
-              <ul className="border rounded mt-1 bg-white max-h-32 overflow-y-auto">
+              <ul className="mt-1 max-h-32 overflow-y-auto rounded border bg-white">
                 {filteredClients.map((client, idx) => (
                   <li
                     key={idx}
-                    className="p-2 cursor-pointer hover:bg-gray-200"
+                    className="cursor-pointer p-2 hover:bg-gray-200"
                     onClick={() => selectClient(client)}
                   >
                     {client.requestID} - {client.name} - {client.service}
@@ -254,7 +253,7 @@ export default function InvoiceGenerator() {
               </ul>
             ) : (
               errors.searchError && (
-                <p className="text-red-600 text-sm mt-1">
+                <p className="mt-1 text-sm text-red-600">
                   {errors.searchError}
                 </p>
               )
@@ -269,7 +268,7 @@ export default function InvoiceGenerator() {
                   value={form.name}
                   type="text"
                   readOnly
-                  className="w-full border rounded p-2 bg-gray-100"
+                  className="w-full rounded border bg-gray-100 p-2"
                 />
               </div>
 
@@ -279,7 +278,7 @@ export default function InvoiceGenerator() {
                   value={form.services}
                   type="text"
                   readOnly
-                  className="w-full border rounded p-2 bg-gray-100"
+                  className="w-full rounded border bg-gray-100 p-2"
                 />
               </div>
 
@@ -295,10 +294,10 @@ export default function InvoiceGenerator() {
                       bankName: e.target.value,
                     })
                   }
-                  className="w-full border rounded p-2"
+                  className="w-full rounded border p-2"
                 />
                 {errors.bankName && (
-                  <p className="text-red-600 text-sm mt-1">{errors.bankName}</p>
+                  <p className="mt-1 text-sm text-red-600">{errors.bankName}</p>
                 )}
               </div>
 
@@ -313,10 +312,10 @@ export default function InvoiceGenerator() {
                       accountTitle: e.target.value,
                     })
                   }
-                  className="w-full border rounded p-2"
+                  className="w-full rounded border p-2"
                 />
                 {errors.accountTitle && (
-                  <p className="text-red-600 text-sm mt-1">
+                  <p className="mt-1 text-sm text-red-600">
                     {errors.accountTitle}
                   </p>
                 )}
@@ -332,18 +331,18 @@ export default function InvoiceGenerator() {
                     setAccountsNumber({
                       ...accountsNumber,
                       accountNumberAdmin: formatAccountNumber(
-                        e.target.value.replace(/\s/g, "")
+                        e.target.value.replace(/\s/g, '')
                       ),
                     })
                   }
-                  className="w-full border rounded p-2 font-mono tracking-wider"
+                  className="w-full rounded border p-2 font-mono tracking-wider"
                 />
 
                 <small className="text-gray-500">
                   {formatAccountNumber(accountsNumber.accountNumberAdmin)}
                 </small>
                 {errors.accountNumberAdmin && (
-                  <p className="text-red-600 text-sm mt-1">
+                  <p className="mt-1 text-sm text-red-600">
                     {errors.accountNumberAdmin}
                   </p>
                 )}
@@ -358,16 +357,16 @@ export default function InvoiceGenerator() {
                   onChange={(e) =>
                     setAccountsNumber({
                       ...accountsNumber,
-                      ibanNumber: formatIBAN(e.target.value.replace(/\s/g, "")),
+                      ibanNumber: formatIBAN(e.target.value.replace(/\s/g, '')),
                     })
                   }
-                  className="w-full border rounded p-2 font-mono tracking-wider"
+                  className="w-full rounded border p-2 font-mono tracking-wider"
                 />
                 <small className="text-gray-500">
                   {formatIBAN(accountsNumber.ibanNumber)}
                 </small>
                 {errors.ibanNumber && (
-                  <p className="text-red-600 text-sm mt-1">
+                  <p className="mt-1 text-sm text-red-600">
                     {errors.ibanNumber}
                   </p>
                 )}
@@ -384,13 +383,13 @@ export default function InvoiceGenerator() {
                   }
                   value={accountsNumber.swiftNumber}
                   type="text"
-                  className="w-full border rounded p-2 font-mono tracking-wider"
+                  className="w-full rounded border p-2 font-mono tracking-wider"
                 />
                 <small className="text-gray-500">
                   {accountsNumber.swiftNumber}
                 </small>
                 {errors.swiftNumber && (
-                  <p className="text-red-600 text-sm mt-1">
+                  <p className="mt-1 text-sm text-red-600">
                     {errors.swiftNumber}
                   </p>
                 )}
@@ -406,13 +405,13 @@ export default function InvoiceGenerator() {
               onChange={handleChange}
               type="number"
               step="0.01"
-              className="w-full border rounded p-2"
+              className="w-full rounded border p-2"
               placeholder="e.g. 50.00"
               required
             />
 
             {errors.amount && (
-              <p className="text-red-600 text-sm mt-1">{errors.amount}</p>
+              <p className="mt-1 text-sm text-red-600">{errors.amount}</p>
             )}
           </div>
 
@@ -423,26 +422,26 @@ export default function InvoiceGenerator() {
               value={form.dueDate}
               onChange={handleChange}
               type="date"
-              className="w-full border rounded p-2"
+              className="w-full rounded border p-2"
               required
             />
 
             {errors.dueDate && (
-              <p className="text-red-600 text-sm mt-1">{errors.dueDate}</p>
+              <p className="mt-1 text-sm text-red-600">{errors.dueDate}</p>
             )}
           </div>
 
           <button
             title=" Generate Invoice"
             type="submit"
-            className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 cursor-pointer"
+            className="cursor-pointer rounded bg-blue-600 px-6 py-2 text-white hover:bg-blue-700"
           >
             Generate Invoice
           </button>
           <button
             title="Cancel"
             onClick={clearFormPending}
-            className="bg-red-600 text-white ml-10 px-8 py-2 rounded hover:bg-red-700 cursor-pointer"
+            className="ml-10 cursor-pointer rounded bg-red-600 px-8 py-2 text-white hover:bg-red-700"
           >
             Clear
           </button>

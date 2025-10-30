@@ -1,4 +1,4 @@
-import React, { Profiler } from "react";
+import React, { Profiler } from 'react';
 
 export const ProfilerWrapper = ({ id, children }) => {
   const onRenderCallback = (id, phase, actualDuration) => {
@@ -6,10 +6,10 @@ export const ProfilerWrapper = ({ id, children }) => {
 
     const color =
       actualDuration < 100
-        ? "color: green"
+        ? 'color: green'
         : actualDuration < 500
-        ? "color: orange"
-        : "color: red";
+          ? 'color: orange'
+          : 'color: red';
 
     console.log(
       `%c🕒 ${id} - ${phase.toUpperCase()} took ${seconds}s`,

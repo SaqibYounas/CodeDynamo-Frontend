@@ -1,10 +1,10 @@
-import { useNotifications } from "../context/context";
-import { useEffect, useState } from "react";
-import { formatDate } from "../utils/formatDate";
-import { FaBell } from "react-icons/fa";
-import NotificationsSkeleton from "../skeletons/Notifications";
-import { Pagination } from "../hooks/Pagination";
-import { ProfilerWrapper } from "../utils/Profiler";
+import { useNotifications } from '../context/context';
+import { useEffect, useState } from 'react';
+import { formatDate } from '../utils/formatDate';
+import { FaBell } from 'react-icons/fa';
+import NotificationsSkeleton from '../skeletons/Notifications';
+import { Pagination } from '../hooks/Pagination';
+import { ProfilerWrapper } from '../utils/Profiler';
 
 const Notifications = () => {
   const { fetchNotifications, markAllRead, notifications } = useNotifications();
@@ -26,9 +26,9 @@ const Notifications = () => {
 
   return (
     <ProfilerWrapper id="Notifications">
-      <div className="lg:pl-64 md:pl-80 p-6 min-h-screen bg-gray-100">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-          {notifications ? "Notifications" : " No any notification"}
+      <div className="min-h-screen bg-gray-100 p-6 md:pl-80 lg:pl-64">
+        <h1 className="mb-6 text-center text-3xl font-bold text-gray-800">
+          {notifications ? 'Notifications' : ' No any notification'}
         </h1>
 
         {isLoading ? (
@@ -39,17 +39,21 @@ const Notifications = () => {
               notifications.map((note, index) => (
                 <div
                   key={index}
-                  className={`border-l-40 p-4 rounded-lg shadow-lg flex items-start gap-6 transition-all duration-200 ease-in-out transform lg:w-2xl hover:ring-2 hover:ring-blue-300 ${
+                  className={`flex transform items-start gap-6 rounded-lg border-l-40 p-4 shadow-lg transition-all duration-200 ease-in-out hover:ring-2 hover:ring-blue-300 lg:w-2xl ${
                     note?.read
-                      ? "bg-white border-gray-600 scale-100"
-                      : "bg-yellow-100 border-yellow-500 scale-[1.02]"
+                      ? 'scale-100 border-gray-600 bg-white'
+                      : 'scale-[1.02] border-yellow-500 bg-yellow-100'
                   }`}
                 >
-                  <FaBell className="text-xl mt-1 text-yellow-400" />
+                  <FaBell className="mt-1 text-xl text-yellow-400" />
                   <div>
-                    <p className="font-semibold text-gray-800 text-sm">{note?.title}</p>
-                    <p className="text-gray-600 text-sm mt-1">{note?.message}</p>
-                    <p className="text-sm text-gray-500 mt-1">
+                    <p className="text-sm font-semibold text-gray-800">
+                      {note?.title}
+                    </p>
+                    <p className="mt-1 text-sm text-gray-600">
+                      {note?.message}
+                    </p>
+                    <p className="mt-1 text-sm text-gray-500">
                       {formatDate(note?.createdAt)}
                     </p>
                   </div>

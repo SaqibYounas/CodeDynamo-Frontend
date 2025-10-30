@@ -18,5 +18,5 @@ export const handleShare = (req) => {
   const message = createMessage(req);
   const encodedMsg = encodeURIComponent(message);
   const whatsappURL = `https://wa.me/?text=${encodedMsg}`;
-  window.open(whatsappURL, "_blank");
+  window.open(whatsappURL, '_blank');
 };

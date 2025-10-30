@@ -1,5 +1,5 @@
 export const formatDate = (date) => {
-  if (!date || isNaN(new Date(date))) return "N/A";
+  if (!date || isNaN(new Date(date))) return 'N/A';
 
   const givenDate = new Date(date);
   const now = new Date();
@@ -12,9 +12,9 @@ export const formatDate = (date) => {
   const yesterday = new Date();
   yesterday.setDate(now.getDate() - 1);
 
-  const timeString = givenDate.toLocaleString("en-GB", {
-    hour: "2-digit",
-    minute: "2-digit",
+  const timeString = givenDate.toLocaleString('en-GB', {
+    hour: '2-digit',
+    minute: '2-digit',
     hour12: true,
   });
 
@@ -23,19 +23,19 @@ export const formatDate = (date) => {
   } else if (isSameDay(givenDate, yesterday)) {
     return `Yesterday, ${timeString}`;
   } else {
-    return givenDate.toLocaleString("en-GB", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
+    return givenDate.toLocaleString('en-GB', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
       hour12: true,
     });
   }
 };
 
 export const formatOnlyDate = (date) => {
-  if (!date || isNaN(new Date(date))) return "N/A";
+  if (!date || isNaN(new Date(date))) return 'N/A';
 
   const givenDate = new Date(date);
   const now = new Date();
@@ -49,19 +49,19 @@ export const formatOnlyDate = (date) => {
   yesterday.setDate(now.getDate() - 1);
 
   if (isSameDay(givenDate, now)) {
-    return "Today";
+    return 'Today';
   } else if (isSameDay(givenDate, yesterday)) {
-    return "Yesterday";
+    return 'Yesterday';
   } else {
-    return givenDate.toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
+    return givenDate.toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
     });
   }
 };
 
-export function toPascalCase(text = "") {
+export function toPascalCase(text = '') {
   return text
     .replace(
       /\w\S*/g,
@@ -71,9 +71,11 @@ export function toPascalCase(text = "") {
 }
 
 export function onlyDateFormatToday() {
-  return new Date().toLocaleDateString("en-GB").replace(/\//g, "-");
+  return new Date().toLocaleDateString('en-GB').replace(/\//g, '-');
 }
 
 export function onlyDueFormatToday(dueDate) {
-  return dueDate ? new Date(dueDate).toLocaleDateString("en-GB").replace(/\//g, "-") : "";
+  return dueDate
+    ? new Date(dueDate).toLocaleDateString('en-GB').replace(/\//g, '-')
+    : '';
 }

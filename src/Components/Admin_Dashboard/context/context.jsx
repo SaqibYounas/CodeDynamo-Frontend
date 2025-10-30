@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import socket from "../socket/socket";
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import socket from '../socket/socket';
 
 // Context Create
 const NotificationContexts = createContext();
@@ -17,35 +17,35 @@ export const NotificationProviders = ({ children }) => {
   const url = `${baseUrl}:${port}`;
 
   const startSocketEvents = () => {
-    const sessionID = localStorage.getItem("sessionID");
+    const sessionID = localStorage.getItem('sessionID');
     if (sessionID) {
       socket.auth = { sessionID };
       socket.connect();
     }
 
-    socket.on("session", ({ sessionID, userID }) => {
-      localStorage.setItem("sessionID", sessionID);
+    socket.on('session', ({ sessionID, userID }) => {
+      localStorage.setItem('sessionID', sessionID);
       setSession({ sessionID, userID });
     });
 
-    socket.on("admin-notification", (request) => {
-      console.log("📨 Event aya:", request);
+    socket.on('admin-notification', (request) => {
+      console.log('📨 Event aya:', request);
       setNotifications((prev) => [request.message, ...prev]);
       setNewCount((prev) => prev + 1);
     });
 
-    socket.on("admin-service", (requestData) => {
+    socket.on('admin-service', (requestData) => {
       setServices((prev) => [requestData.requestData, ...prev]);
     });
 
-    socket.on("admin-feedback", (requestData) => {
+    socket.on('admin-feedback', (requestData) => {
       console.log(requestData);
       setFeedbackCount((prev) => prev + 1);
       setHighlightedIds((prev) => [...prev, requestData._id]);
     });
 
-    socket.on("disconnect", () => {
-      console.warn("❌ Socket disconnected");
+    socket.on('disconnect', () => {
+      console.warn('❌ Socket disconnected');
     });
   };
 
@@ -53,9 +53,9 @@ export const NotificationProviders = ({ children }) => {
     startSocketEvents();
 
     return () => {
-      socket.off("new_message");
-      socket.off("admin-service");
-      socket.off("admin-feedback");
+      socket.off('new_message');
+      socket.off('admin-service');
+      socket.off('admin-feedback');
     };
   }, []);
 
@@ -64,7 +64,7 @@ export const NotificationProviders = ({ children }) => {
       const res = await fetch(
         `${url}/admin/services/user?page=${page}&limit=40`,
         {
-          credentials: "include",
+          credentials: 'include',
         }
       );
 
@@ -75,10 +75,10 @@ export const NotificationProviders = ({ children }) => {
         return data.totalPages;
       } else {
         setServices([]);
-        console.warn("⚠️ No services found.");
+        console.warn('⚠️ No services found.');
       }
     } catch (err) {
-      console.error("❌ Failed to fetch services", err);
+      console.error('❌ Failed to fetch services', err);
     }
   };
 
@@ -87,10 +87,10 @@ export const NotificationProviders = ({ children }) => {
       const res = await fetch(
         `${url}/admin/notifications/mark-read?page=${page}&limit=30`,
         {
-          method: "GET",
-          credentials: "include",
+          method: 'GET',
+          credentials: 'include',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       );
@@ -101,7 +101,7 @@ export const NotificationProviders = ({ children }) => {
         setNewCount(0);
       }
     } catch (err) {
-      console.error("❌ Failed to mark all read", err);
+      console.error('❌ Failed to mark all read', err);
     }
   };
 
@@ -110,7 +110,7 @@ export const NotificationProviders = ({ children }) => {
       const res = await fetch(
         `${url}/admin/notifications?page=${page}&limit=30`,
         {
-          credentials: "include",
+          credentials: 'include',
         }
       );
 
@@ -124,10 +124,10 @@ export const NotificationProviders = ({ children }) => {
       } else {
         setNotifications([]);
         setNewCount(0);
-        console.warn("⚠️ No notifications found.");
+        console.warn('⚠️ No notifications found.');
       }
     } catch (err) {
-      console.error("❌ Failed to fetch notifications", err);
+      console.error('❌ Failed to fetch notifications', err);
     }
   };
 
@@ -136,7 +136,7 @@ export const NotificationProviders = ({ children }) => {
       const res = await fetch(
         `${url}/admin/profile/user?page=${page}&limit=40`,
         {
-          credentials: "include",
+          credentials: 'include',
         }
       );
 

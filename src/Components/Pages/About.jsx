@@ -1,23 +1,21 @@
-import React from "react";
-import { projects, ourStory, aboutCards } from "./data/About";
-import { Box } from "./Box/Box";
-
-const AboutSection = () => {
+import React from 'react';
+import { ourStory, aboutCards } from './data/About';
+import { Box } from './Box/Box';
+import { ProjectsSection } from './common/ProjectSection';
+const AboutSection = ({ showProjects = true }) => {
   return (
     <>
-      {/* 🔹 Top Section (Light Violet Background) */}
       <div className="bg-[#F9F9FF]">
-        <div className="max-w-6xl mx-auto px-4 py-12">
-          {/* Heading Section */}
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-2">About CodeDynamo</h2>
-            <p className="text-gray-600 font-bold">
-              Building intelligent, scalable, and user-focused digital solutions.
+        <div className="mx-auto max-w-6xl px-4 py-12">
+          <div className="mb-12 text-center">
+            <h2 className="mb-2 text-3xl font-bold">About CodeDynamo</h2>
+            <p className="font-bold text-gray-600">
+              Building intelligent, scalable, and user-focused digital
+              solutions.
             </p>
           </div>
 
-          {/* About Cards */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="mb-12 grid gap-6 md:grid-cols-3">
             {aboutCards.map((card, idx) => (
               <Box
                 key={idx}
@@ -29,67 +27,32 @@ const AboutSection = () => {
             ))}
           </div>
 
-          {/* Our Story Section */}
           <div
-            className="group p-6 rounded-[25px] shadow-md mb-12 border-2 border-transparent bg-[#FAFAFA] transition-all duration-300 hover:shadow-xl hover:scale-[1]"
+            className="group mb-12 rounded-[25px] border-2 border-transparent bg-[#FAFAFA] p-6 shadow-md transition-all duration-300 hover:scale-[1] hover:shadow-xl"
             style={{
-              borderImage: "linear-gradient(to right, #F76680, #57007B) 1",
+              borderImage: 'linear-gradient(to right, #F76680, #57007B) 1',
               borderImageSlice: 1,
             }}
           >
             <h3
-              className="font-semibold mb-2 text-lg"
+              className="mb-2 text-lg font-semibold"
               style={{
-                background: "linear-gradient(to right, #F76680, #57007B)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                background: 'linear-gradient(to right, #F76680, #57007B)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
               }}
             >
               Our Story
             </h3>
 
-            <p className="text-gray-600 text-sm transition-all duration-300 group-hover:text-[#57007B]">
+            <p className="text-sm text-gray-600 transition-all duration-300 group-hover:text-[#57007B]">
               {ourStory.story}
             </p>
           </div>
         </div>
       </div>
 
-      {/* 🔹 Bottom Work Section (Light Gray Background) */}
-      <section className="bg-gray-100 py-16 px-6 md:px-16">
-        <div className="text-center mb-8">
-          <div className="h-1 w-24 bg-purple-500 mx-auto rounded"></div>
-          <h2 className="text-3xl font-bold mb-2 p-2">Our Work in Action</h2>
-        </div>
-
-        <div className="flex flex-col gap-12 max-w-6xl mx-auto">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className={`${project.bg} flex flex-col md:flex-row items-center justify-between p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl`}
-            >
-              {/* Left Image Section */}
-              <div className="md:w-1/2 flex justify-center mb-6 md:mb-0">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="rounded-2xl shadow-md w-[380px] md:w-[450px] h-auto object-cover"
-                />
-              </div>
-
-              {/* Right Text Section */}
-              <div className="md:w-1/2 text-center md:text-left space-y-4">
-                <h3 className="text-2xl font-semibold text-gray-800">
-                  {project.title}
-                </h3>
-                <p className="text-gray-700 text-lg leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {showProjects && <ProjectsSection />}
     </>
   );
 };

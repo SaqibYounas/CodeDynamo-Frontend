@@ -1,16 +1,16 @@
-import { url } from "./Port";
+import { url } from './Port';
 
 export async function searchClientID(ID) {
   try {
-    console.log(ID)
+    console.log(ID);
     let res = await fetch(`${url}/admin/user/search/clientid?clinetID=${ID}`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      credentials: "include",
+      credentials: 'include',
     });
-    let data=await res.json();
+    let data = await res.json();
     console.log(data);
     if (res.ok) {
       return data;
@@ -18,7 +18,7 @@ export async function searchClientID(ID) {
       return 0;
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return 0;
   }
 }

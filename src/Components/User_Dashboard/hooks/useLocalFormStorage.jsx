@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 export const useLocalFormStorage = ({
   formKey,
@@ -37,7 +37,7 @@ export const useLocalFormStorage = ({
 
     // ⬇️ WhatsApp logic for both cases
     if (data.whatsapp && setCountryCode && setNumber) {
-      const code = data.whatsapp.match(/^\+\d+/)?.[0] || "+92";
+      const code = data.whatsapp.match(/^\+\d+/)?.[0] || '+92';
       setCountryCode(code);
       setNumber(data.whatsapp);
     }

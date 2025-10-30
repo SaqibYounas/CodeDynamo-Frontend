@@ -1,38 +1,83 @@
-import { render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
-import Services from "../Services";
-import { describe, it, expect } from "vitest";
+import { render, screen } from '@testing-library/react';
+import { vi } from 'vitest';
+import Services from '../Services';
 
-const renderWithRouter = (ui) => {
-  return render(<BrowserRouter>{ui}</BrowserRouter>);
-};
+vi.mock('../utils/Profiler', () => ({
+  ProfilerWrapper: ({ children }) => <>{children}</>,
+}));
 
-describe("Services Component", () => {
-  it("renders all service titles", () => {
-    renderWithRouter(<Services />);
+vi.mock('../Box/TeachStack', () => ({
+  TechStack: () => <div data-testid="techstack">TechStack Component</div>,
+}));
 
-    expect(screen.getByText("AI Integration")).toBeInTheDocument();
-    expect(screen.getByText("Web Development")).toBeInTheDocument();
-    expect(screen.getByText("Mobile Apps")).toBeInTheDocument();
-    expect(screen.getByText("UI/UX Design")).toBeInTheDocument();
-    expect(screen.getByText("QA & Testing")).toBeInTheDocument();
-    expect(screen.getByText("Cloud Services")).toBeInTheDocument();
+vi.mock('../data/Services', () => ({
+  staticServices: [
+    {
+      icon: () => <svg data-testid="icon-1"></svg>,
+      iconColor: 'text-blue-500',
+      title: 'Web Development',
+      description: 'We build responsive and scalable websites.',
+      stack: ['React', 'Node.js'],
+    },
+    {
+      icon: () => <svg data-testid="icon-2"></svg>,
+      iconColor: 'text-green-500',
+      title: 'App Development',
+      description: 'We create high-performance mobile apps.',
+      stack: ['Flutter', 'Firebase'],
+    },
+  ],
+}));
+
+vi.mock('../Box/Box', () => ({
+  Box: ({ icon, title, description }) => (
+    <div data-testid="service-box">
+      {icon}
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </div>
+  ),
+}));
+
+describe('Services Component', () => {
+  it('renders heading and all service boxes', () => {
+    render(<Services showTechStack={false} />);
+
+    expect(screen.getByText('Our Services')).toBeInTheDocument();
+
+    expect(screen.getByText('Web Development')).toBeInTheDocument();
+    expect(screen.getByText('App Development')).toBeInTheDocument();
+
+    expect(
+      screen.getByText(/responsive and scalable websites/i)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/high-performance mobile apps/i)
+    ).toBeInTheDocument();
+
+    const boxes = screen.getAllByTestId('service-box');
+    expect(boxes).toHaveLength(2);
   });
 
-  it("renders 'Our Services' heading", () => {
-    renderWithRouter(<Services />);
-    expect(screen.getByText(/our services/i)).toBeInTheDocument();
+  it('renders TechStack component when showTechStack=true', () => {
+    render(<Services showTechStack={true} />);
+    expect(screen.getByTestId('techstack')).toBeInTheDocument();
   });
 
-  it("renders 'Why Choose CodeDynamo' section if showWhyChoose is true", () => {
-    renderWithRouter(<Services showWhyChoose={true} />);
-    expect(screen.getByText(/why choose services from/i)).toBeInTheDocument();
-    expect(screen.getByRole("img", { name: /why choose codedynamo/i })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /get in touch/i })).toBeInTheDocument();
+  it('does not render TechStack when showTechStack=false', () => {
+    render(<Services showTechStack={false} />);
+    const techStack = screen.queryByTestId('techstack');
+    expect(techStack).toBeNull();
   });
 
-  it("does not render 'Why Choose Us' section if showWhyChoose is false", () => {
-    renderWithRouter(<Services showWhyChoose={false} />);
-    expect(screen.queryByText(/why choose services from/i)).not.toBeInTheDocument();
+  it('renders correct layout and section classes', () => {
+    const { container } = render(<Services />);
+
+    const section = container.querySelector('section');
+    expect(section).toBeInTheDocument();
+
+    expect(section.className).toMatch(/bg-\[#F9F9FF\]/);
+    expect(section.className).toMatch(/py-16/);
+    expect(section.className).toMatch(/bg-gradient-to-br/);
   });
 });

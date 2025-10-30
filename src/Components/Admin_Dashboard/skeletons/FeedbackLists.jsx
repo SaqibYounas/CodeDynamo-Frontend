@@ -1,26 +1,26 @@
-import React from "react";
-import { FaUserCircle, FaStar } from "react-icons/fa";
+import React from 'react';
+import { FaUserCircle, FaStar } from 'react-icons/fa';
 
 const FeedbackListSkeleton = ({ count = 6 }) => {
   return (
-    <div className="space-y-4 animate-pulse">
+    <div className="animate-pulse space-y-4">
       {Array.from({ length: count }).map((_, i) => (
         <div
           key={i}
-          className="flex items-start lg:w-2xl gap-3 p-4 bg-white rounded-xl shadow-md border-l-4 border-gray-200"
+          className="flex items-start gap-3 rounded-xl border-l-4 border-gray-200 bg-white p-4 shadow-md lg:w-2xl"
         >
-          <div className="text-4xl text-gray-300 mt-1">
+          <div className="mt-1 text-4xl text-gray-300">
             <FaUserCircle />
           </div>
-          <div className="flex-1 space-y-2 w-full">
-            <div className="flex justify-between items-center">
-              <div className="w-32 h-4 bg-gray-300 rounded"></div>
-              <div className="w-16 h-3 bg-gray-200 rounded"></div>
+          <div className="w-full flex-1 space-y-2">
+            <div className="flex items-center justify-between">
+              <div className="h-4 w-32 rounded bg-gray-300"></div>
+              <div className="h-3 w-16 rounded bg-gray-200"></div>
             </div>
-            <div className="w-64 h-3 bg-gray-200 rounded"></div>
-            <div className="flex gap-1 text-gray-300 mt-2">
+            <div className="h-3 w-64 rounded bg-gray-200"></div>
+            <div className="mt-2 flex gap-1 text-gray-300">
               {Array.from({ length: 5 }).map((_, j) => (
-                <FaStar key={j} className="w-4 h-4" />
+                <FaStar key={j} className="h-4 w-4" />
               ))}
             </div>
           </div>

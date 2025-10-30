@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState } from "react";
-import { url } from "../Pages/Services/Port";
-import { Inovice } from "../../../../../User_Backend/Server/models/invoice";
+import React, { createContext, useContext, useState } from 'react';
+import { url } from '../Pages/Services/Port';
+import { Inovice } from '../../../../../User_Backend/Server/models/invoice';
 const NotificationContext = createContext();
 
 export const NotificationProvider = ({ children }) => {
@@ -8,21 +8,21 @@ export const NotificationProvider = ({ children }) => {
   const [newCount, setNewCount] = useState(0);
   const [latestNotifications, latesSetNotifications] = useState([]);
   const [services, setServices] = useState([]);
-  const [message,setUserMessages]= useState([]);
-  const [newInvoice,setnewInvoice]=useState([]);
-  const [newInvoiceCount,setNewInvoiceCount]=useState(0);
+  const [message, setUserMessages] = useState([]);
+  const [newInvoice, setnewInvoice] = useState([]);
+  const [newInvoiceCount, setNewInvoiceCount] = useState(0);
   const getUserServicesStatus = async () => {
     try {
       const response = await fetch(`${url}/user/services/user`, {
-        credentials: "include",
+        credentials: 'include',
       });
 
       const data = await response.json();
 
       setServices(data.services);
     } catch (err) {
-      console.error("❌ Fetch failed:", err);
-      setServices("Server Error! Try Again");
+      console.error('❌ Fetch failed:', err);
+      setServices('Server Error! Try Again');
     }
   };
   const fetchNotifications = async (page) => {
@@ -30,7 +30,7 @@ export const NotificationProvider = ({ children }) => {
       const res = await fetch(
         `${url}/user/notifications?page=${page}&limit=10`,
         {
-          credentials: "include",
+          credentials: 'include',
         }
       );
 
@@ -43,7 +43,7 @@ export const NotificationProvider = ({ children }) => {
         return data.totalPages; // 👈 Now you have total pages
       }
     } catch (err) {
-      console.error("❌ Failed to fetch notifications", err);
+      console.error('❌ Failed to fetch notifications', err);
     }
   };
 
@@ -52,10 +52,10 @@ export const NotificationProvider = ({ children }) => {
       const res = await fetch(
         `${url}/user/notifications/mark-read?page=${page}&limit=10`,
         {
-          method: "POST",
-          credentials: "include",
+          method: 'POST',
+          credentials: 'include',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       );
@@ -66,7 +66,7 @@ export const NotificationProvider = ({ children }) => {
         setNewCount(0);
       }
     } catch (err) {
-      console.error("❌ Failed to mark all read", err);
+      console.error('❌ Failed to mark all read', err);
     }
   };
 
@@ -82,9 +82,12 @@ export const NotificationProvider = ({ children }) => {
         services,
         latesSetNotifications,
         setNewCount,
-        message,setUserMessages,
-        setnewInvoice,Inovice,
-        newInvoiceCount,setNewInvoiceCount
+        message,
+        setUserMessages,
+        setnewInvoice,
+        Inovice,
+        newInvoiceCount,
+        setNewInvoiceCount,
       }}
     >
       {children}

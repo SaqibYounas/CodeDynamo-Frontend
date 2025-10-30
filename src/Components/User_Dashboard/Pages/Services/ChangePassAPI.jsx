@@ -1,12 +1,12 @@
-import { url } from "./Port";
+import { url } from './Port';
 
 export async function changePassAPI({ current, newPass }) {
   try {
     let response = await fetch(`${url}/user/change-password`, {
-      method: "POST",
-      credentials: "include",
+      method: 'POST',
+      credentials: 'include',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
       body: JSON.stringify({
         password: current,
@@ -22,7 +22,7 @@ export async function changePassAPI({ current, newPass }) {
       return 0;
     }
   } catch (error) {
-    console.error("Password Change Error:", error);
+    console.error('Password Change Error:', error);
     return 0;
   }
 }

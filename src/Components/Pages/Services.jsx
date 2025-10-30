@@ -1,26 +1,21 @@
-import { FaTools } from "react-icons/fa";
-import { ProfilerWrapper } from "./utils/Profiler";
-import { staticServices } from "./data/Services";
-import { Box } from "./Box/Box";
-import { TechStack } from "./Box/TeachStack";
-function Services() {
+import { ProfilerWrapper } from './utils/Profiler';
+import { staticServices } from './data/Services';
+import { Box } from './Box/Box';
+import { TechStack } from './Box/TeachStack';
+
+function Services({ showTechStack = true }) {
   return (
-    <ProfilerWrapper id="Services">
+    <ProfilerWrapper id="Services" data-testid="profiler">
       <>
-        {/* Services Section */}
-        <section className=" py-16 bg-gradient-to-br bg-[#F9F9FF]">
-          <div className=" container mx-auto px-4 ">
-            <div className=" text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-800 inline-flex items-center justify-center gap-2 ">
-                <FaTools className="text-blue-600 text-3xl" />
+        <section className="bg-[#F9F9FF] bg-gradient-to-br py-16">
+          <div className="container mx-auto px-4">
+            <div className="mb-12 text-center">
+              <h2 className="inline-flex items-center justify-center gap-2 text-3xl font-bold text-gray-800">
                 Our Services
               </h2>
             </div>
 
-            <div
-              className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-6"
-      
-            >
+            <div className="mx-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {staticServices.map((item, index) => (
                 <Box
                   key={index}
@@ -34,8 +29,9 @@ function Services() {
             </div>
           </div>
         </section>
-      </>{" "}
-      <TechStack />
+
+        {showTechStack && <TechStack />}
+      </>
     </ProfilerWrapper>
   );
 }

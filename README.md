@@ -1,12 +1,66 @@
-# React + Vite
+# Full Stack Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a modern full stack web application built with React (Vite + Tailwind) on the frontend and Node.js (Express + MongoDB) on the backend.  
+It includes authentication, real-time communication, and a responsive user interface.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## UI Pages
 
-## Expanding the ESLint configuration
+![CodeDynamo 1](/Frontend/src/assets/UI/Home.png)
+![CodeDynamo 2](/Frontend/src/assets/UI/Services.png)
+![CodeDynamo 3](/Frontend/src/assets/Pages/UI/About.png)
+![CodeDynamo 4](/Frontend/src/assets/UI/Contact.png)
+![CodeDynamo 5](/Frontend/src/assets/UI/Login.png)
+![CodeDynamo 6](/Frontend/src/assets/UI/Signup.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+### Frontend
+
+- React 19 – Component-based UI development
+- Vite – Fast build tool for frontend
+- Tailwind CSS 4 – Utility-first CSS framework
+- Framer Motion – Smooth and modern animations
+- React Router DOM v7 – Navigation and routing
+- Zustand – Lightweight state management
+- Axios – API communication between frontend and backend
+
+### Backend
+
+- Node.js and Express.js – REST API and server-side logic
+- MongoDB and Mongoose – NoSQL database and data modeling
+- JSON Web Token (JWT) – Authentication and authorization
+- bcrypt – Password hashing
+- dotenv – Environment variable management
+- Socket.IO – Real-time communication between client and server
+
+### Development and Testing
+
+- Vitest – Frontend testing
+- Jest – Backend testing
+- ESLint – Code quality and linting
+- Concurrently – Run frontend and backend together
+
+---
+
+### Authentication
+
+- Login Page
+- Signup / Register Page
+- Forgot Password Page
+
+### Dashboard
+
+- User Dashboard – Displays user data and activity
+- Settings Page – Manage profile and preferences
+
+### Features
+
+- Real-Time Updates (Socket.IO integration)
+- PDF Generation and Signature Capture (html2canvas + jsPDF)
+- Notifications (React Hot Toast)
+- Animated UI Transitions (Framer Motion)
+- Responsive Design (Tailwind CSS)
+
+---
