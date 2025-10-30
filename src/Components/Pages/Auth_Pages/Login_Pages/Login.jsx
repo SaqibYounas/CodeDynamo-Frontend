@@ -266,7 +266,6 @@
 // }
 
 // export default Login;
-'use client';
 import { useNavigate } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';

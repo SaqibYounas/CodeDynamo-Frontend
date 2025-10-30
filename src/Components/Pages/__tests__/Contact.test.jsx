@@ -1,39 +1,55 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Contact from '../ContactUs';
+import { vi } from 'vitest';
 
-// Clean localStorage before each test
-beforeEach(() => {
-  localStorage.clear();
-});
+vi.mock('../utils/Profiler', () => ({
+  ProfilerWrapper: ({ children }) => <>{children}</>,
+}));
+
+vi.mock('../data/Contact', () => ({
+  contactData: {
+    icon: () => <svg data-testid="contact-icon" />,
+    title: 'Contact Us',
+    developer: 'John Doe',
+    team: 'CodeDynamo',
+    description: 'We help build digital solutions.',
+  },
+}));
 
 describe('Contact Component', () => {
-  test('renders heading and description', () => {
-    render(
-      <MemoryRouter>
-        <Contact />
-      </MemoryRouter>
-    );
-
-    expect(screen.getByText(/get in touch/i)).toBeInTheDocument();
-    expect(
-      screen.getByText(/This platform is proudly developed by/i)
-    ).toBeInTheDocument();
+  beforeEach(() => {
+    vi.resetAllMocks();
+    localStorage.clear();
   });
 
-  test('renders login and signup buttons when not authenticated', () => {
+  it('renders contact info correctly', () => {
     render(
       <MemoryRouter>
         <Contact />
       </MemoryRouter>
     );
 
-    expect(screen.getByRole('link', { name: /login/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /sign up/i })).toBeInTheDocument();
+    expect(screen.getByText(/Contact Us/i)).toBeInTheDocument();
+    expect(screen.getByText(/John Doe/i)).toBeInTheDocument();
+    expect(screen.getByText(/CodeDynamo/i)).toBeInTheDocument();
+    expect(screen.getByText(/We help build digital solutions/i)).toBeInTheDocument();
+    expect(screen.getByTestId('contact-icon')).toBeInTheDocument();
   });
 
-  test('renders dashboard message when authenticated', () => {
-    localStorage.setItem('token', 'dummyToken123');
+  it('shows login and signup links when user is not authenticated', () => {
+    render(
+      <MemoryRouter>
+        <Contact />
+      </MemoryRouter>
+    );
+
+    expect(screen.getByText(/Login/i)).toBeInTheDocument();
+    expect(screen.getByText(/Sign Up/i)).toBeInTheDocument();
+  });
+
+  it('shows logged-in message when user is authenticated', () => {
+    localStorage.setItem('token', 'fakeToken');
 
     render(
       <MemoryRouter>
@@ -41,10 +57,8 @@ describe('Contact Component', () => {
       </MemoryRouter>
     );
 
-    expect(
-      screen.getByText(
-        /You are logged in. You can now send a request from your dashboard/i
-      )
-    ).toBeInTheDocument();
+    expect(screen.getByText(/You are logged in/i)).toBeInTheDocument();
+    expect(screen.queryByText(/Login/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Sign Up/i)).not.toBeInTheDocument();
   });
 });

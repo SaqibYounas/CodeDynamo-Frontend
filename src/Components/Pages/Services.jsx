@@ -5,7 +5,7 @@ import { TechStack } from './Box/TeachStack';
 
 function Services({ showTechStack = true }) {
   return (
-    <ProfilerWrapper id="Services">
+    <ProfilerWrapper id="Services" data-testid="profiler" >
       <>
         <section className="bg-[#F9F9FF] bg-gradient-to-br py-16">
           <div className="container mx-auto px-4">

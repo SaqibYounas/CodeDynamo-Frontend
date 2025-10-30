@@ -8,6 +8,7 @@ import { TechStack } from './Box/TeachStack';
 import { Section } from './Box/Section';
 import { ProjectsSection } from './common/ProjectSection';
 import { ApproachSection } from './common/ourDevelopment';
+
 export default function Home() {
   const text = 'Welcome to CodeDynamo';
   const [displayedText, setDisplayedText] = useState('');
@@ -31,14 +32,21 @@ export default function Home() {
   return (
     <ProfilerWrapper id="Home">
       <div className="min-h-screen bg-[#F9F9FF]">
-        <section className="bg-white py-20 shadow-md">
+        <section
+          className="bg-white py-20 shadow-md"
+          data-testid="hero-section"
+        >
           <div className="container mx-auto flex flex-col items-center justify-between px-6 md:flex-row md:px-10">
-            <div className="text-center md:w-1/2 md:text-left">
+            <div
+              className="text-center md:w-1/2 md:text-left"
+              data-testid="hero-text"
+            >
               <motion.h1
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
                 className="mb-4 text-3xl font-bold sm:text-4xl md:text-5xl"
+                data-testid="hero-heading"
               >
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                   {displayedText}
@@ -46,14 +54,21 @@ export default function Home() {
                 <span className="animate-pulse text-blue-600">|</span>
               </motion.h1>
 
-              <p className="mb-6 text-lg text-gray-700">
+              <p
+                className="mb-6 text-lg text-gray-700"
+                data-testid="hero-description"
+              >
                 We create cutting edge software solutions designed to accelerate
                 your business growth.
               </p>
 
-              <div className="mt-10 space-x-4 text-center">
+              <div
+                className="mt-10 space-x-4 text-center"
+                data-testid="hero-buttons"
+              >
                 <Link
                   to="/auth/signup"
+                  data-testid="get-started-link"
                   className="rounded bg-[#474BCA] px-10 py-3 text-white transition hover:bg-blue-700"
                 >
                   Get Started
@@ -61,7 +76,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-10 flex justify-center md:mt-0 md:w-1/2">
+            <div
+              className="mt-10 flex justify-center md:mt-0 md:w-1/2"
+              data-testid="hero-image-container"
+            >
               <img
                 src="/Pages/Home.png"
                 alt="Welcome Banner"
@@ -75,15 +93,19 @@ export default function Home() {
           title="Why Choose Us?"
           boxes={sectionBoxes.whyChooseUs}
           cols={3}
-          bg="bg-[#F9F9FF] "
+          bg="bg-[#F9F9FF]"
+          data-testid="section-Why Choose Us?"
         />
+        <div data-testid="services-wrapper">
+          <Services showTechStack={false} />
+        </div>
 
-        <Services showTechStack={false} />
         <Section
           title="Proven Track Record"
           boxes={sectionBoxes.trackRecord}
           cols={3}
           bg="bg-gray-100"
+          data-testid="section-proven-track-record"
         />
 
         <Section
@@ -91,11 +113,12 @@ export default function Home() {
           boxes={sectionBoxes.workingCycle}
           cols={4}
           bg="bg-white"
+          data-testid="section-working-cycle"
         />
       </div>
-      <ProjectsSection />
-      <ApproachSection />
-      <TechStack />
+      <ProjectsSection data-testid="projects-section" />
+      <ApproachSection data-testid="approach-section" />
+      <TechStack data-testid="techstack-section" />
     </ProfilerWrapper>
   );
 }
