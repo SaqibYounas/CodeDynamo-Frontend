@@ -1,25 +1,25 @@
 export function ChatSkeleton() {
   return (
-    <div className="w-2/3 h-full flex flex-col">
+    <div className="flex h-full w-2/3 flex-col">
       {/* Header Skeleton */}
-      <div className="p-4 border-b bg-white shadow flex justify-between items-center animate-pulse">
-        <div className="h-6 bg-gray-300 rounded w-40"></div>
-        <div className="h-6 bg-gray-300 rounded w-6"></div>
+      <div className="flex animate-pulse items-center justify-between border-b bg-white p-4 shadow">
+        <div className="h-6 w-40 rounded bg-gray-300"></div>
+        <div className="h-6 w-6 rounded bg-gray-300"></div>
       </div>
 
       {/* Messages Skeleton (Straight Right-Aligned Lines) */}
-      <div className="flex-1 p-4 overflow-y-auto bg-gray-50 space-y-4 animate-pulse">
+      <div className="flex-1 animate-pulse space-y-4 overflow-y-auto bg-gray-50 p-4">
         {[...Array(10)].map((_, i) => (
           <div key={i} className="flex justify-end">
-            <div className="h-12  bg-gray-300 rounded-xl w-110"></div>
+            <div className="h-12 w-110 rounded-xl bg-gray-300"></div>
           </div>
         ))}
       </div>
 
       {/* Input Skeleton */}
-      <div className="p-4 border-t bg-white flex gap-2 animate-pulse">
-        <div className="flex-1 h-10 bg-gray-300 rounded"></div>
-        <div className="w-20 h-10 bg-gray-300 rounded"></div>
+      <div className="flex animate-pulse gap-2 border-t bg-white p-4">
+        <div className="h-10 flex-1 rounded bg-gray-300"></div>
+        <div className="h-10 w-20 rounded bg-gray-300"></div>
       </div>
     </div>
   );

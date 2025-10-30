@@ -33,8 +33,8 @@ export default function AdminNotifications() {
   }
 
   return (
-    <div className="lg:pl-64 md:pl-80 p-6 min-h-screen bg-gray-100">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+    <div className="min-h-screen bg-gray-100 p-6 md:pl-80 lg:pl-64">
+      <h1 className="mb-6 text-center text-3xl font-bold text-gray-800">
         {notifications?.length > 0 ? 'Notifications' : 'No Admin Notification'}
       </h1>
       {isLoading ? (
@@ -45,20 +45,19 @@ export default function AdminNotifications() {
             notifications.map((note, index) => (
               <div
                 key={index}
-                className={`border-l-40 p-4  rounded-lg shadow-lg flex items-start gap-6 transition-all duration-300 ease-in-out transform lg:w-2xl
-              ${
-                note?.read
-                  ? 'bg-white border-gray-600 text-gray-800'
-                  : 'bg-yellow-100 border-yellow-500 text-black'
-              }`}
+                className={`flex transform items-start gap-6 rounded-lg border-l-40 p-4 shadow-lg transition-all duration-300 ease-in-out lg:w-2xl ${
+                  note?.read
+                    ? 'border-gray-600 bg-white text-gray-800'
+                    : 'border-yellow-500 bg-yellow-100 text-black'
+                }`}
               >
-                <FaBell className="text-xl mt-1 text-yellow-400" />
+                <FaBell className="mt-1 text-xl text-yellow-400" />
                 <div>
                   {note.title && (
-                    <p className="font-semibold text-1xl">{note.title}</p>
+                    <p className="text-1xl font-semibold">{note.title}</p>
                   )}
-                  <p className="text-sm mt-1">{note?.message}</p>
-                  <p className="text-sm text-gray-500 mt-1">
+                  <p className="mt-1 text-sm">{note?.message}</p>
+                  <p className="mt-1 text-sm text-gray-500">
                     {formatDate(note?.createdAt)}
                   </p>
                 </div>

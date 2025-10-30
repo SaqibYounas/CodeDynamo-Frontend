@@ -101,20 +101,20 @@ const stackData = [
 export default function StackOverview() {
   return (
     <ProfilerWrapper id="requestService">
-      <div className="px-4 sm:px-6 md:pl-80 lg:pl-64 lg:pr-12 py-6 flex flex-col gap-6">
+      <div className="flex flex-col gap-6 px-4 py-6 sm:px-6 md:pl-80 lg:pr-12 lg:pl-64">
         {/* Left Side: Stack Cards */}
         <div className="flex-1">
-          <h1 className="text-3xl font-bold mb-6 text-gray-800">
+          <h1 className="mb-6 text-3xl font-bold text-gray-800">
             Technology Stack Overview
           </h1>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {stackData.map((category, index) => (
               <div
                 key={index}
-                className="bg-white shadow-md rounded-lg p-4 hover:shadow-xl transition-all duration-300"
+                className="rounded-lg bg-white p-4 shadow-md transition-all duration-300 hover:shadow-xl"
               >
-                <div className="flex items-center gap-2 mb-4">
+                <div className="mb-4 flex items-center gap-2">
                   <category.icon
                     className="text-3xl"
                     style={{ color: category.color }}
@@ -124,11 +124,11 @@ export default function StackOverview() {
                   </h2>
                 </div>
 
-                <div className="flex flex-wrap gap-2 mt-2">
+                <div className="mt-2 flex flex-wrap gap-2">
                   {category.stack.map((tech, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-1 px-2 py-1 rounded-md text-sm border transition-all duration-300 cursor-default"
+                      className="flex cursor-default items-center gap-1 rounded-md border px-2 py-1 text-sm transition-all duration-300"
                       style={{
                         borderColor: tech.color,
                         color: tech.color,

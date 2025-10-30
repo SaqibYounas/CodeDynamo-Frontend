@@ -75,16 +75,16 @@ function ResetPassword() {
 
   return (
     <ProfilerWrapper id="Reset Password">
-      <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="bg-white p-6 rounded-xl shadow-md w-full max-w-md">
-          <h2 className="text-2xl font-semibold mb-4 text-center">
+      <div className="flex min-h-screen items-center justify-center px-4">
+        <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-md">
+          <h2 className="mb-4 text-center text-2xl font-semibold">
             Reset Password
           </h2>
           <form onSubmit={handleReset} className="space-y-4">
             <div>
               <label
                 htmlFor="new-password"
-                className="block text-gray-700 font-medium"
+                className="block font-medium text-gray-700"
               >
                 New Password
               </label>
@@ -92,20 +92,20 @@ function ResetPassword() {
                 id="new-password"
                 type="password"
                 ref={passwordRef}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-lg border px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="At least 8 characters, 1 special char"
                 required
                 onChange={() => setPasswordError('')}
               />
               {passwordError && (
-                <p className="text-red-600 text-sm mt-1">{passwordError}</p>
+                <p className="mt-1 text-sm text-red-600">{passwordError}</p>
               )}
             </div>
 
             <div>
               <label
                 htmlFor="confirm-password"
-                className="block text-gray-700 font-medium"
+                className="block font-medium text-gray-700"
               >
                 Confirm Password
               </label>
@@ -113,25 +113,25 @@ function ResetPassword() {
                 id="confirm-password"
                 type="password"
                 ref={confirmRef}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-lg border px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Retype password"
                 required
                 onChange={() => setConfirmError('')}
               />
               {confirmError && (
-                <p className="text-red-600 text-sm mt-1">{confirmError}</p>
+                <p className="mt-1 text-sm text-red-600">{confirmError}</p>
               )}
             </div>
 
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 cursor-pointer"
+              className="w-full cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
             >
               Reset Password
             </button>
           </form>
           {message && (
-            <p className="mt-4 text-center text-green-600 font-semibold">
+            <p className="mt-4 text-center font-semibold text-green-600">
               {message}
             </p>
           )}

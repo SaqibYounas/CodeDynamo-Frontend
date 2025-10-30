@@ -33,13 +33,13 @@ export default function Header() {
 
   return (
     <ProfilerWrapper id="Header">
-      <header className="bg-gradient-to-r from-white via-blue-50 to-white shadow-md sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+      <header className="sticky top-0 z-50 bg-gradient-to-r from-white via-blue-50 to-white shadow-md">
+        <div className="container mx-auto flex items-center justify-between px-4 py-3">
           {/* 🔹 Logo */}
           <Link
             to="/home"
             onClick={closeMenu}
-            className="flex items-center font-bold text-2xl sm:text-3xl transform transition-transform hover:scale-105"
+            className="flex transform items-center text-2xl font-bold transition-transform hover:scale-105 sm:text-3xl"
           >
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
               CodeDynamo
@@ -48,7 +48,7 @@ export default function Header() {
 
           {/* 🔹 Desktop Navigation */}
           <motion.nav
-            className="hidden md:flex space-x-6"
+            className="hidden space-x-6 md:flex"
             initial="hidden"
             animate="visible"
             variants={navList}
@@ -59,10 +59,10 @@ export default function Header() {
                 to={item.href}
                 end={item.href === '/home'}
                 className={({ isActive }) =>
-                  `relative font-medium capitalize transition duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-600 after:transition-all after:duration-300 ${
+                  `relative font-medium capitalize transition duration-300 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:bg-blue-600 after:transition-all after:duration-300 after:content-[''] ${
                     isActive
                       ? 'text-blue-600 after:w-full'
-                      : 'text-gray-700 hover:text-blue-500 after:w-0 hover:after:w-full'
+                      : 'text-gray-700 after:w-0 hover:text-blue-500 hover:after:w-full'
                   }`
                 }
               >
@@ -74,20 +74,20 @@ export default function Header() {
           <div className="flex space-x-2">
             <Link
               to="/auth/login"
-              className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-[#6675F7] to-[#57007B] text-white rounded-md hover:opacity-90 transition shadow-sm text-xs sm:text-sm md:text-base"
+              className="rounded-md bg-gradient-to-r from-[#6675F7] to-[#57007B] px-3 py-1.5 text-xs text-white shadow-sm transition hover:opacity-90 sm:px-4 sm:py-2 sm:text-sm md:text-base"
             >
               Login
             </Link>
             <Link
               to="/auth/signup"
-              className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-[#6675F7] to-[#57007B] text-white rounded-md hover:opacity-90 transition shadow-sm text-xs sm:text-sm md:text-base"
+              className="rounded-md bg-gradient-to-r from-[#6675F7] to-[#57007B] px-3 py-1.5 text-xs text-white shadow-sm transition hover:opacity-90 sm:px-4 sm:py-2 sm:text-sm md:text-base"
             >
               Signup
             </Link>
 
             <button
               onClick={toggleMenu}
-              className="md:hidden text-blue-600 text-2xl ml-2"
+              className="ml-2 text-2xl text-blue-600 md:hidden"
               aria-label="Toggle menu"
             >
               {isOpen ? <FaTimes /> : <FaBars />}
@@ -114,7 +114,7 @@ export default function Header() {
                     to={item.href}
                     className={`flex items-center gap-3 rounded-md px-5 py-2 transition-all duration-300 ${
                       isActive
-                        ? 'text-black bg-gray-100'
+                        ? 'bg-gray-100 text-black'
                         : 'text-gray-800 hover:bg-gray-100'
                     }`}
                     onClick={() => setIsOpen(false)}

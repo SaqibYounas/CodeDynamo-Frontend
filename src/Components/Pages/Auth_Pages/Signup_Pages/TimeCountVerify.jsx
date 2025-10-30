@@ -29,7 +29,7 @@ export default function CountdownTimer({ duration = 300, onExpire, resetKey }) {
   };
 
   return (
-    <div className="text-center text-lg font-semibold text-red-600 mt-4">
+    <div className="mt-4 text-center text-lg font-semibold text-red-600">
       {timeLeft > 0
         ? `OTP expires in: ${formatTime(timeLeft)}`
         : 'Code expired!'}

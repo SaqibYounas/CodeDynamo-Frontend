@@ -7,15 +7,15 @@ function Services({ showTechStack = true }) {
   return (
     <ProfilerWrapper id="Services">
       <>
-        <section className="py-16 bg-gradient-to-br bg-[#F9F9FF]">
+        <section className="bg-[#F9F9FF] bg-gradient-to-br py-16">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-800 inline-flex items-center justify-center gap-2">
+            <div className="mb-12 text-center">
+              <h2 className="inline-flex items-center justify-center gap-2 text-3xl font-bold text-gray-800">
                 Our Services
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-6">
+            <div className="mx-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {staticServices.map((item, index) => (
                 <Box
                   key={index}

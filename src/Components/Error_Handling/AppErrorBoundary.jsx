@@ -3,15 +3,15 @@ import { ErrorBoundary } from 'react-error-boundary';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
   return (
-    <div className="min-h-screen flex items-center justify-center text-center p-4">
+    <div className="flex min-h-screen items-center justify-center p-4 text-center">
       <div>
         <h2 className="text-2xl font-bold text-red-600">
           Something went wrong
         </h2>
-        <p className="text-gray-700 mt-2">{error.message}</p>
+        <p className="mt-2 text-gray-700">{error.message}</p>
         <button
           onClick={resetErrorBoundary}
-          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer"
+          className="mt-4 cursor-pointer rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
         >
           Try Again
         </button>

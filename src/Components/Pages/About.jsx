@@ -6,16 +6,16 @@ const AboutSection = ({ showProjects = true }) => {
   return (
     <>
       <div className="bg-[#F9F9FF]">
-        <div className="max-w-6xl mx-auto px-4 py-12">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-2">About CodeDynamo</h2>
-            <p className="text-gray-600 font-bold">
+        <div className="mx-auto max-w-6xl px-4 py-12">
+          <div className="mb-12 text-center">
+            <h2 className="mb-2 text-3xl font-bold">About CodeDynamo</h2>
+            <p className="font-bold text-gray-600">
               Building intelligent, scalable, and user-focused digital
               solutions.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="mb-12 grid gap-6 md:grid-cols-3">
             {aboutCards.map((card, idx) => (
               <Box
                 key={idx}
@@ -28,14 +28,14 @@ const AboutSection = ({ showProjects = true }) => {
           </div>
 
           <div
-            className="group p-6 rounded-[25px] shadow-md mb-12 border-2 border-transparent bg-[#FAFAFA] transition-all duration-300 hover:shadow-xl hover:scale-[1]"
+            className="group mb-12 rounded-[25px] border-2 border-transparent bg-[#FAFAFA] p-6 shadow-md transition-all duration-300 hover:scale-[1] hover:shadow-xl"
             style={{
               borderImage: 'linear-gradient(to right, #F76680, #57007B) 1',
               borderImageSlice: 1,
             }}
           >
             <h3
-              className="font-semibold mb-2 text-lg"
+              className="mb-2 text-lg font-semibold"
               style={{
                 background: 'linear-gradient(to right, #F76680, #57007B)',
                 WebkitBackgroundClip: 'text',
@@ -45,7 +45,7 @@ const AboutSection = ({ showProjects = true }) => {
               Our Story
             </h3>
 
-            <p className="text-gray-600 text-sm transition-all duration-300 group-hover:text-[#57007B]">
+            <p className="text-sm text-gray-600 transition-all duration-300 group-hover:text-[#57007B]">
               {ourStory.story}
             </p>
           </div>

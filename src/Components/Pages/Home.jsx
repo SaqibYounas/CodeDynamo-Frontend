@@ -32,13 +32,13 @@ export default function Home() {
     <ProfilerWrapper id="Home">
       <div className="min-h-screen bg-[#F9F9FF]">
         <section className="bg-white py-20 shadow-md">
-          <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between">
-            <div className="text-center md:text-left md:w-1/2">
+          <div className="container mx-auto flex flex-col items-center justify-between px-6 md:flex-row md:px-10">
+            <div className="text-center md:w-1/2 md:text-left">
               <motion.h1
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
+                className="mb-4 text-3xl font-bold sm:text-4xl md:text-5xl"
               >
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                   {displayedText}
@@ -46,26 +46,26 @@ export default function Home() {
                 <span className="animate-pulse text-blue-600">|</span>
               </motion.h1>
 
-              <p className="text-gray-700 text-lg mb-6">
+              <p className="mb-6 text-lg text-gray-700">
                 We create cutting edge software solutions designed to accelerate
                 your business growth.
               </p>
 
-              <div className="space-x-4 text-center mt-10">
+              <div className="mt-10 space-x-4 text-center">
                 <Link
                   to="/auth/signup"
-                  className="px-10 py-3 bg-[#474BCA] text-white rounded hover:bg-blue-700 transition"
+                  className="rounded bg-[#474BCA] px-10 py-3 text-white transition hover:bg-blue-700"
                 >
                   Get Started
                 </Link>
               </div>
             </div>
 
-            <div className="mt-10 md:mt-0 md:w-1/2 flex justify-center">
+            <div className="mt-10 flex justify-center md:mt-0 md:w-1/2">
               <img
                 src="/Pages/Home.png"
                 alt="Welcome Banner"
-                className="w-[250px] sm:w-[400px] md:w-[500px] lg:w-[627px] h-auto"
+                className="h-auto w-[250px] sm:w-[400px] md:w-[500px] lg:w-[627px]"
               />
             </div>
           </div>

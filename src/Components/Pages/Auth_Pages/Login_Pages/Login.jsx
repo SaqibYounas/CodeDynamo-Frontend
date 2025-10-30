@@ -370,34 +370,34 @@ function Login() {
 
   return (
     <ProfilerWrapper id="Login">
-      <div className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center bg-[#F9F9FF] px-4 sm:px-8 lg:px-16 py-8 lg:py-12 gap-6 lg:gap-10">
-        <div className="w-full lg:w-1/2 max-w-md flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">Login now</h2>
-          <p className="text-gray-600 mb-6">Hi, Welcome back 👋</p>
+      <div className="flex min-h-screen flex-col-reverse items-center justify-center gap-6 bg-[#F9F9FF] px-4 py-8 sm:px-8 lg:flex-row lg:gap-10 lg:px-16 lg:py-12">
+        <div className="flex w-full max-w-md flex-col items-center justify-center text-center lg:w-1/2 lg:items-start lg:text-left">
+          <h2 className="mb-2 text-3xl font-bold text-gray-800">Login now</h2>
+          <p className="mb-6 text-gray-600">Hi, Welcome back 👋</p>
 
           <button
             onClick={redirect}
-            className="w-full border border-gray-300 py-2 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-50 transition"
+            className="flex w-full items-center justify-center gap-2 rounded-lg border border-gray-300 py-2 transition hover:bg-gray-50"
           >
             <img
               src="https://www.svgrepo.com/show/475656/google-color.svg"
               alt="Google"
               className="h-5 w-5"
             />
-            <span className="text-sm text-gray-700 cursor-pointer ">
+            <span className="cursor-pointer text-sm text-gray-700">
               Login with Google
             </span>
           </button>
 
-          <div className="flex items-center my-6 w-full">
-            <div className="flex-grow h-px bg-gray-300" />
-            <span className="px-3 text-gray-500 text-sm">
+          <div className="my-6 flex w-full items-center">
+            <div className="h-px flex-grow bg-gray-300" />
+            <span className="px-3 text-sm text-gray-500">
               or Login with Email
             </span>
-            <div className="flex-grow h-px bg-gray-300" />
+            <div className="h-px flex-grow bg-gray-300" />
           </div>
 
-          <form onSubmit={onsubmit} className="space-y-4 w-full">
+          <form onSubmit={onsubmit} className="w-full space-y-4">
             {/* Email */}
             <div>
               <label className="block text-sm font-medium text-gray-700">
@@ -413,11 +413,11 @@ function Login() {
                   setEmailError('');
                   setresponse('');
                 }}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500"
                 ref={emailRef}
               />
               {emailError && (
-                <p className="text-red-600 text-sm mt-1 font-semibold">
+                <p className="mt-1 text-sm font-semibold text-red-600">
                   {emailError}
                 </p>
               )}
@@ -437,31 +437,31 @@ function Login() {
                     setPasswordError('');
                     setresponse('');
                   }}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500"
                   ref={passwordRef}
                 />
                 <div
-                  className="absolute inset-y-0 right-3 flex items-center cursor-pointer text-gray-600"
+                  className="absolute inset-y-0 right-3 flex cursor-pointer items-center text-gray-600"
                   onClick={() => setShowPassword((prev) => !prev)}
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </div>
               </div>
               {passwordError && (
-                <p className="text-red-600 text-sm mt-1 font-semibold">
+                <p className="mt-1 text-sm font-semibold text-red-600">
                   {passwordError}
                 </p>
               )}
             </div>
 
-            <div className="flex justify-between items-center">
+            <div className="flex items-center justify-between">
               <label className="flex items-center text-sm text-gray-600">
                 <input type="checkbox" className="mr-2" />
                 Remember Me
               </label>
               <Link
                 to="/auth/forgotpassword"
-                className="text-blue-700 hover:underline text-sm"
+                className="text-sm text-blue-700 hover:underline"
               >
                 Forgot Password?
               </Link>
@@ -470,10 +470,10 @@ function Login() {
             <button
               type="submit"
               disabled={pending}
-              className={`w-full py-2 rounded-lg transition duration-300 ${
+              className={`w-full rounded-lg py-2 transition duration-300 ${
                 pending
-                  ? 'bg-gray-400 cursor-progress'
-                  : 'bg-[#474BCA] hover:bg-blue-700 text-white cursor-pointer'
+                  ? 'cursor-progress bg-gray-400'
+                  : 'cursor-pointer bg-[#474BCA] text-white hover:bg-blue-700'
               }`}
             >
               {pending ? 'Logging...' : 'Login'}
@@ -493,11 +493,11 @@ function Login() {
           </form>
         </div>
 
-        <div className="w-full lg:w-1/2 flex justify-center mb-6 lg:mb-0">
+        <div className="mb-6 flex w-full justify-center lg:mb-0 lg:w-1/2">
           <img
             src="/Pages/Login.png"
             alt="Login Illustration"
-            className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg object-contain"
+            className="w-full max-w-xs object-contain sm:max-w-sm md:max-w-md lg:max-w-lg"
           />
         </div>
       </div>

@@ -46,7 +46,7 @@ export default function UserSidebar() {
         <div className="relative">
           <FaBell />
           {newCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+            <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs text-white">
               {newCount}
             </span>
           )}
@@ -76,7 +76,7 @@ export default function UserSidebar() {
         <div className="relative">
           <FaEnvelopeOpenText className="text-xl" />
           {feedbackCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+            <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs text-white">
               {feedbackCount}
             </span>
           )}
@@ -97,7 +97,7 @@ export default function UserSidebar() {
     <>
       {/* Mobile Toggle Button */}
       <button
-        className="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded "
+        className="fixed top-4 left-4 z-50 rounded bg-blue-600 p-2 text-white md:hidden"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? <FaTimes /> : <FaBars />}
@@ -105,11 +105,10 @@ export default function UserSidebar() {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-gray-800 text-white shadow-md z-40 transform transition-transform duration-300
-        ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
+        className={`fixed top-0 left-0 z-40 h-full w-64 transform bg-gray-800 text-white shadow-md transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
       >
         {/* Sidebar Top */}
-        <div className="text-2xl font-bold text-center py-4 border-b border-blue-600">
+        <div className="border-b border-blue-600 py-4 text-center text-2xl font-bold">
           <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
             CodeDynamo <br /> MyAdmin
           </span>
@@ -120,19 +119,19 @@ export default function UserSidebar() {
             <li
               key={index}
               onClick={() => handleNavigate(item.path)}
-              className="flex items-center space-x-3  justify-betw cursor-pointer p-2 rounded hover:bg-blue-600 transition"
+              className="justify-betw flex cursor-pointer items-center space-x-3 rounded p-2 transition hover:bg-blue-600"
             >
-              <span className="text-lg ">{item.icon}</span>
-              <span className="text-sm font-medium ">{item.label}</span>
+              <span className="text-lg">{item.icon}</span>
+              <span className="text-sm font-medium">{item.label}</span>
             </li>
           ))}
         </ul>
 
         {/* Sidebar Bottom */}
-        <div className="absolute bottom-4 w-full px-4 border-t border-gray-700 pt-4 ">
+        <div className="absolute bottom-4 w-full border-t border-gray-700 px-4 pt-4">
           <button
             onClick={handleLogout}
-            className="flex items-center w-full space-x-3 text-left hover:text-red-400 transition cursor-pointer"
+            className="flex w-full cursor-pointer items-center space-x-3 text-left transition hover:text-red-400"
           >
             <FaSignOutAlt />
             <span className="text-sm">Logout</span>

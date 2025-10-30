@@ -141,11 +141,11 @@ export default function MyProfile() {
 
   return (
     <ProfilerWrapper id="Profile">
-      <div className="lg:pl-64 md:pl-80 flex items-center justify-center p-6 min-h-screen bg-gray-100">
-        <div className="bg-white shadow-lg rounded-xl p-6 w-full max-w-2xl">
-          <h2 className="text-2xl font-bold mb-4 text-gray-800">My Profile</h2>
+      <div className="flex min-h-screen items-center justify-center bg-gray-100 p-6 md:pl-80 lg:pl-64">
+        <div className="w-full max-w-2xl rounded-xl bg-white p-6 shadow-lg">
+          <h2 className="mb-4 text-2xl font-bold text-gray-800">My Profile</h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {/* Name */}
             <div>
               <label className="block text-sm font-medium text-gray-700">
@@ -154,7 +154,7 @@ export default function MyProfile() {
               <input
                 ref={nameRef}
                 disabled
-                className="w-full border px-3 py-2 rounded mt-1 bg-gray-100"
+                className="mt-1 w-full rounded border bg-gray-100 px-3 py-2"
               />
             </div>
 
@@ -166,7 +166,7 @@ export default function MyProfile() {
               <input
                 ref={emailRef}
                 disabled
-                className="w-full border px-3 py-2 rounded mt-1 bg-gray-100"
+                className="mt-1 w-full rounded border bg-gray-100 px-3 py-2"
               />
             </div>
 
@@ -179,12 +179,12 @@ export default function MyProfile() {
                 ref={phoneRef}
                 disabled={!editMode}
                 placeholder="Add phone number"
-                className={`w-full border px-3 py-2 rounded mt-1 ${
+                className={`mt-1 w-full rounded border px-3 py-2 ${
                   editMode ? '' : 'bg-gray-100'
                 }`}
               />
               {errors.phone && (
-                <p className="text-red-600 text-sm mt-1 font-semibold">
+                <p className="mt-1 text-sm font-semibold text-red-600">
                   {errors.phone}
                 </p>
               )}
@@ -199,12 +199,12 @@ export default function MyProfile() {
                 ref={cityRef}
                 disabled={!editMode}
                 placeholder="Add your city"
-                className={`w-full border px-3 py-2 rounded mt-1 ${
+                className={`mt-1 w-full rounded border px-3 py-2 ${
                   editMode ? '' : 'bg-gray-100'
                 }`}
               />
               {errors.city && (
-                <p className="text-red-600 text-sm mt-1 font-semibold">
+                <p className="mt-1 text-sm font-semibold text-red-600">
                   {errors.city}
                 </p>
               )}
@@ -219,12 +219,12 @@ export default function MyProfile() {
                 ref={countryRef}
                 disabled={!editMode}
                 placeholder="Add your country"
-                className={`w-full border px-3 py-2 rounded mt-1 ${
+                className={`mt-1 w-full rounded border px-3 py-2 ${
                   editMode ? '' : 'bg-gray-100'
                 }`}
               />
               {errors.country && (
-                <p className="text-red-600 text-sm mt-1 font-semibold">
+                <p className="mt-1 text-sm font-semibold text-red-600">
                   {errors.country}
                 </p>
               )}
@@ -233,7 +233,7 @@ export default function MyProfile() {
 
           {/* Response message */}
           {errors.responseAPI && (
-            <p className="mt-4 text-blue-600 font-semibold">
+            <p className="mt-4 font-semibold text-blue-600">
               {errors.responseAPI}
             </p>
           )}
@@ -243,7 +243,7 @@ export default function MyProfile() {
             {!editMode ? (
               <button
                 onClick={handleEdit}
-                className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 cursor-pointer"
+                className="cursor-pointer rounded bg-gray-600 px-4 py-2 text-white hover:bg-gray-700"
               >
                 Edit
               </button>
@@ -251,9 +251,9 @@ export default function MyProfile() {
               <button
                 disabled={pending}
                 onClick={handleUpdate}
-                className={`px-4 py-2 rounded text-white cursor-pointer ${
+                className={`cursor-pointer rounded px-4 py-2 text-white ${
                   pending
-                    ? 'bg-blue-300 cursor-not-allowed'
+                    ? 'cursor-not-allowed bg-blue-300'
                     : 'bg-blue-600 hover:bg-blue-700'
                 }`}
               >

@@ -210,10 +210,10 @@ export default function InvoiceGenerator() {
   };
 
   return (
-    <div className="lg:pl-64 md:pl-80 p-6 max-w-6xl mx-auto bg-gray-100 min-h-screen">
+    <div className="mx-auto min-h-screen max-w-6xl bg-gray-100 p-6 md:pl-80 lg:pl-64">
       {loading && <Loader />}
 
-      <h1 className="text-3xl font-bold mb-6 text-center">
+      <h1 className="mb-6 text-center text-3xl font-bold">
         💼 Invoice Generator
       </h1>
 
@@ -221,7 +221,7 @@ export default function InvoiceGenerator() {
       {!invoiceData && (
         <motion.form
           onSubmit={generateInvoice}
-          className="space-y-4 bg-white p-6 rounded shadow-lg"
+          className="space-y-4 rounded bg-white p-6 shadow-lg"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -233,18 +233,18 @@ export default function InvoiceGenerator() {
               value={searchTerm || ''}
               onChange={handleSearch}
               type="text"
-              className="w-full border rounded p-2"
+              className="w-full rounded border p-2"
               placeholder="Type client ID..."
             />
             {loading && (
-              <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 animate-spin text-gray-500" />
+              <Loader2 className="absolute top-1/2 right-3 h-5 w-5 -translate-y-1/2 animate-spin text-gray-500" />
             )}
             {filteredClients.length > 0 ? (
-              <ul className="border rounded mt-1 bg-white max-h-32 overflow-y-auto">
+              <ul className="mt-1 max-h-32 overflow-y-auto rounded border bg-white">
                 {filteredClients.map((client, idx) => (
                   <li
                     key={idx}
-                    className="p-2 cursor-pointer hover:bg-gray-200"
+                    className="cursor-pointer p-2 hover:bg-gray-200"
                     onClick={() => selectClient(client)}
                   >
                     {client.requestID} - {client.name} - {client.service}
@@ -253,7 +253,7 @@ export default function InvoiceGenerator() {
               </ul>
             ) : (
               errors.searchError && (
-                <p className="text-red-600 text-sm mt-1">
+                <p className="mt-1 text-sm text-red-600">
                   {errors.searchError}
                 </p>
               )
@@ -268,7 +268,7 @@ export default function InvoiceGenerator() {
                   value={form.name}
                   type="text"
                   readOnly
-                  className="w-full border rounded p-2 bg-gray-100"
+                  className="w-full rounded border bg-gray-100 p-2"
                 />
               </div>
 
@@ -278,7 +278,7 @@ export default function InvoiceGenerator() {
                   value={form.services}
                   type="text"
                   readOnly
-                  className="w-full border rounded p-2 bg-gray-100"
+                  className="w-full rounded border bg-gray-100 p-2"
                 />
               </div>
 
@@ -294,10 +294,10 @@ export default function InvoiceGenerator() {
                       bankName: e.target.value,
                     })
                   }
-                  className="w-full border rounded p-2"
+                  className="w-full rounded border p-2"
                 />
                 {errors.bankName && (
-                  <p className="text-red-600 text-sm mt-1">{errors.bankName}</p>
+                  <p className="mt-1 text-sm text-red-600">{errors.bankName}</p>
                 )}
               </div>
 
@@ -312,10 +312,10 @@ export default function InvoiceGenerator() {
                       accountTitle: e.target.value,
                     })
                   }
-                  className="w-full border rounded p-2"
+                  className="w-full rounded border p-2"
                 />
                 {errors.accountTitle && (
-                  <p className="text-red-600 text-sm mt-1">
+                  <p className="mt-1 text-sm text-red-600">
                     {errors.accountTitle}
                   </p>
                 )}
@@ -335,14 +335,14 @@ export default function InvoiceGenerator() {
                       ),
                     })
                   }
-                  className="w-full border rounded p-2 font-mono tracking-wider"
+                  className="w-full rounded border p-2 font-mono tracking-wider"
                 />
 
                 <small className="text-gray-500">
                   {formatAccountNumber(accountsNumber.accountNumberAdmin)}
                 </small>
                 {errors.accountNumberAdmin && (
-                  <p className="text-red-600 text-sm mt-1">
+                  <p className="mt-1 text-sm text-red-600">
                     {errors.accountNumberAdmin}
                   </p>
                 )}
@@ -360,13 +360,13 @@ export default function InvoiceGenerator() {
                       ibanNumber: formatIBAN(e.target.value.replace(/\s/g, '')),
                     })
                   }
-                  className="w-full border rounded p-2 font-mono tracking-wider"
+                  className="w-full rounded border p-2 font-mono tracking-wider"
                 />
                 <small className="text-gray-500">
                   {formatIBAN(accountsNumber.ibanNumber)}
                 </small>
                 {errors.ibanNumber && (
-                  <p className="text-red-600 text-sm mt-1">
+                  <p className="mt-1 text-sm text-red-600">
                     {errors.ibanNumber}
                   </p>
                 )}
@@ -383,13 +383,13 @@ export default function InvoiceGenerator() {
                   }
                   value={accountsNumber.swiftNumber}
                   type="text"
-                  className="w-full border rounded p-2 font-mono tracking-wider"
+                  className="w-full rounded border p-2 font-mono tracking-wider"
                 />
                 <small className="text-gray-500">
                   {accountsNumber.swiftNumber}
                 </small>
                 {errors.swiftNumber && (
-                  <p className="text-red-600 text-sm mt-1">
+                  <p className="mt-1 text-sm text-red-600">
                     {errors.swiftNumber}
                   </p>
                 )}
@@ -405,13 +405,13 @@ export default function InvoiceGenerator() {
               onChange={handleChange}
               type="number"
               step="0.01"
-              className="w-full border rounded p-2"
+              className="w-full rounded border p-2"
               placeholder="e.g. 50.00"
               required
             />
 
             {errors.amount && (
-              <p className="text-red-600 text-sm mt-1">{errors.amount}</p>
+              <p className="mt-1 text-sm text-red-600">{errors.amount}</p>
             )}
           </div>
 
@@ -422,26 +422,26 @@ export default function InvoiceGenerator() {
               value={form.dueDate}
               onChange={handleChange}
               type="date"
-              className="w-full border rounded p-2"
+              className="w-full rounded border p-2"
               required
             />
 
             {errors.dueDate && (
-              <p className="text-red-600 text-sm mt-1">{errors.dueDate}</p>
+              <p className="mt-1 text-sm text-red-600">{errors.dueDate}</p>
             )}
           </div>
 
           <button
             title=" Generate Invoice"
             type="submit"
-            className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 cursor-pointer"
+            className="cursor-pointer rounded bg-blue-600 px-6 py-2 text-white hover:bg-blue-700"
           >
             Generate Invoice
           </button>
           <button
             title="Cancel"
             onClick={clearFormPending}
-            className="bg-red-600 text-white ml-10 px-8 py-2 rounded hover:bg-red-700 cursor-pointer"
+            className="ml-10 cursor-pointer rounded bg-red-600 px-8 py-2 text-white hover:bg-red-700"
           >
             Clear
           </button>

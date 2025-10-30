@@ -10,12 +10,12 @@ const UserLayout = () => {
   const { loading } = useLoader();
 
   return (
-    <div className="flex p-4 min-h-screen">
+    <div className="flex min-h-screen p-4">
       {/* Sidebar - always visible */}
       <UserSidebar />
 
       {/* Main content */}
-      <div className="flex-1 p-4 relative">
+      <div className="relative flex-1 p-4">
         {/* Loader only over Outlet area */}
         {loading && (
           <div className="absolute inset-0 z-50 flex items-center justify-center bg-white/60">

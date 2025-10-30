@@ -9,18 +9,18 @@ export default function Footer() {
 
   return (
     <ProfilerWrapper id="Footer">
-      <footer className="bg-gray-800 text-white py-10 mt-10">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <footer className="mt-10 bg-gray-800 py-10 text-white">
+        <div className="container mx-auto grid grid-cols-1 gap-8 px-4 md:grid-cols-4">
           {/* About Section */}
           <div>
-            <h2 className="text-xl font-semibold mb-2">CodeDynamo</h2>
+            <h2 className="mb-2 text-xl font-semibold">CodeDynamo</h2>
             <p className="text-sm text-gray-300">
               CodeDynamo is an engineering and software agency that brings
               vision to life digitally.
             </p>
             <p className="mt-4 text-sm text-gray-400">Reviewed on</p>
 
-            <div className="flex gap-6 text-xl text-white mt-4 ">
+            <div className="mt-4 flex gap-6 text-xl text-white">
               <a
                 href="mailto:muhammadsaqibyounas11@gmail.com"
                 target="_blank"
@@ -58,7 +58,7 @@ export default function Footer() {
 
           {/* Services Section */}
           <div>
-            <h2 className="text-lg font-semibold mb-2">Services</h2>
+            <h2 className="mb-2 text-lg font-semibold">Services</h2>
             <ul className="space-y-1 text-sm text-gray-300">
               <li className={listItemClass}>Web Development</li>
               <li className={listItemClass}>Mobile Apps</li>
@@ -71,7 +71,7 @@ export default function Footer() {
 
           {/* Quick Links Section */}
           <div>
-            <h2 className="text-lg font-semibold mb-2">Quick Links</h2>
+            <h2 className="mb-2 text-lg font-semibold">Quick Links</h2>
             <ul className="space-y-1 text-sm text-gray-300">
               <li data-testid="services">
                 <Link to="/home" className={listItemClass}>
@@ -103,7 +103,7 @@ export default function Footer() {
 
           {/* Contact Section */}
           <div>
-            <h2 className="text-lg font-semibold mb-2">Get In Touch</h2>
+            <h2 className="mb-2 text-lg font-semibold">Get In Touch</h2>
             <ul className="space-y-2 text-sm text-gray-300">
               <li className={`${listItemClass} flex items-center gap-2`}>
                 <FaPhone className="text-blue-400" /> 03420339016
@@ -113,7 +113,7 @@ export default function Footer() {
                 muhammadsaqibyounas11@gmail.com
               </li>
               <li className={`${listItemClass} flex items-start gap-2`}>
-                <FaMapMarkerAlt className="text-blue-400 mt-1" />
+                <FaMapMarkerAlt className="mt-1 text-blue-400" />
                 <span>Lahore Pakistan</span>
               </li>
             </ul>
@@ -122,7 +122,7 @@ export default function Footer() {
         {/* Social Icons */}
 
         {/* Copyright */}
-        <div className="text-center mt-10 text-gray-400 text-sm">
+        <div className="mt-10 text-center text-sm text-gray-400">
           &copy; {new Date().getFullYear()} CodeDynamo. All rights reserved.
         </div>
       </footer>

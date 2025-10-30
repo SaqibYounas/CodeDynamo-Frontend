@@ -26,30 +26,30 @@ function AdminDashboard() {
   }, []);
 
   return (
-    <div className=" lg:pl-64 md:pl-80 lex  bg-gray-100">
+    <div className="lex bg-gray-100 md:pl-80 lg:pl-64">
       {/* Right Side Content */}
-      <div className="flex-1 p-6 space-y-6">
+      <div className="flex-1 space-y-6 p-6">
         <h2 className="text-2xl font-semibold">📊 Welcome, Admin!</h2>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded shadow">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="rounded bg-white p-6 shadow">
             <h3 className="text-lg font-semibold">👥 Total Users</h3>
-            <p className="text-3xl mt-2">120</p>
+            <p className="mt-2 text-3xl">120</p>
           </div>
-          <div className="bg-white p-6 rounded shadow">
+          <div className="rounded bg-white p-6 shadow">
             <h3 className="text-lg font-semibold">📝 Service Requests</h3>
-            <p className="text-3xl mt-2">47</p>
+            <p className="mt-2 text-3xl">47</p>
           </div>
-          <div className="bg-white p-6 rounded shadow">
+          <div className="rounded bg-white p-6 shadow">
             <h3 className="text-lg font-semibold">✅ Completed</h3>
-            <p className="text-3xl mt-2">39</p>
+            <p className="mt-2 text-3xl">39</p>
           </div>
         </div>
 
         {/* Recent Users */}
-        <div className="bg-white p-6 rounded shadow">
-          <h3 className="text-lg font-semibold mb-4">📌 Recent Users</h3>
+        <div className="rounded bg-white p-6 shadow">
+          <h3 className="mb-4 text-lg font-semibold">📌 Recent Users</h3>
           <table className="w-full text-left">
             <thead>
               <tr className="border-b">
@@ -69,8 +69,8 @@ function AdminDashboard() {
         </div>
 
         {/* Recent Requests */}
-        <div className="bg-white p-6 rounded shadow">
-          <h3 className="text-lg font-semibold mb-4">🛠️ Recent Requests</h3>
+        <div className="rounded bg-white p-6 shadow">
+          <h3 className="mb-4 text-lg font-semibold">🛠️ Recent Requests</h3>
           <table className="w-full text-left">
             <thead>
               <tr className="border-b">
@@ -86,7 +86,7 @@ function AdminDashboard() {
                   <td className="py-2">{r.service}</td>
                   <td className="py-2">
                     <span
-                      className={`px-2 py-1 rounded text-white text-sm ${
+                      className={`rounded px-2 py-1 text-sm text-white ${
                         r.status === 'Completed'
                           ? 'bg-green-500'
                           : 'bg-yellow-500'

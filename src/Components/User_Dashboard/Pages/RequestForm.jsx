@@ -148,14 +148,14 @@ const RequestService = () => {
 
   return (
     <ProfilerWrapper id="RequestForm">
-      <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
-        <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-2xl transition hover:scale-[1.01]">
-          <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
+      <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4">
+        <div className="w-full max-w-2xl rounded-xl bg-white p-8 shadow-lg transition hover:scale-[1.01]">
+          <h2 className="mb-6 text-center text-3xl font-bold text-gray-800">
             Request a Service
           </h2>
 
           {success && (
-            <div className="bg-green-100 text-green-700 text-center p-3 rounded mb-4 border border-green-300">
+            <div className="mb-4 rounded border border-green-300 bg-green-100 p-3 text-center text-green-700">
               {success}
             </div>
           )}
@@ -163,11 +163,11 @@ const RequestService = () => {
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Country Code + WhatsApp Input */}
             <div>
-              <label className="block text-gray-700 font-medium mb-1">
+              <label className="mb-1 block font-medium text-gray-700">
                 Country Code:
               </label>
               <select
-                className="w-full mt-1 p-2 border rounded"
+                className="mt-1 w-full rounded border p-2"
                 value={countryCode}
                 onChange={handleCountryChange}
               >
@@ -178,7 +178,7 @@ const RequestService = () => {
                 ))}
               </select>
 
-              <label className="block mt-4 text-gray-700 font-medium mb-1">
+              <label className="mt-4 mb-1 block font-medium text-gray-700">
                 WhatsApp Number:
               </label>
               <input
@@ -187,12 +187,12 @@ const RequestService = () => {
                 onChange={handlePhoneChange}
                 onBlur={handleBlur}
                 maxLength={16}
-                className={`w-full px-4 py-2 border rounded-md ${
+                className={`w-full rounded-md border px-4 py-2 ${
                   errors.whatsapp ? 'border-red-500' : 'border-gray-300'
                 }`}
               />
               {errors.whatsapp && (
-                <p className="text-red-600 text-sm mt-1 font-semibold">
+                <p className="mt-1 text-sm font-semibold text-red-600">
                   {errors.whatsapp}
                 </p>
               )}
@@ -200,7 +200,7 @@ const RequestService = () => {
 
             {/* Service */}
             <div>
-              <label className="block text-gray-700 font-medium mb-1">
+              <label className="mb-1 block font-medium text-gray-700">
                 Select Service
               </label>
               <select
@@ -208,7 +208,7 @@ const RequestService = () => {
                 ref={serviceRef}
                 onBlur={handleBlur}
                 name="service"
-                className={`w-full px-4 py-2 border rounded-md focus:ring focus:ring-pink-200 ${
+                className={`w-full rounded-md border px-4 py-2 focus:ring focus:ring-pink-200 ${
                   errors.service ? 'border-red-500' : 'border-gray-300'
                 } text-sm md:text-base`}
               >
@@ -221,7 +221,7 @@ const RequestService = () => {
                 <option value="AI Integration">AI Integration</option>
               </select>
               {errors.service && (
-                <p className="text-red-600 text-sm mt-1 font-semibold">
+                <p className="mt-1 text-sm font-semibold text-red-600">
                   {errors.service}
                 </p>
               )}
@@ -229,7 +229,7 @@ const RequestService = () => {
 
             {/* Project Details */}
             <div>
-              <label className="block text-gray-700 font-medium mb-1">
+              <label className="mb-1 block font-medium text-gray-700">
                 Project Details
               </label>
               <textarea
@@ -239,12 +239,12 @@ const RequestService = () => {
                 name="message"
                 rows="4"
                 placeholder="Tell us about your project..."
-                className={`w-full px-4 py-2 border rounded-md ${
+                className={`w-full rounded-md border px-4 py-2 ${
                   errors.message ? 'border-red-500' : 'border-gray-300'
                 }`}
               ></textarea>
               {errors.message && (
-                <p className="text-red-600 text-sm mt-1 font-semibold">
+                <p className="mt-1 text-sm font-semibold text-red-600">
                   {errors.message}
                 </p>
               )}
@@ -256,8 +256,8 @@ const RequestService = () => {
                 type="submit"
                 disabled={!enable}
                 className={`${
-                  enable ? 'bg-blue-600' : 'bg-gray-400 cursor-not-allowed'
-                } text-white px-6 py-2 rounded-md hover:scale-105 transition duration-300 cursor-pointer`}
+                  enable ? 'bg-blue-600' : 'cursor-not-allowed bg-gray-400'
+                } cursor-pointer rounded-md px-6 py-2 text-white transition duration-300 hover:scale-105`}
               >
                 {enable ? 'Submit Request' : 'Submitting...'}
               </button>

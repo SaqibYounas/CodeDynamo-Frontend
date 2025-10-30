@@ -11,9 +11,9 @@ export default function AdminLayout() {
 
   return (
     <Layout>
-      <div className="flex w-full h-screen">
+      <div className="flex h-screen w-full">
         {/* Main Content */}
-        <div className="flex-1 flex flex-col">
+        <div className="flex flex-1 flex-col">
           <TopBar />
 
           <div className="relative flex-1 p-4">

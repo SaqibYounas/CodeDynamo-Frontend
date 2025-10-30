@@ -80,9 +80,9 @@ export default function FeedbackForm({ onFeedbackSubmitted }) {
     <ProfilerWrapper id="Feedback From">
       <form
         onSubmit={handleSubmit}
-        className="bg-slate-100 p-6 rounded-xl shadow-md w-full lg:w-1/2 h-min border border-blue-400 mt-12"
+        className="mt-12 h-min w-full rounded-xl border border-blue-400 bg-slate-100 p-6 shadow-md lg:w-1/2"
       >
-        <h2 className="text-2xl font-bold mb-4 text-gray-700">Give Feedback</h2>
+        <h2 className="mb-4 text-2xl font-bold text-gray-700">Give Feedback</h2>
 
         <input
           type="text"
@@ -95,10 +95,10 @@ export default function FeedbackForm({ onFeedbackSubmitted }) {
           }}
           onBlur={handleBlur}
           required
-          className="w-full mb-1 p-2 border rounded-md text-bold"
+          className="text-bold mb-1 w-full rounded-md border p-2"
         />
         {errors.service && (
-          <p className="text-red-500  mb-2">{errors.service}</p>
+          <p className="mb-2 text-red-500">{errors.service}</p>
         )}
 
         <input
@@ -112,10 +112,10 @@ export default function FeedbackForm({ onFeedbackSubmitted }) {
           }}
           onBlur={handleBlur}
           required
-          className="w-full mb-1 p-2 border rounded-md"
+          className="mb-1 w-full rounded-md border p-2"
         />
         {errors.subject && (
-          <p className="text-red-500 mb-2">{errors.subject}</p>
+          <p className="mb-2 text-red-500">{errors.subject}</p>
         )}
 
         <textarea
@@ -128,14 +128,14 @@ export default function FeedbackForm({ onFeedbackSubmitted }) {
           }}
           onBlur={handleBlur}
           required
-          className="w-full mb-1 p-2 border rounded-md"
+          className="mb-1 w-full rounded-md border p-2"
           rows="4"
         />
         {errors.message && (
-          <p className="text-red-500  mb-2">{errors.message}</p>
+          <p className="mb-2 text-red-500">{errors.message}</p>
         )}
 
-        <div className="flex items-center gap-2 mb-4">
+        <div className="mb-4 flex items-center gap-2">
           {[1, 2, 3, 4, 5].map((num) => (
             <FaStar
               key={num}
@@ -150,9 +150,9 @@ export default function FeedbackForm({ onFeedbackSubmitted }) {
         <button
           type="submit"
           disabled={pending}
-          className={`px-4 py-2 rounded text-white transition cursor-pointer ${
+          className={`cursor-pointer rounded px-4 py-2 text-white transition ${
             pending
-              ? 'bg-gray-400 cursor-progress'
+              ? 'cursor-progress bg-gray-400'
               : 'bg-blue-600 hover:bg-blue-700'
           }`}
         >
@@ -161,7 +161,7 @@ export default function FeedbackForm({ onFeedbackSubmitted }) {
 
         {responseMessage && (
           <p
-            className={`mt-4 text-sm font-semibold text-center ${
+            className={`mt-4 text-center text-sm font-semibold ${
               isError ? 'text-red-600' : 'text-green-600'
             }`}
           >

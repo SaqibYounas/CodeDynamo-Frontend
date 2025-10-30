@@ -10,7 +10,9 @@
     "preview": "vite preview",
     "test": "vitest",
     "format": "prettier . --write",
-    "format:check": "prettier . --check"
+    "format:check": "prettier . --check",
+    "lint:staged": "lint-staged",
+    "prepare": "echo 'skip husky"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.10",
@@ -41,9 +43,12 @@
     "@vitejs/plugin-react": "^4.5.2",
     "babel-jest": "^30.0.0",
     "eslint": "^9.25.0",
+    "husky": "^9.1.7",
     "jest": "^30.0.0",
+    "lint-staged": "^16.2.6",
     "msw": "^2.10.4",
     "prettier": "3.6.2",
+    "prettier-plugin-tailwindcss": "^0.7.1",
     "vite": "^6.3.5",
     "vitest": "^3.2.3"
   }

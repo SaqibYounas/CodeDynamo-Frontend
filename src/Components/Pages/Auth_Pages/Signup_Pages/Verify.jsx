@@ -87,12 +87,12 @@ function Verify() {
 
   return (
     <ProfilerWrapper id="verfiy">
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-md text-center w-96">
-          <h1 className="text-2xl font-bold mb-4 text-gray-800">
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="w-96 rounded-lg bg-white p-8 text-center shadow-md">
+          <h1 className="mb-4 text-2xl font-bold text-gray-800">
             Email Verification
           </h1>
-          <p className="text-gray-600 mb-6">
+          <p className="mb-6 text-gray-600">
             Enter the 6-digit code sent to your email
           </p>
 
@@ -107,17 +107,17 @@ function Verify() {
             }
             placeholder="Enter code"
             maxLength={6}
-            className="w-full text-center text-2xl tracking-widest border border-gray-300 p-3 rounded-md outline-blue-500"
+            className="w-full rounded-md border border-gray-300 p-3 text-center text-2xl tracking-widest outline-blue-500"
           />
 
           <button
             onClick={timeExpired ? handleResendCode : handleVerifyCode}
             disabled={isVerifying || isResending}
-            className={`w-full mt-4 ${
+            className={`mt-4 w-full ${
               timeExpired
                 ? 'bg-yellow-500 hover:bg-yellow-600'
                 : 'bg-blue-600 hover:bg-blue-700'
-            } text-white py-2 rounded transition cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed`}
+            } cursor-pointer rounded py-2 text-white transition disabled:cursor-not-allowed disabled:opacity-60`}
           >
             {isVerifying || isResending
               ? timeExpired
@@ -128,7 +128,7 @@ function Verify() {
                 : 'Verify'}
           </button>
 
-          {status && <p className="mt-4 text-gray-700 font-medium">{status}</p>}
+          {status && <p className="mt-4 font-medium text-gray-700">{status}</p>}
 
           <CountdownTimer
             duration={300}

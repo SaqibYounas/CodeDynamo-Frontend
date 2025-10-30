@@ -66,30 +66,30 @@ export default function ChangePassword() {
 
   return (
     <ProfilerWrapper id="Change Password">
-      <div className="lg:pl-64 md:pl-80 flex items-center justify-center p-6 min-h-screen bg-gray-100">
-        <div className="w-full max-w-md bg-white p-8 rounded shadow">
-          <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+      <div className="flex min-h-screen items-center justify-center bg-gray-100 p-6 md:pl-80 lg:pl-64">
+        <div className="w-full max-w-md rounded bg-white p-8 shadow">
+          <h2 className="mb-6 text-center text-2xl font-bold text-gray-800">
             Change Password
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Current Password */}
             <div>
-              <label className="block text-gray-700 mb-1">
+              <label className="mb-1 block text-gray-700">
                 Current Password
               </label>
               <input
                 type="password"
                 ref={currentRef}
                 onChange={() => setErrors({ ...errors, current: '' })}
-                className={`w-full px-4 py-2 border rounded-md ${
+                className={`w-full rounded-md border px-4 py-2 ${
                   errors.current ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder="Enter current password"
                 disabled={pending}
               />
               {errors.current && (
-                <p className="text-red-600 text-sm mt-1 font-semibold">
+                <p className="mt-1 text-sm font-semibold text-red-600">
                   {errors.current}
                 </p>
               )}
@@ -97,19 +97,19 @@ export default function ChangePassword() {
 
             {/* New Password */}
             <div>
-              <label className="block text-gray-700 mb-1">New Password</label>
+              <label className="mb-1 block text-gray-700">New Password</label>
               <input
                 type="password"
                 ref={newRef}
                 onChange={() => setErrors({ ...errors, new: '' })}
-                className={`w-full px-4 py-2 border rounded-md ${
+                className={`w-full rounded-md border px-4 py-2 ${
                   errors.new ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder="At least 8 characters, 1 special char"
                 disabled={pending}
               />
               {errors.new && (
-                <p className="text-red-600 text-sm mt-1 font-semibold">
+                <p className="mt-1 text-sm font-semibold text-red-600">
                   {errors.new}
                 </p>
               )}
@@ -117,21 +117,21 @@ export default function ChangePassword() {
 
             {/* Confirm Password */}
             <div>
-              <label className="block text-gray-700 mb-1">
+              <label className="mb-1 block text-gray-700">
                 Confirm Password
               </label>
               <input
                 type="password"
                 ref={confirmRef}
                 onChange={() => setErrors({ ...errors, confirm: '' })}
-                className={`w-full px-4 py-2 border rounded-md ${
+                className={`w-full rounded-md border px-4 py-2 ${
                   errors.confirm ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder="Confirm new password"
                 disabled={pending}
               />
               {errors.confirm && (
-                <p className="text-red-600 text-sm mt-1 font-semibold">
+                <p className="mt-1 text-sm font-semibold text-red-600">
                   {errors.confirm}
                 </p>
               )}
@@ -142,9 +142,9 @@ export default function ChangePassword() {
               <button
                 type="submit"
                 disabled={pending}
-                className={`px-6 py-2 rounded w-full font-medium text-white transition-all duration-300 cursor-poiter ${
+                className={`cursor-poiter w-full rounded px-6 py-2 font-medium text-white transition-all duration-300 ${
                   pending
-                    ? 'bg-gray-400 cursor-not-allowed'
+                    ? 'cursor-not-allowed bg-gray-400'
                     : 'bg-blue-600 hover:bg-blue-700'
                 }`}
               >
@@ -155,10 +155,10 @@ export default function ChangePassword() {
             {/* Success or Server Message */}
             {success && (
               <p
-                className={`text-center mt-4 ${
+                className={`mt-4 text-center ${
                   success.startsWith('✅')
                     ? 'text-green-600'
-                    : 'text-red-600 text-sm mt-1 font-semibold'
+                    : 'mt-1 text-sm font-semibold text-red-600'
                 }`}
               >
                 {success}

@@ -1,19 +1,19 @@
 export function ChatSkeleton() {
   return (
-    <div className="h-full flex flex-col">
+    <div className="flex h-full flex-col">
       {/* Messages Skeleton (Straight Right-Aligned Lines) */}
-      <div className="flex-1 p-4 overflow-y-auto bg-gray-50 space-y-4 animate-pulse">
+      <div className="flex-1 animate-pulse space-y-4 overflow-y-auto bg-gray-50 p-4">
         {[...Array(10)].map((_, i) => (
           <div key={i} className="flex justify-end">
-            <div className="h-12  bg-gray-300 rounded-xl w-110"></div>
+            <div className="h-12 w-110 rounded-xl bg-gray-300"></div>
           </div>
         ))}
       </div>
 
       {/* Input Skeleton */}
-      <div className="p-4 border-t bg-white flex gap-2 animate-pulse">
-        <div className="flex-1 h-10 bg-gray-300 rounded"></div>
-        <div className="w-20 h-10 bg-gray-300 rounded"></div>
+      <div className="flex animate-pulse gap-2 border-t bg-white p-4">
+        <div className="h-10 flex-1 rounded bg-gray-300"></div>
+        <div className="h-10 w-20 rounded bg-gray-300"></div>
       </div>
     </div>
   );
@@ -22,18 +22,18 @@ export function ChatSkeleton() {
 // 🆕 Sidebar Skeleton
 export function SidebarSkeleton() {
   return (
-    <div className="w-1/3 h-full bg-white border-r shadow-sm overflow-y-auto">
+    <div className="h-full w-1/3 overflow-y-auto border-r bg-white shadow-sm">
       {/* Admin Header Skeleton */}
-      <div className="p-4 border-b bg-gradient-to-r from-blue-700 to-purple-600 text-white flex justify-between items-center animate-pulse">
-        <div className="h-6 bg-white/40 rounded w-24"></div>
-        <div className="h-4 bg-white/40 rounded w-12"></div>
+      <div className="flex animate-pulse items-center justify-between border-b bg-gradient-to-r from-blue-700 to-purple-600 p-4 text-white">
+        <div className="h-6 w-24 rounded bg-white/40"></div>
+        <div className="h-4 w-12 rounded bg-white/40"></div>
       </div>
 
       {/* User List Skeleton */}
       <div className="animate-pulse">
         {[...Array(6)].map((_, i) => (
-          <div key={i} className="p-4 border-b flex items-center gap-2">
-            <div className="h-5 bg-gray-300 rounded w-32"></div>
+          <div key={i} className="flex items-center gap-2 border-b p-4">
+            <div className="h-5 w-32 rounded bg-gray-300"></div>
           </div>
         ))}
       </div>

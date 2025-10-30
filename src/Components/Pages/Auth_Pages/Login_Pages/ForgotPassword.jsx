@@ -46,9 +46,9 @@ function ForgotPassword() {
 
   return (
     <ProfilerWrapper id="Forgot Password">
-      <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="bg-white p-6 rounded-xl shadow-md w-full max-w-md">
-          <h2 className="text-2xl font-semibold mb-4 text-center">
+      <div className="flex min-h-screen items-center justify-center px-4">
+        <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-md">
+          <h2 className="mb-4 text-center text-2xl font-semibold">
             Forgot Password
           </h2>
 
@@ -56,14 +56,14 @@ function ForgotPassword() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-gray-600 font-medium"
+                className="block font-medium text-gray-600"
               >
                 Email Address
               </label>
               <input
                 id="email" // ✅ Add this line
                 type="email"
-                className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500"
                 ref={email}
                 required
                 onChange={() => {
@@ -73,14 +73,14 @@ function ForgotPassword() {
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 cursor-pointer"
+              className="w-full cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
             >
               Verify Email
             </button>
           </form>
 
           {message && (
-            <p className="mt-4 text-red-600 text-center font-medium">
+            <p className="mt-4 text-center font-medium text-red-600">
               {message}
             </p>
           )}

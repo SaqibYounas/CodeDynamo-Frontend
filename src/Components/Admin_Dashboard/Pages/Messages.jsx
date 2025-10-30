@@ -107,13 +107,13 @@ export default function AdminChat() {
     userProfiles();
   }, []);
   return (
-    <div className="lg:pl-60 md:pl-80 flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-gray-100 md:pl-80 lg:pl-60">
       {/* Sidebar */}
       {loading ? (
         <SidebarSkeleton />
       ) : (
-        <div className="w-1/3 h-full bg-white border-r shadow-sm overflow-y-auto">
-          <div className="p-4 border-b bg-gradient-to-r from-blue-700 to-purple-600 text-white flex justify-between items-center">
+        <div className="h-full w-1/3 overflow-y-auto border-r bg-white shadow-sm">
+          <div className="flex items-center justify-between border-b bg-gradient-to-r from-blue-700 to-purple-600 p-4 text-white">
             <h2 className="text-xl font-bold">👤 My Admin</h2>
             <span className="text-sm">Admin 🟢</span>
           </div>
@@ -123,7 +123,7 @@ export default function AdminChat() {
             <div
               key={user._id}
               onClick={() => setSelectedUser(user)}
-              className={`p-4 cursor-pointer border-b hover:bg-gray-50 transition ${
+              className={`cursor-pointer border-b p-4 transition hover:bg-gray-50 ${
                 selectedUser?._id === user._id ? 'bg-blue-100' : ''
               }`}
             >
@@ -137,8 +137,8 @@ export default function AdminChat() {
 
       {/* Chat Area */}
       {selectedUser ? (
-        <div className="flex flex-col w-full p-4 overflow-y-auto">
-          <div className="p-4 border-b bg-white shadow flex justify-between items-center">
+        <div className="flex w-full flex-col overflow-y-auto p-4">
+          <div className="flex items-center justify-between border-b bg-white p-4 shadow">
             <h3 className="text-xl font-semibold">
               💬 Chat with {selectedUser.user?.name}
             </h3>
@@ -153,14 +153,14 @@ export default function AdminChat() {
                 {selectedUser.messages?.map((msg, i) => (
                   <div
                     key={i}
-                    className={`p-3 rounded-xl shadow max-w-md my-2 ${
+                    className={`my-2 max-w-md rounded-xl p-3 shadow ${
                       msg.role === 'admin'
-                        ? 'bg-green-100 mr-auto text-left'
-                        : 'bg-white ml-auto'
+                        ? 'mr-auto bg-green-100 text-left'
+                        : 'ml-auto bg-white'
                     }`}
                   >
                     <p>{msg.text}</p>
-                    <div className="flex justify-end text-xs text-gray-400 italic mt-1">
+                    <div className="mt-1 flex justify-end text-xs text-gray-400 italic">
                       <span>{formatDate(msg.sentAt)}</span>
 
                       {msg.role === 'admin' && (
@@ -179,16 +179,16 @@ export default function AdminChat() {
               </div>
 
               {/* Input Box */}
-              <div className="p-4 border-t bg-white flex gap-2 items-center">
+              <div className="flex items-center gap-2 border-t bg-white p-4">
                 <input
-                  className="flex-1 border px-4 py-2 rounded-full"
+                  className="flex-1 rounded-full border px-4 py-2"
                   value={messageInput}
                   onChange={(e) => setMessageInput(e.target.value)}
                   placeholder="Type a message..."
                 />
                 <button
                   onClick={handleSend}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600"
+                  className="rounded-full bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
                 >
                   Send
                 </button>
@@ -197,7 +197,7 @@ export default function AdminChat() {
           )}
         </div>
       ) : (
-        <div className="flex-1 flex items-center justify-center text-gray-400 text-xl">
+        <div className="flex flex-1 items-center justify-center text-xl text-gray-400">
           👈 Select a user to start chatting
         </div>
       )}

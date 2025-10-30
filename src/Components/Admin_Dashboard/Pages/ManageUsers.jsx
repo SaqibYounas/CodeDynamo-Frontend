@@ -44,16 +44,16 @@ function ManageUsers() {
   };
 
   return (
-    <div className="lg:pl-64 md:pl-80 bg-white p-6 rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">👥 Manage Users</h2>
+    <div className="rounded bg-white p-6 shadow md:pl-80 lg:pl-64">
+      <h2 className="mb-4 text-2xl font-bold">👥 Manage Users</h2>
 
       <div className="w-full overflow-x-auto">
         {loading ? (
           <ManageUsersSkeleton rows={usersData?.length || 6} />
         ) : (
-          <table className="w-full text-left border min-w-[800px]">
+          <table className="w-full min-w-[800px] border text-left">
             <thead>
-              <tr className="bg-gray-100 border-b">
+              <tr className="border-b bg-gray-100">
                 <th className="p-2">ID</th>
                 <th className="p-2">Name</th>
                 <th className="p-2">Email</th>
@@ -75,7 +75,7 @@ function ManageUsers() {
                   <td className="p-2">{formatOnlyDate(user.createdAt)}</td>
                   <td className="p-2">
                     <span
-                      className={`px-2 py-1 rounded text-xs font-semibold ${
+                      className={`rounded px-2 py-1 text-xs font-semibold ${
                         user.status === 'Active'
                           ? 'bg-green-200 text-green-800'
                           : 'bg-red-200 text-red-800'
@@ -84,16 +84,16 @@ function ManageUsers() {
                       {user.isDeleted ? 'delete' : 'Active'}
                     </span>
                   </td>
-                  <td className="p-2 space-x-2">
+                  <td className="space-x-2 p-2">
                     <button
                       onClick={() => handleBlock(user.id)}
-                      className="px-3 py-1 text-sm bg-yellow-400 text-white rounded"
+                      className="rounded bg-yellow-400 px-3 py-1 text-sm text-white"
                     >
                       {user.status === 'Blocked' ? 'Unblock' : 'Block'}
                     </button>
                     <button
                       onClick={() => handleDelete(user.id)}
-                      className="px-3 py-1 text-sm bg-red-500 text-white rounded"
+                      className="rounded bg-red-500 px-3 py-1 text-sm text-white"
                     >
                       Delete
                     </button>
