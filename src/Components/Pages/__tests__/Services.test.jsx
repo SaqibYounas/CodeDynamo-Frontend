@@ -39,7 +39,6 @@ vi.mock('../Box/Box', () => ({
   ),
 }));
 
-
 describe('Services Component', () => {
   it('renders heading and all service boxes', () => {
     render(<Services showTechStack={false} />);

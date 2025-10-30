@@ -33,7 +33,9 @@ describe('Contact Component', () => {
     expect(screen.getByText(/Contact Us/i)).toBeInTheDocument();
     expect(screen.getByText(/John Doe/i)).toBeInTheDocument();
     expect(screen.getByText(/CodeDynamo/i)).toBeInTheDocument();
-    expect(screen.getByText(/We help build digital solutions/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/We help build digital solutions/i)
+    ).toBeInTheDocument();
     expect(screen.getByTestId('contact-icon')).toBeInTheDocument();
   });
 

@@ -23,11 +23,15 @@ vi.mock('./Box/Section', () => ({
 }));
 
 vi.mock('./common/ProjectSection', () => ({
-  ProjectsSection: () => <div data-testid="projects-section">Projects Section</div>,
+  ProjectsSection: () => (
+    <div data-testid="projects-section">Projects Section</div>
+  ),
 }));
 
 vi.mock('./common/ourDevelopment', () => ({
-  ApproachSection: () => <div data-testid="approach-section">Approach Section</div>,
+  ApproachSection: () => (
+    <div data-testid="approach-section">Approach Section</div>
+  ),
 }));
 
 vi.mock('./Box/TeachStack', () => ({

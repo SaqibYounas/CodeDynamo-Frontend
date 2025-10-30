@@ -21,7 +21,9 @@ describe('AboutSection Component', () => {
     render(<AboutSection />);
     expect(screen.getByText(/About CodeDynamo/i)).toBeInTheDocument();
     expect(
-      screen.getByText(/Building intelligent, scalable, and user-focused digital solutions./i)
+      screen.getByText(
+        /Building intelligent, scalable, and user-focused digital solutions./i
+      )
     ).toBeInTheDocument();
   });
 
