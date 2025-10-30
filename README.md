@@ -7,12 +7,12 @@ It includes authentication, real-time communication, and a responsive user inter
 
 ## UI Pages
 
-![CodeDynamo 1](/Frontend/src/Components//Pages/UI/Home.png)
-![CodeDynamo 2](/Frontend/src/Components//Pages/UI/Services.png)
-![CodeDynamo 3](/Frontend/src/Components//Pages/UI/About.png)
-![CodeDynamo 4](/Frontend/src/Components//Pages/UI/Contact.png)
-![CodeDynamo 5](/Frontend/src/Components//Pages/UI/Login.PNG)
-![CodeDynamo 6](/Frontend/src/Components//Pages/UI/Signup.PNG)
+![CodeDynamo 1](/Frontend/src/assets/UI/Home.png)
+![CodeDynamo 2](/Frontend/src/assets/UI/Services.png)
+![CodeDynamo 3](/Frontend/src/assets/Pages/UI/About.png)
+![CodeDynamo 4](/Frontend/src/assets/UI/Contact.png)
+![CodeDynamo 5](/Frontend/src/assets/UI/Login.PNG)
+![CodeDynamo 6](/Frontend/src/assets/UI/Signup.PNG)
 
 ## Tech Stack
 
