@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <ProfilerWrapper id="Home">
-      <div className="min-h-screen bg-gradient-to-r from-[#E0ECFF] to-[#C4DDF9]">
+      <div className="min-h-screen bg-[#F9F9FF]">
         <section className="bg-white py-20 shadow-md">
           <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between">
             <div className="text-center md:text-left md:w-1/2">
@@ -75,7 +75,7 @@ export default function Home() {
           title="Why Choose Us?"
           boxes={sectionBoxes.whyChooseUs}
           cols={3}
-          bg="bg-gradient-to-br from-white via-slate-100 to-gray-200"
+          bg="bg-[#F9F9FF] "
         />
 
         <Services showTechStack={false} />
@@ -94,8 +94,8 @@ export default function Home() {
         />
       </div>
       <ProjectsSection />
-      <TechStack/>
       <ApproachSection/>
+      <TechStack/>
     </ProfilerWrapper>
   );
 }

@@ -1,33 +1,53 @@
+import {
+  ShieldCheck,
+  Palette,
+  Users,
+  Star,
+  CheckSquare,
+  Bug,
+} from "lucide-react";
 
 export const approaches = [
   {
-    title: "Kick-off meeting",
-    desc: "We discuss your project goals, requirements, and expectations to ensure a clear vision before starting.",
-    icon: "💡",
+    icon: <Palette size={24} />,
+    color: "bg-pink-100 text-pink-600",
+    title: "UX Driven Engineering",
+    description:
+      "Unlike other companies, we are a UX first development company. Projects are driven by designers and they make sure design and experiences translate to code.",
   },
   {
-    title: "Wireframes and prototypes",
-    desc: "We create wireframes and interactive prototypes to visualize the design direction and user flow.",
-    icon: "🧩",
+    icon: <Users size={24} />,
+    color: "bg-blue-100 text-blue-600",
+    title: "Developing Shared Understanding",
+    description:
+      "Unlike other companies, we are a UX first development company. Projects are driven by designers and they make sure design and experiences translate to code.",
   },
   {
-    title: "UI/UX design completion",
-    desc: "Our designers craft high-fidelity mockups with attention to detail, accessibility, and responsiveness.",
-    icon: "🎨",
+    icon: <Star size={24} />,
+    color: "bg-rose-100 text-rose-600",
+    title: "Proven Experience and Expertise",
+    description:
+      "Unlike other companies, we are a UX first development company. Projects are driven by designers and they make sure design and experiences translate to code.",
   },
   {
-    title: "Development phase",
-    desc: "Our development team brings the designs to life using modern frameworks and best coding practices.",
-    icon: "💻",
+    icon: <ShieldCheck size={24} />,
+    color: "bg-emerald-100 text-emerald-600",
+    title: "Security & Intellectual Property (IP)",
+    description:
+      "Unlike other companies, we are a UX first development company. Projects are driven by designers and they make sure design and experiences translate to code.",
   },
   {
-    title: "Testing & feedback",
-    desc: "We rigorously test the solution, gather client feedback, and refine until everything is perfect.",
-    icon: "🧪",
+    icon: <CheckSquare size={24} />,
+    color: "bg-yellow-100 text-yellow-600",
+    title: "Code Reviews",
+    description:
+      "Unlike other companies, we are a UX first development company. Projects are driven by designers and they make sure design and experiences translate to code.",
   },
   {
-    title: "Launch & maintenance",
-    desc: "After launch, we provide ongoing support, updates, and optimization to keep your project thriving.",
-    icon: "🚀",
+    icon: <Bug size={24} />,
+    color: "bg-purple-100 text-purple-600",
+    title: "Quality Assurance & Testing",
+    description:
+      "Unlike other companies, we are a UX first development company. Projects are driven by designers and they make sure design and experiences translate to code.",
   },
 ];

@@ -2,7 +2,7 @@ import { Box_Two } from "./Box";
 
 export function Section({ title, boxes, cols = 3, bg = "bg-white" }) {
   return (
-    <section className={`py-16 bg-[#FAFAFA]`}>
+    <section className={`py-16 bg-[#F9F9FF]`}>
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
           {title}

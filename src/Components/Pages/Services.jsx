@@ -1,10 +1,9 @@
-import { FaTools } from "react-icons/fa";
 import { ProfilerWrapper } from "./utils/Profiler";
 import { staticServices } from "./data/Services";
 import { Box } from "./Box/Box";
 import { TechStack } from "./Box/TeachStack";
 
-function Services({ showTechStack = false }) {
+function Services({ showTechStack = true }) {
   return (
     <ProfilerWrapper id="Services">
       <>
@@ -12,9 +11,8 @@ function Services({ showTechStack = false }) {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-800 inline-flex items-center justify-center gap-2">
-                <FaTools className="text-blue-600 text-3xl" />
                 Our Services
-              </h2>
+              </h2> 
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-6">

@@ -1,48 +1,38 @@
-import { motion } from "framer-motion";
+import React from "react";
 import { approaches } from "../data/Approach";
 
-export  function ApproachSection() {
+export const ApproachSection = () => {
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6 text-center">
-        <motion.h2
-          className="text-4xl font-bold text-gray-800 mb-6"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Our design and development approach
-        </motion.h2>
+    <section className="bg-[#F9F9FF] py-16 px-6 md:px-16">
+      <div className="text-center mb-12">
+        <h2 className="text-2xl md:text-3xl font-semibold text-gray-800">
+          Our design and
+        </h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+          development approach
+        </h2>
+      </div>
 
-        <motion.p
-          className="text-gray-600 mb-12 max-w-2xl mx-auto"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          We follow a streamlined and transparent process that ensures every
-          project is delivered on time, within budget, and to the highest
-          standards.
-        </motion.p>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {approaches.map((item, index) => (
-            <motion.div
-              key={index}
-              className="bg-white shadow-md rounded-xl p-8 border border-gray-100 hover:shadow-lg transition-shadow"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {approaches.map((item, index) => (
+          <div
+            key={index}
+            className="bg-gray-50 p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+          >
+            <div
+              className={`w-12 h-12 flex items-center justify-center rounded-xl mb-5 ${item.color}`}
             >
-              <div className="text-4xl mb-4">{item.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                {item.title}
-              </h3>
-              <p className="text-gray-600">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+              {item.icon}
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              {item.title}
+            </h3>
+            <p className="text-gray-600 text-base leading-relaxed">
+              {item.description}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );
-}
+};

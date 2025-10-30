@@ -12,7 +12,6 @@ import {
 } from "react-icons/fa";
 
 export const sectionBoxes = {
-  // 🟣 Why Choose Us Section
   whyChooseUs: [
     {
       icon: <FaUserTie className="text-4xl text-[#57007B]" />,
@@ -33,7 +32,6 @@ export const sectionBoxes = {
     },
   ],
 
-  // 🟢 Track Record Section
   trackRecord: [
     {
       icon: <FaSmile className="text-4xl text-[#57007B]" />,
@@ -52,7 +50,6 @@ export const sectionBoxes = {
     },
   ],
 
-  // 🔵 Working Cycle Section
   workingCycle: [
     {
       icon: <FaSearch className="text-4xl text-[#57007B]" />,

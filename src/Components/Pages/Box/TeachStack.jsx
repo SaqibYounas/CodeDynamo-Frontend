@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { techStackData } from "../data/teachStackData";
+import { techStackData } from "../data/teachStackData.jsx";
 
 export function TechStack() {
   const [activeTab, setActiveTab] = useState("Backend");
@@ -11,7 +11,6 @@ export function TechStack() {
         <b>Tech Stack</b>
       </h2>
 
-      {/* Tabs */}
       <div className="mb-8 flex flex-wrap justify-center gap-2">
         {Object.keys(techStackData).map((tab) => (
           <button
@@ -29,7 +28,6 @@ export function TechStack() {
         ))}
       </div>
 
-      {/* Tech Logos */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-[1000px] mx-auto">
         {techStackData[activeTab].map((tech) => (
           <div key={tech.name} className="flex justify-center items-center">
@@ -37,7 +35,7 @@ export function TechStack() {
               src={tech.url}
               alt={tech.name}
               title={tech.name}
-              className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain"
+              className="w-30 h-12 sm:w-14 sm:h-14 md:w-30 md:h-16 object-contain"
             />
           </div>
         ))}

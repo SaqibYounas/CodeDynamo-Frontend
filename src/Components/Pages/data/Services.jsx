@@ -1,4 +1,3 @@
-// src/data/servicesData.js
 import { 
   FaLaptopCode,
   FaMobileAlt,
