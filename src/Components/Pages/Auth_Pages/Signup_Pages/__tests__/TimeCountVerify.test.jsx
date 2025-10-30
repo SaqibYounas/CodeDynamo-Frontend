@@ -4,14 +4,13 @@ import CountdownTimer from '../TimeCountVerify';
 import { vi } from 'vitest';
 
 describe('CountdownTimer Component', () => {
-
   beforeEach(() => {
-    vi.useFakeTimers(); 
+    vi.useFakeTimers();
   });
 
   afterEach(() => {
     vi.runOnlyPendingTimers();
-    vi.useRealTimers(); 
+    vi.useRealTimers();
   });
 
   it('should show initial countdown time', () => {
@@ -21,7 +20,7 @@ describe('CountdownTimer Component', () => {
 
   it('should countdown every second', () => {
     render(<CountdownTimer duration={3} />);
-    
+
     act(() => {
       vi.advanceTimersByTime(1000);
     });
@@ -47,7 +46,7 @@ describe('CountdownTimer Component', () => {
 
   it('should reset the timer on resetKey change', () => {
     const { rerender } = render(<CountdownTimer duration={5} resetKey={0} />);
-    
+
     act(() => {
       vi.advanceTimersByTime(3000); // move 3 seconds
     });
@@ -56,6 +55,5 @@ describe('CountdownTimer Component', () => {
 
     // Simulate OTP resend (resetKey change)
     rerender(<CountdownTimer duration={5} resetKey={1} />);
-    
   });
 });

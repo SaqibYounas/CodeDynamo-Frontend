@@ -1,11 +1,11 @@
-import { url } from "./Port";
+import { url } from './Port';
 export async function getFeedbackAll(page) {
   try {
     let response = await fetch(
       `${url}/admin/feedback/get?page=${page}&limit=10`,
       {
-        method: "GET",
-        credentials: "include",
+        method: 'GET',
+        credentials: 'include',
       }
     );
     let data = await response.json();
@@ -16,7 +16,7 @@ export async function getFeedbackAll(page) {
       return 0;
     }
   } catch (error) {
-    console.log("getprofileid", error);
+    console.log('getprofileid', error);
     return 0;
   }
 }

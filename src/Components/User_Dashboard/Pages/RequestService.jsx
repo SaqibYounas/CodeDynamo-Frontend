@@ -15,7 +15,7 @@ import {
   FaBug,
   FaRobot,
   FaMobileAlt,
-} from "react-icons/fa";
+} from 'react-icons/fa';
 
 import {
   SiNextdotjs,
@@ -25,75 +25,75 @@ import {
   SiKubernetes,
   SiFlutter,
   SiSketch,
-} from "react-icons/si";
+} from 'react-icons/si';
 
-import ReqestForm from "./RequestForm";
-import { ProfilerWrapper } from "../utils/Profiler";
+import ReqestForm from './RequestForm';
+import { ProfilerWrapper } from '../utils/Profiler';
 
 const stackData = [
   {
-    title: "Web Development",
+    title: 'Web Development',
     icon: FaLaptopCode,
-    color: "#3C873A",
+    color: '#3C873A',
     stack: [
-      { name: "HTML", icon: FaHtml5, color: "#e34c26" },
-      { name: "CSS", icon: FaCss3Alt, color: "#264de4" },
-      { name: "JavaScript", icon: FaJs, color: "#f0db4f" },
-      { name: "React", icon: FaReact, color: "#61DBFB" },
-      { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
-      { name: "Node.js", icon: FaNodeJs, color: "#3C873A" },
-      { name: "MongoDB", icon: SiMongodb, color: "#4DB33D" },
+      { name: 'HTML', icon: FaHtml5, color: '#e34c26' },
+      { name: 'CSS', icon: FaCss3Alt, color: '#264de4' },
+      { name: 'JavaScript', icon: FaJs, color: '#f0db4f' },
+      { name: 'React', icon: FaReact, color: '#61DBFB' },
+      { name: 'Next.js', icon: SiNextdotjs, color: '#000000' },
+      { name: 'Node.js', icon: FaNodeJs, color: '#3C873A' },
+      { name: 'MongoDB', icon: SiMongodb, color: '#4DB33D' },
     ],
   },
   {
-    title: "Mobile App Development",
+    title: 'Mobile App Development',
     icon: FaMobileAlt,
-    color: "#02569B",
+    color: '#02569B',
     stack: [
-      { name: "Flutter", icon: SiFlutter, color: "#02569B" },
-      { name: "React Native", icon: FaReact, color: "#61DBFB" },
-      { name: "Kotlin", icon: FaAndroid, color: "#3DDC84" },
-      { name: "Swift", icon: FaApple, color: "#000000" },
+      { name: 'Flutter', icon: SiFlutter, color: '#02569B' },
+      { name: 'React Native', icon: FaReact, color: '#61DBFB' },
+      { name: 'Kotlin', icon: FaAndroid, color: '#3DDC84' },
+      { name: 'Swift', icon: FaApple, color: '#000000' },
     ],
   },
   {
-    title: "UI/UX Design",
+    title: 'UI/UX Design',
     icon: FaPaintBrush,
-    color: "#F24E1E",
+    color: '#F24E1E',
     stack: [
-      { name: "Figma", icon: SiFigma, color: "#F24E1E" },
-      { name: "Sketch", icon: SiSketch, color: "#F7B500" },
-      { name: "Adobe XD", icon: SiAdobexd, color: "#FF61F6" },
+      { name: 'Figma', icon: SiFigma, color: '#F24E1E' },
+      { name: 'Sketch', icon: SiSketch, color: '#F7B500' },
+      { name: 'Adobe XD', icon: SiAdobexd, color: '#FF61F6' },
     ],
   },
   {
-    title: "QA & Testing",
+    title: 'QA & Testing',
     icon: FaBug,
-    color: "#FF6C37",
+    color: '#FF6C37',
     stack: [
-      { name: "Postman", icon: FaBug, color: "#FF6C37" },
-      { name: "Selenium", icon: FaBug, color: "#43B02A" },
-      { name: "Jest", icon: FaBug, color: "#C21325" },
+      { name: 'Postman', icon: FaBug, color: '#FF6C37' },
+      { name: 'Selenium', icon: FaBug, color: '#43B02A' },
+      { name: 'Jest', icon: FaBug, color: '#C21325' },
     ],
   },
   {
-    title: "Cloud Services",
+    title: 'Cloud Services',
     icon: FaCloud,
-    color: "#FF9900",
+    color: '#FF9900',
     stack: [
-      { name: "AWS", icon: FaAws, color: "#FF9900" },
-      { name: "Docker", icon: FaDocker, color: "#0db7ed" },
-      { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
+      { name: 'AWS', icon: FaAws, color: '#FF9900' },
+      { name: 'Docker', icon: FaDocker, color: '#0db7ed' },
+      { name: 'Kubernetes', icon: SiKubernetes, color: '#326CE5' },
     ],
   },
   {
-    title: "AI Integration",
+    title: 'AI Integration',
     icon: FaRobot,
-    color: "#10A37F",
+    color: '#10A37F',
     stack: [
-      { name: "Python", icon: FaPython, color: "#3776AB" },
-      { name: "TensorFlow", icon: FaRobot, color: "#FF6F00" },
-      { name: "OpenAI", icon: FaRobot, color: "#10A37F" },
+      { name: 'Python', icon: FaPython, color: '#3776AB' },
+      { name: 'TensorFlow', icon: FaRobot, color: '#FF6F00' },
+      { name: 'OpenAI', icon: FaRobot, color: '#10A37F' },
     ],
   },
 ];
@@ -135,10 +135,10 @@ export default function StackOverview() {
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.backgroundColor = tech.color;
-                        e.currentTarget.style.color = "#fff";
+                        e.currentTarget.style.color = '#fff';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = "transparent";
+                        e.currentTarget.style.backgroundColor = 'transparent';
                         e.currentTarget.style.color = tech.color;
                       }}
                     >

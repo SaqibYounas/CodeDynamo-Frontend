@@ -11,8 +11,8 @@ It includes authentication, real-time communication, and a responsive user inter
 ![CodeDynamo 2](/Frontend/src/assets/UI/Services.png)
 ![CodeDynamo 3](/Frontend/src/assets/Pages/UI/About.png)
 ![CodeDynamo 4](/Frontend/src/assets/UI/Contact.png)
-![CodeDynamo 5](/Frontend/src/assets/UI/Login.PNG)
-![CodeDynamo 6](/Frontend/src/assets/UI/Signup.PNG)
+![CodeDynamo 5](/Frontend/src/assets/UI/Login.png)
+![CodeDynamo 6](/Frontend/src/assets/UI/Signup.png)
 
 ## Tech Stack
 

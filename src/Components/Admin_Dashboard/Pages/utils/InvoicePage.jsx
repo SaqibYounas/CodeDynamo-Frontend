@@ -1,9 +1,9 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   formatAccountNumber,
   formatIBAN,
   isOnlyLetters,
-} from "./formatAccount";
+} from './formatAccount';
 
 export function InvoicePage({
   invoiceData,
@@ -32,10 +32,10 @@ export function InvoicePage({
               className="bg-white p-10 shadow-lg border rounded-lg min-h-[500px] relative"
               style={{
                 backgroundImage: `url(${logoUrl})`,
-                backgroundSize: "250px",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                backgroundBlendMode: "lighten",
+                backgroundSize: '250px',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                backgroundBlendMode: 'lighten',
                 opacity: 0.98,
               }}
             >
@@ -87,9 +87,9 @@ export function InvoicePage({
                       <th className="border px-3 py-2 bg-gray-100">Status</th>
                       <td
                         className={`border px-3 py-2 font-bold ${
-                          invoiceData.status === "Paid"
-                            ? "text-green-600"
-                            : "text-red-600"
+                          invoiceData.status === 'Paid'
+                            ? 'text-green-600'
+                            : 'text-red-600'
                         }`}
                       >
                         {invoiceData.status}
@@ -107,7 +107,7 @@ export function InvoicePage({
                         Bank Name
                       </th>
                       <td className="border px-3 py-2">
-                        {" "}
+                        {' '}
                         {accountsNumber.bankName}
                       </td>
                     </tr>
@@ -123,7 +123,9 @@ export function InvoicePage({
                       <th className="border px-3 py-2 bg-gray-100">
                         Account Title
                       </th>
-                      <td className="border px-3 py-2">{accountsNumber.accountTitle}</td>
+                      <td className="border px-3 py-2">
+                        {accountsNumber.accountTitle}
+                      </td>
                     </tr>
                     <tr>
                       <th className="border px-3 py-2 bg-gray-100">
@@ -162,7 +164,7 @@ export function InvoicePage({
                   </p>
                 </div>
               </div>
-            </div>{" "}
+            </div>{' '}
             {/* Send Button Outside */}
             <div className="flex justify-center gap-4 mt-6">
               <button
@@ -170,11 +172,11 @@ export function InvoicePage({
                 onClick={sendInvoices}
                 className={`${
                   loading
-                    ? "bg-gray-400"
-                    : "bg-blue-600 hover:bg-blue-700 cursor-pointer "
+                    ? 'bg-gray-400'
+                    : 'bg-blue-600 hover:bg-blue-700 cursor-pointer '
                 } text-white px-6 py-2 rounded  `}
               >
-                {loading ? "📤 Sending..." : "📤 Send Invoice"}
+                {loading ? '📤 Sending...' : '📤 Send Invoice'}
               </button>
 
               <button

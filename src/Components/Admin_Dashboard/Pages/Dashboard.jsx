@@ -1,5 +1,5 @@
 // pages/AdminDashboard.jsx
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 function AdminDashboard() {
   // Dummy data
@@ -9,14 +9,19 @@ function AdminDashboard() {
   useEffect(() => {
     // Dummy data simulation
     setUsers([
-      { id: 1, name: "Ali Raza", email: "ali@example.com" },
-      { id: 2, name: "Fatima Khan", email: "fatima@example.com" },
-      { id: 3, name: "Usman Ahmed", email: "usman@example.com" },
+      { id: 1, name: 'Ali Raza', email: 'ali@example.com' },
+      { id: 2, name: 'Fatima Khan', email: 'fatima@example.com' },
+      { id: 3, name: 'Usman Ahmed', email: 'usman@example.com' },
     ]);
 
     setRequests([
-      { id: 1, user: "Ali Raza", service: "Web Development", status: "Pending" },
-      { id: 2, user: "Fatima Khan", service: "SEO Audit", status: "Completed" },
+      {
+        id: 1,
+        user: 'Ali Raza',
+        service: 'Web Development',
+        status: 'Pending',
+      },
+      { id: 2, user: 'Fatima Khan', service: 'SEO Audit', status: 'Completed' },
     ]);
   }, []);
 
@@ -82,9 +87,9 @@ function AdminDashboard() {
                   <td className="py-2">
                     <span
                       className={`px-2 py-1 rounded text-white text-sm ${
-                        r.status === "Completed"
-                          ? "bg-green-500"
-                          : "bg-yellow-500"
+                        r.status === 'Completed'
+                          ? 'bg-green-500'
+                          : 'bg-yellow-500'
                       }`}
                     >
                       {r.status}

@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import Services from "./Services";
-import { ProfilerWrapper } from "./utils/Profiler";
-import { sectionBoxes } from "./data/Home";
-import { TechStack } from "./Box/TeachStack";
-import { Section } from "./Box/Section";
-import { ProjectsSection } from "./common/ProjectSection";
-import {ApproachSection} from "./common/ourDevelopment"
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import Services from './Services';
+import { ProfilerWrapper } from './utils/Profiler';
+import { sectionBoxes } from './data/Home';
+import { TechStack } from './Box/TeachStack';
+import { Section } from './Box/Section';
+import { ProjectsSection } from './common/ProjectSection';
+import { ApproachSection } from './common/ourDevelopment';
 export default function Home() {
-  const text = "Welcome to CodeDynamo";
-  const [displayedText, setDisplayedText] = useState("");
+  const text = 'Welcome to CodeDynamo';
+  const [displayedText, setDisplayedText] = useState('');
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function Home() {
         setIndex(index + 1);
       } else {
         setTimeout(() => {
-          setDisplayedText("");
+          setDisplayedText('');
           setIndex(0);
         }, 2000);
       }
@@ -94,8 +94,8 @@ export default function Home() {
         />
       </div>
       <ProjectsSection />
-      <ApproachSection/>
-      <TechStack/>
+      <ApproachSection />
+      <TechStack />
     </ProfilerWrapper>
   );
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import { projects } from "../data/About";
+import React from 'react';
+import { projects } from '../data/About';
 
 export const ProjectsSection = () => {
   return (

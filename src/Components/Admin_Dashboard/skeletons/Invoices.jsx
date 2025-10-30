@@ -1,6 +1,6 @@
 // /skeletons/InvoicesSkelton.jsx
 
-import React from "react";
+import React from 'react';
 
 export default function InvoicesSkelton({ rows = 5 }) {
   return (

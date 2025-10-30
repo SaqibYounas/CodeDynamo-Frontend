@@ -1,5 +1,5 @@
-import React from "react";
-import { approaches } from "../data/Approach";
+import React from 'react';
+import { approaches } from '../data/Approach';
 
 export const ApproachSection = () => {
   return (

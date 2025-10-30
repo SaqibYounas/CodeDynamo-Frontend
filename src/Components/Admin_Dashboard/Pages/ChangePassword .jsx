@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { changePassAPI } from "./Services/ChangePassAPI";
+import React, { useRef, useState } from 'react';
+import { changePassAPI } from './Services/ChangePassAPI';
 
 export default function ChangePassword() {
   const currentRef = useRef(null);
@@ -7,7 +7,7 @@ export default function ChangePassword() {
   const confirmRef = useRef(null);
 
   const [errors, setErrors] = useState({});
-  const [success, setSuccess] = useState("");
+  const [success, setSuccess] = useState('');
   const [pending, setPending] = useState(false);
 
   const validate = () => {
@@ -17,16 +17,16 @@ export default function ChangePassword() {
     const newErrors = {};
 
     if (!current) {
-      newErrors.current = "Please enter your current password";
+      newErrors.current = 'Please enter your current password';
     }
 
     if (!newPass.match(/^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/)) {
       newErrors.new =
-        "Password must be at least 8 characters and contain a special character.";
+        'Password must be at least 8 characters and contain a special character.';
     }
 
     if (newPass !== confirm) {
-      newErrors.confirm = "Passwords do not match";
+      newErrors.confirm = 'Passwords do not match';
     }
 
     setErrors(newErrors);
@@ -38,7 +38,7 @@ export default function ChangePassword() {
     if (!validate()) return;
 
     setPending(true);
-    setSuccess("");
+    setSuccess('');
     setErrors({});
 
     let fromData = {
@@ -49,15 +49,15 @@ export default function ChangePassword() {
     try {
       let formAPI = await changePassAPI(fromData);
       if (!formAPI) {
-        setSuccess("❌ Server error! Try again.");
+        setSuccess('❌ Server error! Try again.');
       } else {
-        setSuccess("✅ " + formAPI);
-        currentRef.current.value = "";
-        newRef.current.value = "";
-        confirmRef.current.value = "";
+        setSuccess('✅ ' + formAPI);
+        currentRef.current.value = '';
+        newRef.current.value = '';
+        confirmRef.current.value = '';
       }
     } catch (err) {
-      setSuccess("❌ Something went wrong!");
+      setSuccess('❌ Something went wrong!');
     }
 
     setPending(false);
@@ -77,9 +77,9 @@ export default function ChangePassword() {
             <input
               type="password"
               ref={currentRef}
-              onChange={() => setErrors({ ...errors, current: "" })}
+              onChange={() => setErrors({ ...errors, current: '' })}
               className={`w-full px-4 py-2 border rounded-md ${
-                errors.current ? "border-red-500" : "border-gray-300"
+                errors.current ? 'border-red-500' : 'border-gray-300'
               }`}
               placeholder="Enter current password"
               disabled={pending}
@@ -97,9 +97,9 @@ export default function ChangePassword() {
             <input
               type="password"
               ref={newRef}
-              onChange={() => setErrors({ ...errors, new: "" })}
+              onChange={() => setErrors({ ...errors, new: '' })}
               className={`w-full px-4 py-2 border rounded-md ${
-                errors.new ? "border-red-500" : "border-gray-300"
+                errors.new ? 'border-red-500' : 'border-gray-300'
               }`}
               placeholder="At least 8 characters, 1 special char"
               disabled={pending}
@@ -117,9 +117,9 @@ export default function ChangePassword() {
             <input
               type="password"
               ref={confirmRef}
-              onChange={() => setErrors({ ...errors, confirm: "" })}
+              onChange={() => setErrors({ ...errors, confirm: '' })}
               className={`w-full px-4 py-2 border rounded-md ${
-                errors.confirm ? "border-red-500" : "border-gray-300"
+                errors.confirm ? 'border-red-500' : 'border-gray-300'
               }`}
               placeholder="Confirm new password"
               disabled={pending}
@@ -138,11 +138,11 @@ export default function ChangePassword() {
               disabled={pending}
               className={`px-6 py-2 rounded w-full font-medium text-white transition-all duration-300 cursor-poiter ${
                 pending
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-blue-600 hover:bg-blue-700"
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-blue-600 hover:bg-blue-700'
               }`}
             >
-              {pending ? "Updating..." : "Update Password"}
+              {pending ? 'Updating...' : 'Update Password'}
             </button>
           </div>
 
@@ -150,9 +150,9 @@ export default function ChangePassword() {
           {success && (
             <p
               className={`text-center mt-4 ${
-                success.startsWith("✅")
-                  ? "text-green-600"
-                  : "text-red-600 text-sm mt-1 font-semibold"
+                success.startsWith('✅')
+                  ? 'text-green-600'
+                  : 'text-red-600 text-sm mt-1 font-semibold'
               }`}
             >
               {success}

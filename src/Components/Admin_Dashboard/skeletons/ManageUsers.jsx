@@ -1,6 +1,6 @@
 // /skeletons/ManageUsers.jsx
 
-import React from "react";
+import React from 'react';
 
 export default function ManageUsersSkeleton({ rows = 5 }) {
   return (

@@ -1,19 +1,19 @@
 // src/components/InvoiceGenerator.jsx
-import React, { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
-import { sendInvoice } from "./Services/sendInvoice";
-import { searchClientID } from "./Services/searchClientID";
-import { InvoicePage } from "./utils/InvoicePage";
-import Loader from "../layouts/Loader";
-import { v4 as uuidv4 } from "uuid";
+import React, { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { sendInvoice } from './Services/sendInvoice';
+import { searchClientID } from './Services/searchClientID';
+import { InvoicePage } from './utils/InvoicePage';
+import Loader from '../layouts/Loader';
+import { v4 as uuidv4 } from 'uuid';
 
 import {
   formatAccountNumber,
   formatIBAN,
   isOnlyLetters,
-} from "./utils/formatAccount";
-import { Loader2 } from "lucide-react";
-import { onlyDateFormatToday, onlyDueFormatToday } from "./utils/formatDate";
+} from './utils/formatAccount';
+import { Loader2 } from 'lucide-react';
+import { onlyDateFormatToday, onlyDueFormatToday } from './utils/formatDate';
 import {
   validateBankName,
   validateAccountNumber,
@@ -21,7 +21,7 @@ import {
   validateAmount,
   validateDueDate,
   validateSwift,
-} from "./utils/inputValidationInvocie";
+} from './utils/inputValidationInvocie';
 // import { uploadImageToCloudinary } from "./utils/cloudinaryUpload";
 
 export default function InvoiceGenerator() {
@@ -29,28 +29,28 @@ export default function InvoiceGenerator() {
   const [errors, setErrors] = useState({});
 
   const [form, setForm] = useState({
-    id: "",
-    name: "",
+    id: '',
+    name: '',
     services: [],
-    amount: "",
-    dueDate: "",
+    amount: '',
+    dueDate: '',
   });
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [filteredClients, setFilteredClients] = useState([]);
   const [selectedClient, setSelectedClient] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [complete, setComplete] = useState("");
+  const [complete, setComplete] = useState('');
 
   const debounceRef = useRef(null);
 
   // state
   const [accountsNumber, setAccountsNumber] = useState({
-    bankName: "Standard Chartered",
-    accountTitle: "Codedynamo Pvt Ltd", // fix typo
-    accountNumberAdmin: "269848688509722",
-    ibanNumber: "PK46HABB6380479872082714",
-    bankNameOther: "",
-    swiftNumber: "SCBLPKKX",
+    bankName: 'Standard Chartered',
+    accountTitle: 'Codedynamo Pvt Ltd', // fix typo
+    accountNumberAdmin: '269848688509722',
+    ibanNumber: 'PK46HABB6380479872082714',
+    bankNameOther: '',
+    swiftNumber: 'SCBLPKKX',
   });
 
   const signatureUrl = import.meta.env.VITE_SIGNATURE_URL;
@@ -63,11 +63,11 @@ export default function InvoiceGenerator() {
 
     // Reset form safely
     setForm({
-      id: "",
-      name: "",
-      services: "",
-      amount: "",
-      dueDate: "",
+      id: '',
+      name: '',
+      services: '',
+      amount: '',
+      dueDate: '',
     });
     setSelectedClient(null);
     // Debounce clear
@@ -87,14 +87,14 @@ export default function InvoiceGenerator() {
           );
         } else {
           setErrors({
-            searchError: "No Client found. Enter a correct Client ID.",
+            searchError: 'No Client found. Enter a correct Client ID.',
           });
           setFilteredClients([]);
         }
       } catch (err) {
-        console.error("Search error:", err);
+        console.error('Search error:', err);
         setErrors({
-          searchError: "Something went wrong while searching client.",
+          searchError: 'Something went wrong while searching client.',
         });
         setFilteredClients([]);
       }
@@ -102,7 +102,7 @@ export default function InvoiceGenerator() {
   };
 
   const BackPage = () => {
-    setInvoiceData("");
+    setInvoiceData('');
   };
 
   // 🎯 Select Client
@@ -130,8 +130,8 @@ export default function InvoiceGenerator() {
     setErrors({});
     let newErrors = {};
     newErrors.bankName = isOnlyLetters(accountsNumber.bankName)
-      ? ""
-      : "Only letters allowed";
+      ? ''
+      : 'Only letters allowed';
     newErrors.accountNumberAdmin = validateAccountNumber(
       accountsNumber.accountNumberAdmin
     );
@@ -140,10 +140,10 @@ export default function InvoiceGenerator() {
     newErrors.amount = validateAmount(form.amount);
     newErrors.dueDate = validateDueDate(form.dueDate);
     newErrors.accountTitle = isOnlyLetters(accountsNumber.accountTitle)
-      ? ""
-      : "Only letters allowed";
+      ? ''
+      : 'Only letters allowed';
 
-    if (Object.values(newErrors).some((err) => err !== "")) {
+    if (Object.values(newErrors).some((err) => err !== '')) {
       setErrors(newErrors);
       return;
     }
@@ -156,7 +156,6 @@ export default function InvoiceGenerator() {
     const transactionId = `TXN-${uuidv4().slice(0, 12)}`;
     const invoiceNo = `CD-INV-${now.getFullYear()}-${uuidv4().slice(0, 8)}`;
 
-
     setInvoiceData({
       invoiceNo,
       transactionId,
@@ -166,13 +165,13 @@ export default function InvoiceGenerator() {
       name: form.name,
       services: form.services,
       amount: parseFloat(form.amount).toFixed(2),
-      status: "Pending Payment",
+      status: 'Pending Payment',
     });
   };
 
   // 📤 Send Invoice
   const sendInvoices = async () => {
-    setComplete("");
+    setComplete('');
     let data = {
       invoiceData,
       accountsNumber,
@@ -181,17 +180,17 @@ export default function InvoiceGenerator() {
     };
 
     setComplete(
-      "📤 Sending your invoice... Please wait and do not close this page."
+      '📤 Sending your invoice... Please wait and do not close this page.'
     );
     setLoading(true);
 
     let sendInvoicesRes = await sendInvoice(data);
 
     if (sendInvoicesRes) {
-      setComplete("✅ Your invoice has been sent successfully! Redirecting...");
+      setComplete('✅ Your invoice has been sent successfully! Redirecting...');
       setLoading(false);
     } else {
-      setComplete("❌ Unable to send invoice. Please try again later.");
+      setComplete('❌ Unable to send invoice. Please try again later.');
       setLoading(false);
     }
   };
@@ -199,15 +198,15 @@ export default function InvoiceGenerator() {
   // ♻ Reset everything
   const clearForm = () => {
     setInvoiceData(null);
-    setForm({ id: "", name: "", services: [], amount: "", dueDate: "" });
+    setForm({ id: '', name: '', services: [], amount: '', dueDate: '' });
     setSelectedClient(null);
-    setSearchTerm("");
+    setSearchTerm('');
   };
 
   const clearFormPending = () => {
-    setForm({ id: "", name: "", services: [], amount: "", dueDate: "" });
+    setForm({ id: '', name: '', services: [], amount: '', dueDate: '' });
     setSelectedClient(null);
-    setSearchTerm("");
+    setSearchTerm('');
   };
 
   return (
@@ -231,7 +230,7 @@ export default function InvoiceGenerator() {
           <div>
             <label className="block font-medium">Search Client by ID</label>
             <input
-              value={searchTerm || ""}
+              value={searchTerm || ''}
               onChange={handleSearch}
               type="text"
               className="w-full border rounded p-2"
@@ -332,7 +331,7 @@ export default function InvoiceGenerator() {
                     setAccountsNumber({
                       ...accountsNumber,
                       accountNumberAdmin: formatAccountNumber(
-                        e.target.value.replace(/\s/g, "")
+                        e.target.value.replace(/\s/g, '')
                       ),
                     })
                   }
@@ -358,7 +357,7 @@ export default function InvoiceGenerator() {
                   onChange={(e) =>
                     setAccountsNumber({
                       ...accountsNumber,
-                      ibanNumber: formatIBAN(e.target.value.replace(/\s/g, "")),
+                      ibanNumber: formatIBAN(e.target.value.replace(/\s/g, '')),
                     })
                   }
                   className="w-full border rounded p-2 font-mono tracking-wider"

@@ -1,5 +1,5 @@
-import React from "react";
-import { FaUserCircle, FaStar } from "react-icons/fa";
+import React from 'react';
+import { FaUserCircle, FaStar } from 'react-icons/fa';
 
 const FeedbackListSkeleton = ({ count = 6 }) => {
   return (

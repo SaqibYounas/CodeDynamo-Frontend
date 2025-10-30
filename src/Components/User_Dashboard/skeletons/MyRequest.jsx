@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const RequestsSkeleton = ({ rowCount = 5 }) => {
   const rows = Array.from({ length: rowCount });

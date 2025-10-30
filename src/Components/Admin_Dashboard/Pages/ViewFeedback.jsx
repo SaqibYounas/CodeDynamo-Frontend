@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { FaUserCircle, FaStar } from "react-icons/fa";
-import { getFeedbackAll } from "./Services/getFeedbackAll";
-import { formatDate, toPascalCase } from "./utils/formatDate";
-import { useNotifications } from "../context/context";
-import FeedbackListSkeleton from "../skeletons/FeedbackLists";
-import { Pagination } from "../hooks/Pagination";
+import { useEffect, useState } from 'react';
+import { FaUserCircle, FaStar } from 'react-icons/fa';
+import { getFeedbackAll } from './Services/getFeedbackAll';
+import { formatDate, toPascalCase } from './utils/formatDate';
+import { useNotifications } from '../context/context';
+import FeedbackListSkeleton from '../skeletons/FeedbackLists';
+import { Pagination } from '../hooks/Pagination';
 
 export default function FeedbackList() {
   const [feedbackData, setFeedbackData] = useState([]);
@@ -44,7 +44,7 @@ export default function FeedbackList() {
         setFeedbackData([]);
       }
     } catch (error) {
-      console.error("Error fetching feedback:", error);
+      console.error('Error fetching feedback:', error);
       setFeedbackData([]);
     } finally {
       setLoading(false);
@@ -54,7 +54,7 @@ export default function FeedbackList() {
   return (
     <div className="relative lg:pl-64 md:pl-80 p-6">
       <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-        {feedbackData.length > 0 ? "User Feedback" : "No Feedback Found"}
+        {feedbackData.length > 0 ? 'User Feedback' : 'No Feedback Found'}
       </h1>
 
       <div className="space-y-4">
@@ -68,8 +68,8 @@ export default function FeedbackList() {
               className={`flex items-start gap-3 p-4 lg:w-2xl bg-white rounded-xl shadow-md border-l-40 transition cursor-pointer hover:ring-2 ring-blue-300 
         ${
           highlightedIds.includes(fb._id)
-            ? "border-yellow-400 ring-2 ring-yellow-300"
-            : "border-gray-600"
+            ? 'border-yellow-400 ring-2 ring-yellow-300'
+            : 'border-gray-600'
         }`}
             >
               <FaUserCircle className="text-4xl text-gray-400 mt-1" />
@@ -85,7 +85,7 @@ export default function FeedbackList() {
 
                 <p className="text-gray-600 text-sm mt-1 line-clamp-2">
                   {fb.feedback?.length > 60
-                    ? fb.feedback.slice(0, 45) + "..."
+                    ? fb.feedback.slice(0, 45) + '...'
                     : fb.feedback}
                 </p>
 
@@ -95,8 +95,8 @@ export default function FeedbackList() {
                       key={i}
                       className={`text-sm ${
                         i < (fb.stars || 0)
-                          ? "text-yellow-400"
-                          : "text-gray-300"
+                          ? 'text-yellow-400'
+                          : 'text-gray-300'
                       }`}
                     />
                   ))}
@@ -132,8 +132,8 @@ export default function FeedbackList() {
                   key={i}
                   className={`${
                     i < (selectedFeedback.stars || 0)
-                      ? "text-yellow-400"
-                      : "text-gray-300"
+                      ? 'text-yellow-400'
+                      : 'text-gray-300'
                   }`}
                 />
               ))}

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { techStackData } from "../data/teachStackData.jsx";
+import React, { useState } from 'react';
+import { techStackData } from '../data/teachStackData.jsx';
 
 export function TechStack() {
-  const [activeTab, setActiveTab] = useState("Backend");
+  const [activeTab, setActiveTab] = useState('Backend');
 
   return (
     <div className="px-4 py-10 text-center bg-[#f9fafe]">
@@ -19,8 +19,8 @@ export function TechStack() {
             className={`px-4 sm:px-6 md:px-8 lg:px-12 py-2 text-sm sm:text-base border-b-4 cursor-pointer transition-all duration-300
               ${
                 activeTab === tab
-                  ? "border-transparent bg-gradient-to-r from-[#F76680] to-[#57007B] text-white font-bold"
-                  : "border-transparent text-gray-700 font-normal hover:text-[#F76680] hover:border-[#F76680]"
+                  ? 'border-transparent bg-gradient-to-r from-[#F76680] to-[#57007B] text-white font-bold'
+                  : 'border-transparent text-gray-700 font-normal hover:text-[#F76680] hover:border-[#F76680]'
               }`}
           >
             {tab}

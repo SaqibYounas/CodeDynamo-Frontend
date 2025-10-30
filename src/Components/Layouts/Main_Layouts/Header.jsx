@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import {
   FaBars,
   FaTimes,
@@ -7,9 +7,9 @@ import {
   FaCogs,
   FaInfoCircle,
   FaEnvelope,
-} from "react-icons/fa";
-import { motion } from "framer-motion";
-import { ProfilerWrapper } from "../../Pages/utils/Profiler";
+} from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { ProfilerWrapper } from '../../Pages/utils/Profiler';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,10 +20,10 @@ export default function Header() {
   const closeMenu = () => setIsOpen(false);
 
   const navItems = [
-    { name: "Home", href: "/home", icon: <FaHome /> },
-    { name: "Services", href: "/home/services", icon: <FaCogs /> },
-    { name: "About", href: "/home/about", icon: <FaInfoCircle /> },
-    { name: "Contact", href: "/home/contact", icon: <FaEnvelope /> },
+    { name: 'Home', href: '/home', icon: <FaHome /> },
+    { name: 'Services', href: '/home/services', icon: <FaCogs /> },
+    { name: 'About', href: '/home/about', icon: <FaInfoCircle /> },
+    { name: 'Contact', href: '/home/contact', icon: <FaEnvelope /> },
   ];
 
   const navList = {
@@ -57,12 +57,12 @@ export default function Header() {
               <NavLink
                 key={item.name}
                 to={item.href}
-                end={item.href === "/home"}
+                end={item.href === '/home'}
                 className={({ isActive }) =>
                   `relative font-medium capitalize transition duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-600 after:transition-all after:duration-300 ${
                     isActive
-                      ? "text-blue-600 after:w-full"
-                      : "text-gray-700 hover:text-blue-500 after:w-0 hover:after:w-full"
+                      ? 'text-blue-600 after:w-full'
+                      : 'text-gray-700 hover:text-blue-500 after:w-0 hover:after:w-full'
                   }`
                 }
               >
@@ -99,14 +99,14 @@ export default function Header() {
         <div
           data-testid="mobile-menu"
           className={`fixed top-16 right-0 w-60 rounded-l-lg border-l border-gray-200 bg-white shadow-xl transition-transform duration-500 ease-in-out md:hidden ${
-            isOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+            isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
           }`}
         >
           <ul className="flex flex-col space-y-2 py-4 text-sm font-medium">
             {navItems.map((item) => {
               const isActive =
                 pathname === item.href ||
-                (item.href !== "/" && pathname.startsWith(item.href));
+                (item.href !== '/' && pathname.startsWith(item.href));
 
               return (
                 <li key={item.name}>
@@ -114,8 +114,8 @@ export default function Header() {
                     to={item.href}
                     className={`flex items-center gap-3 rounded-md px-5 py-2 transition-all duration-300 ${
                       isActive
-                        ? "text-black bg-gray-100"
-                        : "text-gray-800 hover:bg-gray-100"
+                        ? 'text-black bg-gray-100'
+                        : 'text-gray-800 hover:bg-gray-100'
                     }`}
                     onClick={() => setIsOpen(false)}
                   >

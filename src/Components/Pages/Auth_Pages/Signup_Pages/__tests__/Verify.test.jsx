@@ -11,7 +11,7 @@ global.fetch = vi.fn();
 vi.stubGlobal('localStorage', {
   getItem: vi.fn(),
   setItem: vi.fn(),
-  removeItem: vi.fn()
+  removeItem: vi.fn(),
 });
 
 // Mock useNavigate from react-router-dom
@@ -45,54 +45,56 @@ describe('Verify component', () => {
   it('shows error when code is not 6 digits', async () => {
     setup();
 
-    const input = screen.getByPlaceholderText("Enter code");
+    const input = screen.getByPlaceholderText('Enter code');
     fireEvent.change(input, { target: { value: '123' } });
 
     const button = screen.getByRole('button');
     fireEvent.click(button);
 
-    expect(await screen.findByText("Enter 6 digit number")).toBeInTheDocument();
+    expect(await screen.findByText('Enter 6 digit number')).toBeInTheDocument();
   });
 
   it('sends request and handles success', async () => {
     localStorage.getItem.mockReturnValue('test@example.com');
     fetch.mockResolvedValueOnce({
       status: 200,
-      json: async () => ({ message: "✅ Email verified successfully!" })
+      json: async () => ({ message: '✅ Email verified successfully!' }),
     });
 
     setup();
 
-    const input = screen.getByPlaceholderText("Enter code");
+    const input = screen.getByPlaceholderText('Enter code');
     fireEvent.change(input, { target: { value: '123456' } });
 
     const button = screen.getByRole('button');
     fireEvent.click(button);
 
     await waitFor(() => {
-      expect(screen.getByText("✅ Email verified successfully!")).toBeInTheDocument();
+      expect(
+        screen.getByText('✅ Email verified successfully!')
+      ).toBeInTheDocument();
     });
 
-    expect(localStorage.removeItem).toHaveBeenCalledWith("email");
+    expect(localStorage.removeItem).toHaveBeenCalledWith('email');
   });
 
   it('shows error on code mismatch', async () => {
     localStorage.getItem.mockReturnValue('test@example.com');
     fetch.mockResolvedValueOnce({
       status: 401,
-      json: async () => ({ message: "Code is not matched" })
+      json: async () => ({ message: 'Code is not matched' }),
     });
 
     setup();
 
-    const input = screen.getByPlaceholderText("Enter code");
+    const input = screen.getByPlaceholderText('Enter code');
     fireEvent.change(input, { target: { value: '999999' } });
 
     const button = screen.getByRole('button');
     fireEvent.click(button);
 
     await waitFor(() => {
-      expect(screen.getByText("❌ Code is not matched")).toBeInTheDocument();
+      expect(screen.getByText('❌ Code is not matched')).toBeInTheDocument();
     });
   });
 
@@ -102,14 +104,14 @@ describe('Verify component', () => {
 
     setup();
 
-    const input = screen.getByPlaceholderText("Enter code");
+    const input = screen.getByPlaceholderText('Enter code');
     fireEvent.change(input, { target: { value: '123456' } });
 
     const button = screen.getByRole('button');
     fireEvent.click(button);
 
     await waitFor(() => {
-      expect(screen.getByText("❌ Server error.")).toBeInTheDocument();
+      expect(screen.getByText('❌ Server error.')).toBeInTheDocument();
     });
   });
 });

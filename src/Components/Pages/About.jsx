@@ -1,7 +1,7 @@
-import React from "react";
-import { ourStory, aboutCards } from "./data/About";
-import { Box } from "./Box/Box";
-import { ProjectsSection } from "./common/ProjectSection";
+import React from 'react';
+import { ourStory, aboutCards } from './data/About';
+import { Box } from './Box/Box';
+import { ProjectsSection } from './common/ProjectSection';
 const AboutSection = ({ showProjects = true }) => {
   return (
     <>
@@ -30,16 +30,16 @@ const AboutSection = ({ showProjects = true }) => {
           <div
             className="group p-6 rounded-[25px] shadow-md mb-12 border-2 border-transparent bg-[#FAFAFA] transition-all duration-300 hover:shadow-xl hover:scale-[1]"
             style={{
-              borderImage: "linear-gradient(to right, #F76680, #57007B) 1",
+              borderImage: 'linear-gradient(to right, #F76680, #57007B) 1',
               borderImageSlice: 1,
             }}
           >
             <h3
               className="font-semibold mb-2 text-lg"
               style={{
-                background: "linear-gradient(to right, #F76680, #57007B)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                background: 'linear-gradient(to right, #F76680, #57007B)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
               }}
             >
               Our Story

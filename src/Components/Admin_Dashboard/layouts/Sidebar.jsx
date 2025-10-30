@@ -10,12 +10,12 @@ import {
   FaBars,
   FaTimes,
   FaFileInvoiceDollar,
-  FaEye 
-} from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { logoutadmin } from "../Pages/Services/Logout";
-import { useNotifications } from "../context/context";
+  FaEye,
+} from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { logoutadmin } from '../Pages/Services/Logout';
+import { useNotifications } from '../context/context';
 export default function UserSidebar() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -23,9 +23,9 @@ export default function UserSidebar() {
 
   const handleLogout = () => {
     if (logoutadmin()) {
-      navigate("/auth/login");
+      navigate('/auth/login');
     } else {
-      navigate("/auth/server-error");
+      navigate('/auth/server-error');
     }
   };
 
@@ -36,12 +36,12 @@ export default function UserSidebar() {
 
   const menuItems = [
     // 📋 PM Panel Routes
-    { label: "Dashboard", icon: <FaHome />, path: "/admin/dashboard" },
-    { label: "Manage Users", icon: <FaTools />, path: "/admin/manage-users" },
-    { label: "All Requests", icon: <FaListAlt />, path: "/admin/allrequests" },
+    { label: 'Dashboard', icon: <FaHome />, path: '/admin/dashboard' },
+    { label: 'Manage Users', icon: <FaTools />, path: '/admin/manage-users' },
+    { label: 'All Requests', icon: <FaListAlt />, path: '/admin/allrequests' },
 
     {
-      label: "Notifications",
+      label: 'Notifications',
       icon: (
         <div className="relative">
           <FaBell />
@@ -52,26 +52,26 @@ export default function UserSidebar() {
           )}
         </div>
       ),
-      path: "/admin/notifications",
+      path: '/admin/notifications',
     },
 
     {
-      label: "Messages",
+      label: 'Messages',
       icon: <FaEnvelopeOpenText />,
-      path: "/admin/messages",
+      path: '/admin/messages',
     },
     {
-      label: "Invoices Generate & Send",
+      label: 'Invoices Generate & Send',
       icon: <FaFileInvoiceDollar />,
-      path: "/admin/invoices-generate",
-    },
-     {
-      label: "View Invoices & Update Status",
-      icon: <FaEye />,
-      path: "/admin/view-invoices-send",
+      path: '/admin/invoices-generate',
     },
     {
-      label: "View Feedback",
+      label: 'View Invoices & Update Status',
+      icon: <FaEye />,
+      path: '/admin/view-invoices-send',
+    },
+    {
+      label: 'View Feedback',
       icon: (
         <div className="relative">
           <FaEnvelopeOpenText className="text-xl" />
@@ -82,14 +82,14 @@ export default function UserSidebar() {
           )}
         </div>
       ),
-      path: "/admin/feedback",
+      path: '/admin/feedback',
     },
 
-    { label: "My Profile", icon: <FaUserCircle />, path: "/admin/profile" },
+    { label: 'My Profile', icon: <FaUserCircle />, path: '/admin/profile' },
     {
-      label: "Change Password",
+      label: 'Change Password',
       icon: <FaKey />,
-      path: "/admin/change-password",
+      path: '/admin/change-password',
     },
   ];
 
@@ -106,7 +106,7 @@ export default function UserSidebar() {
       {/* Sidebar */}
       <div
         className={`fixed top-0 left-0 h-full w-64 bg-gray-800 text-white shadow-md z-40 transform transition-transform duration-300
-        ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
+        ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
       >
         {/* Sidebar Top */}
         <div className="text-2xl font-bold text-center py-4 border-b border-blue-600">

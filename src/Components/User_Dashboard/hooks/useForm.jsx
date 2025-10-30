@@ -1,10 +1,10 @@
 // hooks/useForm.js
-import { useState } from "react";
+import { useState } from 'react';
 
 export const useForm = (initialValues, validateFn) => {
   const [form, setForm] = useState(initialValues);
   const [errors, setErrors] = useState({});
-  const [responseMessage, setResponseMessage] = useState("");
+  const [responseMessage, setResponseMessage] = useState('');
   const [isError, setIsError] = useState(false);
   const [pending, setPending] = useState(false);
 
@@ -15,7 +15,7 @@ export const useForm = (initialValues, validateFn) => {
 
   const handleSubmit = async (e, callback) => {
     e.preventDefault();
-    setResponseMessage("");
+    setResponseMessage('');
 
     const validationErrors = validateFn(form);
     if (Object.keys(validationErrors).length > 0) {
@@ -31,8 +31,8 @@ export const useForm = (initialValues, validateFn) => {
     setIsError(!isSuccess);
     setResponseMessage(
       isSuccess
-        ? "✅ Your feedback has been sent successfully!"
-        : "❌ Server error. Please try again later."
+        ? '✅ Your feedback has been sent successfully!'
+        : '❌ Server error. Please try again later.'
     );
 
     if (isSuccess) {

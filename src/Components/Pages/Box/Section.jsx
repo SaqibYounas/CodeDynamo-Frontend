@@ -1,6 +1,6 @@
-import { Box_Two } from "./Box";
+import { Box_Two } from './Box';
 
-export function Section({ title, boxes, cols = 3, bg = "bg-white" }) {
+export function Section({ title, boxes, cols = 3, bg = 'bg-white' }) {
   return (
     <section className={`py-16 bg-[#F9F9FF]`}>
       <div className="container mx-auto px-4">
@@ -11,10 +11,10 @@ export function Section({ title, boxes, cols = 3, bg = "bg-white" }) {
         <div
           className={`grid gap-8 text-center ${
             cols === 4
-              ? "md:grid-cols-4 sm:grid-cols-2"
+              ? 'md:grid-cols-4 sm:grid-cols-2'
               : cols === 3
-              ? "md:grid-cols-3 sm:grid-cols-2"
-              : "md:grid-cols-2 sm:grid-cols-1"
+                ? 'md:grid-cols-3 sm:grid-cols-2'
+                : 'md:grid-cols-2 sm:grid-cols-1'
           }`}
         >
           {boxes.map((box, index) => (

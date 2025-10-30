@@ -1,12 +1,12 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { BrowserRouter } from "react-router-dom";
-import Signup from "../Signup";
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { BrowserRouter } from 'react-router-dom';
+import Signup from '../Signup';
 
 // 🔁 Mock useNavigate globally
 const mockNavigate = vi.fn();
-vi.mock("react-router-dom", async () => {
-  const actual = await vi.importActual("react-router-dom");
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom');
   return {
     ...actual,
     useNavigate: () => mockNavigate,
@@ -18,14 +18,14 @@ beforeEach(() => {
   global.fetch = vi.fn(() =>
     Promise.resolve({
       status: 201,
-      json: () => Promise.resolve({ message: "Signup successful" }),
+      json: () => Promise.resolve({ message: 'Signup successful' }),
     })
   );
   mockNavigate.mockClear();
 });
 
-describe("Signup Component", () => {
-  test("renders all required fields and buttons", () => {
+describe('Signup Component', () => {
+  test('renders all required fields and buttons', () => {
     render(
       <BrowserRouter>
         <Signup />
@@ -36,10 +36,10 @@ describe("Signup Component", () => {
     expect(screen.getByLabelText(/Full Name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Email/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Password/i)).toBeInTheDocument();
-    expect(screen.getByTitle("icon")).toBeInTheDocument();
+    expect(screen.getByTitle('icon')).toBeInTheDocument();
   });
 
-  test("navigates to login when clicking Login", async () => {
+  test('navigates to login when clicking Login', async () => {
     render(
       <BrowserRouter>
         <Signup />
@@ -47,13 +47,13 @@ describe("Signup Component", () => {
     );
 
     const user = userEvent.setup();
-    const loginButton = screen.getByText("Have you Account?Login");
+    const loginButton = screen.getByText('Have you Account?Login');
     await user.click(loginButton);
 
-    expect(mockNavigate).toHaveBeenCalledWith("/auth/login");
+    expect(mockNavigate).toHaveBeenCalledWith('/auth/login');
   });
 
-  test("fills the form fields correctly", async () => {
+  test('fills the form fields correctly', async () => {
     render(
       <BrowserRouter>
         <Signup />
@@ -61,18 +61,16 @@ describe("Signup Component", () => {
     );
     const user = userEvent.setup();
 
-    await user.type(screen.getByLabelText(/Full Name/i), "Saqib Rana");
-    await user.type(screen.getByLabelText(/Email/i), "test@email.com");
-    await user.type(screen.getByLabelText(/Password/i), "pass@1234");
+    await user.type(screen.getByLabelText(/Full Name/i), 'Saqib Rana');
+    await user.type(screen.getByLabelText(/Email/i), 'test@email.com');
+    await user.type(screen.getByLabelText(/Password/i), 'pass@1234');
 
-    expect(screen.getByLabelText(/Full Name/i)).toHaveValue("Saqib Rana");
-    expect(screen.getByLabelText(/Email/i)).toHaveValue("test@email.com");
-    expect(screen.getByLabelText(/Password/i)).toHaveValue("pass@1234");
+    expect(screen.getByLabelText(/Full Name/i)).toHaveValue('Saqib Rana');
+    expect(screen.getByLabelText(/Email/i)).toHaveValue('test@email.com');
+    expect(screen.getByLabelText(/Password/i)).toHaveValue('pass@1234');
   });
 
- 
-
-  test("submits the form and calls fetch with correct data", async () => {
+  test('submits the form and calls fetch with correct data', async () => {
     render(
       <BrowserRouter>
         <Signup />
@@ -80,11 +78,11 @@ describe("Signup Component", () => {
     );
     const user = userEvent.setup();
 
-    await user.type(screen.getByLabelText(/Full Name/i), "Saqib Rana");
-    await user.type(screen.getByLabelText(/Email/i), "test@email.com");
-    await user.type(screen.getByLabelText(/Password/i), "pass@1234");
+    await user.type(screen.getByLabelText(/Full Name/i), 'Saqib Rana');
+    await user.type(screen.getByLabelText(/Email/i), 'test@email.com');
+    await user.type(screen.getByLabelText(/Password/i), 'pass@1234');
 
-    const signupButton = screen.getByTestId("signup");
+    const signupButton = screen.getByTestId('signup');
     await user.click(signupButton);
 
     // await waitFor(() => {

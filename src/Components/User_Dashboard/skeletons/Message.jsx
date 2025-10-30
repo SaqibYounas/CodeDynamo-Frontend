@@ -10,10 +10,7 @@ export function ChatSkeleton() {
       {/* Messages Skeleton (Straight Right-Aligned Lines) */}
       <div className="flex-1 p-4 overflow-y-auto bg-gray-50 space-y-4 animate-pulse">
         {[...Array(10)].map((_, i) => (
-          <div
-            key={i}
-            className="flex justify-end"
-          >
+          <div key={i} className="flex justify-end">
             <div className="h-12  bg-gray-300 rounded-xl w-110"></div>
           </div>
         ))}

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useNotifications } from "../context/context";
-import { formatDate } from "./utils/formatDate";
-import { FaWhatsapp, FaRegCopy } from "react-icons/fa";
-import { handleCopy, handleShare } from "./utils/createMessage";
-import ManageUsersSkeleton from "../skeletons/ManageUsers"; // Reuse skeleton if similar
-import { Pagination } from "../hooks/Pagination";
-import { updateServicesByAdmin } from "./Services/updateServicebyAdmin";
+import React, { useState, useEffect } from 'react';
+import { useNotifications } from '../context/context';
+import { formatDate } from './utils/formatDate';
+import { FaWhatsapp, FaRegCopy } from 'react-icons/fa';
+import { handleCopy, handleShare } from './utils/createMessage';
+import ManageUsersSkeleton from '../skeletons/ManageUsers'; // Reuse skeleton if similar
+import { Pagination } from '../hooks/Pagination';
+import { updateServicesByAdmin } from './Services/updateServicebyAdmin';
 function AllRequests() {
   const [requests, setRequests] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [selectedDescription, setSelectedDescription] = useState("");
+  const [selectedDescription, setSelectedDescription] = useState('');
   const { services, getUserServicesStatus } = useNotifications();
   const [loading, setLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
@@ -26,10 +26,10 @@ function AllRequests() {
     setLoading(false);
   }
   useEffect(() => {
-  if (services.length > 0) {
-    setRequests(services); // ✅ yahan updated services milengi
-  }
-}, [services]);
+    if (services.length > 0) {
+      setRequests(services); // ✅ yahan updated services milengi
+    }
+  }, [services]);
 
   const updateStatus = async (id, newStatus) => {
     setRequests((prev) =>
@@ -39,28 +39,28 @@ function AllRequests() {
     );
     try {
       const res = await updateServicesByAdmin(id, newStatus, page);
-      if (res === "Status updated successfully") {
+      if (res === 'Status updated successfully') {
         console.log(res);
       } else {
-        console.error("DB update failed");
+        console.error('DB update failed');
       }
     } catch (err) {
-      console.error("Update failed", err);
+      console.error('Update failed', err);
     }
   };
 
   const getStatusClass = (status) => {
     switch (status) {
-      case "Approved":
-        return "bg-green-200 text-green-800";
-      case "Rejected":
-        return "bg-red-200 text-red-800";
-      case "Completed":
-        return "bg-yellow-200 text-yellow-800";
-      case "read":
-        return "bg-blue-200 text-blue-800";
+      case 'Approved':
+        return 'bg-green-200 text-green-800';
+      case 'Rejected':
+        return 'bg-red-200 text-red-800';
+      case 'Completed':
+        return 'bg-yellow-200 text-yellow-800';
+      case 'read':
+        return 'bg-blue-200 text-blue-800';
       default:
-        return "bg-gray-200 text-gray-800";
+        return 'bg-gray-200 text-gray-800';
     }
   };
 
@@ -71,7 +71,7 @@ function AllRequests() {
 
   const closeModal = () => {
     setShowModal(false);
-    setSelectedDescription("");
+    setSelectedDescription('');
   };
 
   return (
@@ -97,8 +97,6 @@ function AllRequests() {
             </thead>
             <tbody>
               {requests?.map((req, index) => {
-               
-
                 return (
                   <tr
                     key={index}
@@ -129,32 +127,29 @@ function AllRequests() {
                     <td className="p-2 space-y-1">
                       <div className="flex flex-wrap items-center gap-1 mb-1 cursor-pointer">
                         <button
-                         disabled={req.status == "Approved"}
+                          disabled={req.status == 'Approved'}
                           onClick={() =>
-                            updateStatus(req.requestID, "Approved")
+                            updateStatus(req.requestID, 'Approved')
                           }
                           className="px-2 py-1 text-xs bg-green-500 hover:bg-green-700 text-white rounded cursor-pointer"
-                         
                         >
                           Approve
                         </button>
                         <button
                           onClick={() =>
-                            updateStatus(req.requestID, "Rejected")
+                            updateStatus(req.requestID, 'Rejected')
                           }
                           className="px-2 py-1 text-xs bg-red-500 hover:bg-red-700 text-white rounded cursor-pointer "
-                          disabled={req.status === "Rejected"}
+                          disabled={req.status === 'Rejected'}
                         >
                           Reject
                         </button>
                         <button
                           onClick={() =>
-                            updateStatus(req.requestID, "Completed")
+                            updateStatus(req.requestID, 'Completed')
                           }
                           className="px-2 py-1 text-xs bg-yellow-500 hover:bg-yellow-700 text-white rounded cursor-pointer"
-                          disabled={
-                            req.status === "Completed"
-                          }
+                          disabled={req.status === 'Completed'}
                         >
                           Completed
                         </button>

@@ -1,5 +1,5 @@
-import React from "react";
-import { FaBell } from "react-icons/fa";
+import React from 'react';
+import { FaBell } from 'react-icons/fa';
 
 const NotificationsSkeleton = ({ count = 6 }) => {
   const items = Array.from({ length: count });

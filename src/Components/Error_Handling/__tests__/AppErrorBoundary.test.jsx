@@ -19,6 +19,8 @@ describe('AppErrorBoundary', () => {
     // Check if fallback UI is shown
     expect(screen.getByText(/Something went wrong/i)).toBeInTheDocument();
     expect(screen.getByText(/Test error/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Try Again/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /Try Again/i })
+    ).toBeInTheDocument();
   });
 });

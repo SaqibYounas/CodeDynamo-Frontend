@@ -8,7 +8,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.10",
@@ -41,6 +43,7 @@
     "eslint": "^9.25.0",
     "jest": "^30.0.0",
     "msw": "^2.10.4",
+    "prettier": "3.6.2",
     "vite": "^6.3.5",
     "vitest": "^3.2.3"
   }

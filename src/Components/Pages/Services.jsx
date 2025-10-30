@@ -1,7 +1,7 @@
-import { ProfilerWrapper } from "./utils/Profiler";
-import { staticServices } from "./data/Services";
-import { Box } from "./Box/Box";
-import { TechStack } from "./Box/TeachStack";
+import { ProfilerWrapper } from './utils/Profiler';
+import { staticServices } from './data/Services';
+import { Box } from './Box/Box';
+import { TechStack } from './Box/TeachStack';
 
 function Services({ showTechStack = true }) {
   return (
@@ -12,7 +12,7 @@ function Services({ showTechStack = true }) {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-800 inline-flex items-center justify-center gap-2">
                 Our Services
-              </h2> 
+              </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-6">

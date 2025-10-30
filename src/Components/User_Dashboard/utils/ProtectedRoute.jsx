@@ -1,8 +1,8 @@
 // components/ProtectedRoute.jsx
-import { Navigate, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { isAuthenticated } from "./auth";
-import Loader from "../Layout/Loader";
+import { Navigate, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { isAuthenticated } from './auth';
+import Loader from '../Layout/Loader';
 
 export default function ProtectedRoute({ children }) {
   const [auth, setAuth] = useState(null);
@@ -11,18 +11,16 @@ export default function ProtectedRoute({ children }) {
   useEffect(() => {
     async function checkAuth() {
       const res = await isAuthenticated();
-      console.log("isAuthenticated result:", res);
+      console.log('isAuthenticated result:', res);
       setAuth(res); // 1 = allowed, 0 = not allowed
     }
-    console.log("Children received in ProtectedRoute:", children);
+    console.log('Children received in ProtectedRoute:', children);
 
     checkAuth();
   }, [location.pathname]);
 
   if (auth === null) {
-    return (
-     <Loader/>
-    );
+    return <Loader />;
   }
 
   // If not authenticated, redirect to login

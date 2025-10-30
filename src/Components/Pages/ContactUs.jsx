@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
-import { ProfilerWrapper } from "./utils/Profiler";
-import { contactData } from "./data/Contact";
+import { Link } from 'react-router-dom';
+import { ProfilerWrapper } from './utils/Profiler';
+import { contactData } from './data/Contact';
 
 function Contact() {
-  const isAuthenticated = localStorage.getItem("token");
+  const isAuthenticated = localStorage.getItem('token');
   const Icon = contactData.icon;
 
   return (
@@ -12,7 +12,7 @@ function Contact() {
         <div
           className="p-6 sm:p-10 bg-[#FAFAFA] rounded-[25px] sm:rounded-[35px] shadow-lg hover:shadow-2xl transition-all duration-300 w-full max-w-md sm:max-w-xl md:max-w-2xl text-center border"
           style={{
-            borderImage: "linear-gradient(to top, #F76680, #57007B) 1",
+            borderImage: 'linear-gradient(to top, #F76680, #57007B) 1',
             borderImageSlice: 1,
           }}
         >
@@ -24,9 +24,9 @@ function Contact() {
 
           <h2
             style={{
-              background: "linear-gradient(to right, #F76680, #57007B)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
+              background: 'linear-gradient(to right, #F76680, #57007B)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
             }}
             className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4"
           >
@@ -34,8 +34,8 @@ function Contact() {
           </h2>
 
           <p className="text-gray-700 text-base sm:text-lg md:text-xl leading-relaxed mb-8 text-justify sm:text-center whitespace-pre-line px-2 sm:px-4">
-            This platform is proudly developed by{" "}
-            <strong>{contactData.developer}</strong> and our expert team at{" "}
+            This platform is proudly developed by{' '}
+            <strong>{contactData.developer}</strong> and our expert team at{' '}
             <span className="bg-gradient-to-r from-[#6675F7] via-[#9E4CC9] to-[#F76680] bg-clip-text text-transparent font-semibold">
               {contactData.team}
             </span>

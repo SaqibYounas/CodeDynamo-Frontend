@@ -1,13 +1,12 @@
-import { url } from "./Port";
+import { url } from './Port';
 
 export async function saveProfile({ phone, city, country }) {
-
   try {
     let response = await fetch(`${url}/admin/profile/datasave`, {
-      method: "POST",
-      credentials: "include",
+      method: 'POST',
+      credentials: 'include',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
       body: JSON.stringify({
         phone: phone,
@@ -22,7 +21,7 @@ export async function saveProfile({ phone, city, country }) {
       return data.message;
     }
   } catch (error) {
-    console.log("profile save error", error);
+    console.log('profile save error', error);
     return 0;
   }
 }

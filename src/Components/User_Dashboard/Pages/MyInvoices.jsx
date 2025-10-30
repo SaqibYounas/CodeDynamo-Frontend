@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { FaDownload, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
-import { getInvoicesData } from "./Services/getInvoicesData";
-import InvoicesSkelton from "../skeletons/Invoices";
-import { downloadInvoice } from "./Services/downloadInvoice";
-import { useNotifications } from "../context/context";
+import React, { useEffect, useState } from 'react';
+import { FaDownload, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import { getInvoicesData } from './Services/getInvoicesData';
+import InvoicesSkelton from '../skeletons/Invoices';
+import { downloadInvoice } from './Services/downloadInvoice';
+import { useNotifications } from '../context/context';
 function MyInvoices() {
   const [invoices, setInvoices] = useState([]);
   const [loading, setLoading] = useState(false);
   const [downloadId, setDownloadId] = useState(null);
-  const {invoice}=useNotifications();
-  useEffect(() => {
-    getInvoices();
-  }, [],[invoice]);
+  const { invoice } = useNotifications();
+  useEffect(
+    () => {
+      getInvoices();
+    },
+    [],
+    [invoice]
+  );
 
   async function getInvoices() {
     try {
@@ -36,7 +40,7 @@ function MyInvoices() {
       let InvoiceIDs = `${name}_${requestID}_${invoiceID}`;
       await downloadInvoice(InvoiceIDs);
     } catch (error) {
-      console.log("Download error", error);
+      console.log('Download error', error);
     } finally {
       setDownloadId(null);
     }
@@ -77,12 +81,12 @@ function MyInvoices() {
                   <td className="py-3 px-4 border-b">
                     <span
                       className={`px-2 py-1 rounded-full text-white flex items-center gap-1 ${
-                        inv.status.toLowerCase() === "paid"
-                          ? "bg-green-500"
-                          : "bg-yellow-500"
+                        inv.status.toLowerCase() === 'paid'
+                          ? 'bg-green-500'
+                          : 'bg-yellow-500'
                       }`}
                     >
-                      {inv.status.toLowerCase() === "paid" ? (
+                      {inv.status.toLowerCase() === 'paid' ? (
                         <FaCheckCircle />
                       ) : (
                         <FaTimesCircle />
@@ -96,8 +100,8 @@ function MyInvoices() {
                       title="Download PDF"
                       className={`h-8 px-2 rounded flex items-center justify-center gap-2 text-white text-sm ${
                         downloadId === inv.invoiceNumber
-                          ? "bg-stone-600 cursor-not-allowed"
-                          : "bg-blue-600 hover:bg-blue-700 cursor-pointer"
+                          ? 'bg-stone-600 cursor-not-allowed'
+                          : 'bg-blue-600 hover:bg-blue-700 cursor-pointer'
                       }`}
                       onClick={() =>
                         downloadInvoices(
@@ -108,7 +112,7 @@ function MyInvoices() {
                       }
                     >
                       <FaDownload className="text-base" />
-                      {downloadId === inv.invoiceNumber ? "Downloading" : "PDF"}
+                      {downloadId === inv.invoiceNumber ? 'Downloading' : 'PDF'}
                     </button>
                   </td>
                 </tr>

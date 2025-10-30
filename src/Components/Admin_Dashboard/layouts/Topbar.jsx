@@ -1,5 +1,11 @@
 // components/Topbar.jsx
-import { FaSearch, FaUserCircle, FaBell, FaSignOutAlt, FaTachometerAlt } from 'react-icons/fa';
+import {
+  FaSearch,
+  FaUserCircle,
+  FaBell,
+  FaSignOutAlt,
+  FaTachometerAlt,
+} from 'react-icons/fa';
 
 export default function Topbar() {
   return (

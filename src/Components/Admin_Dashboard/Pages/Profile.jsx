@@ -1,16 +1,16 @@
-import React, { useState, useRef, useEffect } from "react";
-import { saveProfile } from "./Services/ProfilesaveAPI";
-import { getProfileData } from "./Services/profilegetAPI";
-import { useLoader } from "../context/Loaders";
+import React, { useState, useRef, useEffect } from 'react';
+import { saveProfile } from './Services/ProfilesaveAPI';
+import { getProfileData } from './Services/profilegetAPI';
+import { useLoader } from '../context/Loaders';
 export default function MyProfile() {
   const [editMode, setEditMode] = useState(false);
   const [pending, setPending] = useState(false);
-  const { showLoader,hideLoader  } = useLoader();
+  const { showLoader, hideLoader } = useLoader();
   const [errors, setErrors] = useState({
-    phone: "",
-    city: "",
-    country: "",
-    responseAPI: "",
+    phone: '',
+    city: '',
+    country: '',
+    responseAPI: '',
   });
 
   const phoneRef = useRef(null);
@@ -29,51 +29,51 @@ export default function MyProfile() {
     console.log(callAPI);
     if (callAPI) {
       const { name, email, phone, city, country } = callAPI.data;
-      nameRef.current.value = name || "";
-      emailRef.current.value = email || "";
-      phoneRef.current.value = phone || "";
-      cityRef.current.value = city || "";
-      countryRef.current.value = country || "";
+      nameRef.current.value = name || '';
+      emailRef.current.value = email || '';
+      phoneRef.current.value = phone || '';
+      cityRef.current.value = city || '';
+      countryRef.current.value = country || '';
       hideLoader();
     } else {
-      nameRef.current.value = "";
-      emailRef.current.value = "";
-      phoneRef.current.value = "";
-      cityRef.current.value = "";
-      countryRef.current.value = "";
+      nameRef.current.value = '';
+      emailRef.current.value = '';
+      phoneRef.current.value = '';
+      cityRef.current.value = '';
+      countryRef.current.value = '';
       hideLoader();
     }
   };
 
   const validateForm = () => {
-    const phone = phoneRef.current?.value.trim() || "";
-    const city = cityRef.current?.value.trim() || "";
-    const country = countryRef.current?.value.trim() || "";
+    const phone = phoneRef.current?.value.trim() || '';
+    const city = cityRef.current?.value.trim() || '';
+    const country = countryRef.current?.value.trim() || '';
 
     let valid = true;
-    let newErrors = { phone: "", city: "", country: "", responseAPI: "" };
+    let newErrors = { phone: '', city: '', country: '', responseAPI: '' };
 
     if (!phone) {
-      newErrors.phone = "Phone is required.";
+      newErrors.phone = 'Phone is required.';
       valid = false;
     } else if (!/^\d+$/.test(phone)) {
-      newErrors.phone = "Phone must be digits only.";
+      newErrors.phone = 'Phone must be digits only.';
       valid = false;
     }
 
     if (!city) {
-      newErrors.city = "City is required.";
+      newErrors.city = 'City is required.';
       valid = false;
     } else if (!/^[A-Za-z ]+$/.test(city)) {
-      newErrors.city = "Only characters allowed.";
+      newErrors.city = 'Only characters allowed.';
       valid = false;
     }
 
     if (!country) {
-      newErrors.country = "Country is required.";
+      newErrors.country = 'Country is required.';
       valid = false;
     } else if (!/^[A-Za-z ]+$/.test(country)) {
-      newErrors.country = "Only characters allowed.";
+      newErrors.country = 'Only characters allowed.';
       valid = false;
     }
 
@@ -104,12 +104,12 @@ export default function MyProfile() {
     if (!callAPISaveProfile) {
       setErrors((prev) => ({
         ...prev,
-        responseAPI: "Server Error! Try Again",
+        responseAPI: 'Server Error! Try Again',
       }));
     } else {
       setErrors((prev) => ({
         ...prev,
-        responseAPI: "Profile updated successfully!",
+        responseAPI: 'Profile updated successfully!',
       }));
     }
 
@@ -156,7 +156,7 @@ export default function MyProfile() {
               disabled={!editMode}
               placeholder="Add phone number"
               className={`w-full border px-3 py-2 rounded mt-1 ${
-                editMode ? "" : "bg-gray-100"
+                editMode ? '' : 'bg-gray-100'
               }`}
             />
             {errors.phone && (
@@ -176,7 +176,7 @@ export default function MyProfile() {
               disabled={!editMode}
               placeholder="Add your city"
               className={`w-full border px-3 py-2 rounded mt-1 ${
-                editMode ? "" : "bg-gray-100"
+                editMode ? '' : 'bg-gray-100'
               }`}
             />
             {errors.city && (
@@ -196,7 +196,7 @@ export default function MyProfile() {
               disabled={!editMode}
               placeholder="Add your country"
               className={`w-full border px-3 py-2 rounded mt-1 ${
-                editMode ? "" : "bg-gray-100"
+                editMode ? '' : 'bg-gray-100'
               }`}
             />
             {errors.country && (
@@ -229,11 +229,11 @@ export default function MyProfile() {
               onClick={handleUpdate}
               className={`px-4 py-2 rounded text-white cursor-pointer ${
                 pending
-                  ? "bg-blue-300 cursor-not-allowed"
-                  : "bg-blue-600 hover:bg-blue-700"
+                  ? 'bg-blue-300 cursor-not-allowed'
+                  : 'bg-blue-600 hover:bg-blue-700'
               }`}
             >
-              {pending ? "Updating..." : "Update Profile"}
+              {pending ? 'Updating...' : 'Update Profile'}
             </button>
           )}
         </div>

@@ -24,25 +24,35 @@ describe('ForgotPassword (Vitest)', () => {
     render(<ForgotPassword />, { wrapper: MemoryRouter });
 
     expect(screen.getByLabelText(/Email Address/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Verify Email/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /Verify Email/i })
+    ).toBeInTheDocument();
   });
 
   it('shows error message if email is not registered', async () => {
     global.fetch = vi.fn(() =>
       Promise.resolve({
         status: 200,
-        json: () => Promise.resolve({
-          message: 'Not registered Email! Please Signup.',
-        }),
+        json: () =>
+          Promise.resolve({
+            message: 'Not registered Email! Please Signup.',
+          }),
       })
     );
 
     render(<ForgotPassword />, { wrapper: MemoryRouter });
 
-    await userEvent.type(screen.getByLabelText(/Email Address/i), 'notfound@example.com');
-    await userEvent.click(screen.getByRole('button', { name: /Verify Email/i }));
+    await userEvent.type(
+      screen.getByLabelText(/Email Address/i),
+      'notfound@example.com'
+    );
+    await userEvent.click(
+      screen.getByRole('button', { name: /Verify Email/i })
+    );
 
-    expect(await screen.findByText(/Not registered Email/i)).toBeInTheDocument();
+    expect(
+      await screen.findByText(/Not registered Email/i)
+    ).toBeInTheDocument();
     expect(mockNavigate).not.toHaveBeenCalled();
   });
 
@@ -50,19 +60,27 @@ describe('ForgotPassword (Vitest)', () => {
     global.fetch = vi.fn(() =>
       Promise.resolve({
         status: 200,
-        json: () => Promise.resolve({
-          message: 'Email Found',
-        }),
+        json: () =>
+          Promise.resolve({
+            message: 'Email Found',
+          }),
       })
     );
 
     render(<ForgotPassword />, { wrapper: MemoryRouter });
 
-    await userEvent.type(screen.getByLabelText(/Email Address/i), 'user@example.com');
-    await userEvent.click(screen.getByRole('button', { name: /Verify Email/i }));
+    await userEvent.type(
+      screen.getByLabelText(/Email Address/i),
+      'user@example.com'
+    );
+    await userEvent.click(
+      screen.getByRole('button', { name: /Verify Email/i })
+    );
 
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('/auth/resetpassword?email=user@example.com');
+      expect(mockNavigate).toHaveBeenCalledWith(
+        '/auth/resetpassword?email=user@example.com'
+      );
     });
   });
 
@@ -70,19 +88,28 @@ describe('ForgotPassword (Vitest)', () => {
     global.fetch = vi.fn(() =>
       Promise.resolve({
         status: 200,
-        json: () => Promise.resolve({
-          message: 'This user is registered via Google. Please set a website password first.',
-          googleAccount: true,
-        }),
+        json: () =>
+          Promise.resolve({
+            message:
+              'This user is registered via Google. Please set a website password first.',
+            googleAccount: true,
+          }),
       })
     );
 
     render(<ForgotPassword />, { wrapper: MemoryRouter });
 
-    await userEvent.type(screen.getByLabelText(/Email Address/i), 'googleuser@example.com');
-    await userEvent.click(screen.getByRole('button', { name: /Verify Email/i }));
+    await userEvent.type(
+      screen.getByLabelText(/Email Address/i),
+      'googleuser@example.com'
+    );
+    await userEvent.click(
+      screen.getByRole('button', { name: /Verify Email/i })
+    );
 
-    expect(await screen.findByText(/registered via Google/i)).toBeInTheDocument();
+    expect(
+      await screen.findByText(/registered via Google/i)
+    ).toBeInTheDocument();
     expect(mockNavigate).not.toHaveBeenCalled();
   });
 });

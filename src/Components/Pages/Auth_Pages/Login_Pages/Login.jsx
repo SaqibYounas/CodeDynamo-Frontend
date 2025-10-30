@@ -266,26 +266,26 @@
 // }
 
 // export default Login;
-"use client";
-import { useNavigate } from "react-router-dom";
-import { useRef, useState, useEffect } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { url } from "./Port";
-import { ProfilerWrapper } from "../../utils/Profiler";
+'use client';
+import { useNavigate } from 'react-router-dom';
+import { useRef, useState, useEffect } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { url } from './Port';
+import { ProfilerWrapper } from '../../utils/Profiler';
 
 function Login() {
   const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const [response, setresponse] = useState("");
+  const [response, setresponse] = useState('');
   const [pending, setPending] = useState(false);
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const formKey = "login-form";
+  const formKey = 'login-form';
 
   useEffect(() => {
     const itemStr = localStorage.getItem(formKey);
@@ -299,7 +299,7 @@ function Login() {
   }, []);
 
   const handleBlur = () => {
-    const data = { email: emailRef.current?.value || "" };
+    const data = { email: emailRef.current?.value || '' };
     const withExpiry = { value: data, expiry: Date.now() + 900 * 1000 };
     localStorage.setItem(formKey, JSON.stringify(withExpiry));
   };
@@ -313,21 +313,21 @@ function Login() {
     const email = emailRef.current.value.trim();
     const password = passwordRef.current.value.trim();
 
-    setPasswordError("");
-    setEmailError("");
+    setPasswordError('');
+    setEmailError('');
 
     if (!email) {
-      setEmailError("Please enter your email.");
+      setEmailError('Please enter your email.');
       emailRef.current.focus();
       return;
     }
     if (!password) {
-      setPasswordError("Please enter your password.");
+      setPasswordError('Please enter your password.');
       passwordRef.current.focus();
       return;
     }
     if (!email.match(/^\S+@\S+\.\S+$/)) {
-      setEmailError("Please enter a valid email address.");
+      setEmailError('Please enter a valid email address.');
       emailRef.current.focus();
       return;
     }
@@ -336,26 +336,28 @@ function Login() {
 
     try {
       const res = await fetch(`${url}/auth/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ email, password }),
       });
 
       const data = await res.json();
 
-      if (res.status === 400 && data.message === "Password does not match.") {
+      if (res.status === 400 && data.message === 'Password does not match.') {
         setPasswordError(data.message);
-      } else if (res.status === 400 && data.message === "Email not found") {
+      } else if (res.status === 400 && data.message === 'Email not found') {
         setEmailError(data.message);
       } else if (res.status === 200) {
-        navigate(data.role === "admin" ? "/admin/dashboard" : "/user/dashboard");
+        navigate(
+          data.role === 'admin' ? '/admin/dashboard' : '/user/dashboard'
+        );
         localStorage.removeItem(formKey);
       } else {
-        setresponse(data.message || "Unknown server response.");
+        setresponse(data.message || 'Unknown server response.');
       }
     } catch (error) {
-      setresponse("Network error! Please try again later.");
+      setresponse('Network error! Please try again later.');
     } finally {
       setPending(false);
     }
@@ -369,7 +371,6 @@ function Login() {
   return (
     <ProfilerWrapper id="Login">
       <div className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center bg-[#F9F9FF] px-4 sm:px-8 lg:px-16 py-8 lg:py-12 gap-6 lg:gap-10">
-
         <div className="w-full lg:w-1/2 max-w-md flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">Login now</h2>
           <p className="text-gray-600 mb-6">Hi, Welcome back 👋</p>
@@ -409,8 +410,8 @@ function Login() {
                 required
                 onBlur={handleBlur}
                 onChange={() => {
-                  setEmailError("");
-                  setresponse("");
+                  setEmailError('');
+                  setresponse('');
                 }}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                 ref={emailRef}
@@ -428,13 +429,13 @@ function Login() {
               </label>
               <div className="relative">
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
                   id="password"
                   placeholder="Enter your password"
                   required
                   onChange={() => {
-                    setPasswordError("");
-                    setresponse("");
+                    setPasswordError('');
+                    setresponse('');
                   }}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   ref={passwordRef}
@@ -471,19 +472,19 @@ function Login() {
               disabled={pending}
               className={`w-full py-2 rounded-lg transition duration-300 ${
                 pending
-                  ? "bg-gray-400 cursor-progress"
-                  : "bg-[#474BCA] hover:bg-blue-700 text-white cursor-pointer"
+                  ? 'bg-gray-400 cursor-progress'
+                  : 'bg-[#474BCA] hover:bg-blue-700 text-white cursor-pointer'
               }`}
             >
-              {pending ? "Logging..." : "Login"}
+              {pending ? 'Logging...' : 'Login'}
             </button>
 
             {response && (
               <p
                 className={`mt-4 text-center text-sm font-medium ${
-                  response.toLowerCase().includes("successful")
-                    ? "text-green-600"
-                    : "text-red-600"
+                  response.toLowerCase().includes('successful')
+                    ? 'text-green-600'
+                    : 'text-red-600'
                 }`}
               >
                 {response}

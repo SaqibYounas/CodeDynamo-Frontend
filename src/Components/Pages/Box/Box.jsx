@@ -3,7 +3,7 @@ export function Box({ icon, image, title, description }) {
     <div
       className="group p-6 rounded-[35px] shadow-md border bg-[#FAFAFA] text-center flex flex-col items-center transition-all duration-300 hover:shadow-xl hover:scale-[1]"
       style={{
-        borderImage: "linear-gradient(to top, #F76680, #57007B) 1",
+        borderImage: 'linear-gradient(to top, #F76680, #57007B) 1',
       }}
     >
       <div className="flex justify-center mb-3">
@@ -20,9 +20,9 @@ export function Box({ icon, image, title, description }) {
 
       <h2
         style={{
-          background: "linear-gradient(to right, #F76680, #57007B)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+          background: 'linear-gradient(to right, #F76680, #57007B)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
         }}
         className="text-xl font-bold mb-2"
       >
@@ -40,7 +40,7 @@ export function Box_Two({ icon, title, description }) {
       className="group p-6 rounded-[35px] shadow-md bg-[#FAFAFA] text-center flex flex-col items-center 
       transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border"
       style={{
-        borderImage: "linear-gradient(to top, #F76680, #57007B) 1",
+        borderImage: 'linear-gradient(to top, #F76680, #57007B) 1',
         borderImageSlice: 1,
       }}
     >
@@ -53,9 +53,9 @@ export function Box_Two({ icon, title, description }) {
 
       <h2
         style={{
-          background: "linear-gradient(to right, #F76680, #57007B)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+          background: 'linear-gradient(to right, #F76680, #57007B)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
         }}
         className="text-xl font-bold mb-2"
       >

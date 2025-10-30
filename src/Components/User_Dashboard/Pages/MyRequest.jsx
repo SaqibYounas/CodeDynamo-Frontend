@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { FaClock, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
-import { useNotifications } from "../context/context";
-import { formatDate } from "../utils/formatDate";
-import RequestsSkeleton from "../skeletons/MyRequest"; // ✅ Import skeleton
-import { ProfilerWrapper } from "../utils/Profiler";
+import React, { useEffect, useState } from 'react';
+import { FaClock, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import { useNotifications } from '../context/context';
+import { formatDate } from '../utils/formatDate';
+import RequestsSkeleton from '../skeletons/MyRequest'; // ✅ Import skeleton
+import { ProfilerWrapper } from '../utils/Profiler';
 
 const statusColor = {
-  pending: "text-slate-500",
-  Approved: "text-green-500",
-  Rejected: "text-red-500",
-  Completed: "text-yellow-500",
+  pending: 'text-slate-500',
+  Approved: 'text-green-500',
+  Rejected: 'text-red-500',
+  Completed: 'text-yellow-500',
 };
 
 const statusIcon = {

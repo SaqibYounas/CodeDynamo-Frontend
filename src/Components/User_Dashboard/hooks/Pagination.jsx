@@ -1,5 +1,5 @@
 // src/components/common/Pagination.jsx
-import React from "react";
+import React from 'react';
 
 export function Pagination({ page, totalPages, setPage }) {
   return (

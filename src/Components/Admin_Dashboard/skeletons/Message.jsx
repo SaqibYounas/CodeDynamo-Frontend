@@ -1,14 +1,10 @@
 export function ChatSkeleton() {
   return (
     <div className="h-full flex flex-col">
-
       {/* Messages Skeleton (Straight Right-Aligned Lines) */}
       <div className="flex-1 p-4 overflow-y-auto bg-gray-50 space-y-4 animate-pulse">
         {[...Array(10)].map((_, i) => (
-          <div
-            key={i}
-            className="flex justify-end"
-          >
+          <div key={i} className="flex justify-end">
             <div className="h-12  bg-gray-300 rounded-xl w-110"></div>
           </div>
         ))}
@@ -23,7 +19,6 @@ export function ChatSkeleton() {
   );
 }
 
-
 // 🆕 Sidebar Skeleton
 export function SidebarSkeleton() {
   return (
@@ -37,10 +32,7 @@ export function SidebarSkeleton() {
       {/* User List Skeleton */}
       <div className="animate-pulse">
         {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="p-4 border-b flex items-center gap-2"
-          >
+          <div key={i} className="p-4 border-b flex items-center gap-2">
             <div className="h-5 bg-gray-300 rounded w-32"></div>
           </div>
         ))}

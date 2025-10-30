@@ -1,23 +1,23 @@
-import { url } from "./Port";
+import { url } from './Port';
 
 const FormApi = async (formData) => {
   try {
-   const response = await fetch(`${url}/user/service-request`, {
-      method: "POST",
+    const response = await fetch(`${url}/user/service-request`, {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      credentials: "include",
+      credentials: 'include',
       body: JSON.stringify(formData),
     });
 
     const result = await response.json();
-    if (response.status===201){
-    return 1;
-  }
+    if (response.status === 201) {
+      return 1;
+    }
     return 0;
   } catch (error) {
-    console.error("Form API Error:", error.message);
+    console.error('Form API Error:', error.message);
     return null;
   }
 };

@@ -12,13 +12,13 @@ import {
   FaFileInvoice,
   FaUser,
   FaCommentDots,
-} from "react-icons/fa";
+} from 'react-icons/fa';
 
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-import { logoutUser } from "../Pages/Services/Logout";
-import { useNotifications } from "../context/context";
-import { ProfilerWrapper } from "../utils/Profiler";
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { logoutUser } from '../Pages/Services/Logout';
+import { useNotifications } from '../context/context';
+import { ProfilerWrapper } from '../utils/Profiler';
 export default function UserSidebar() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -26,9 +26,9 @@ export default function UserSidebar() {
 
   const handleLogout = () => {
     if (logoutUser()) {
-      navigate("/auth/login");
+      navigate('/auth/login');
     } else {
-      navigate("/auth/server-error");
+      navigate('/auth/server-error');
     }
   };
 
@@ -42,15 +42,15 @@ export default function UserSidebar() {
   }, []);
 
   const menuItems = [
-    { label: "Dashboard", icon: <FaHome />, path: "/user/dashboard" },
+    { label: 'Dashboard', icon: <FaHome />, path: '/user/dashboard' },
     {
-      label: "Request Service",
+      label: 'Request Service',
       icon: <FaTools />,
-      path: "/user/requestservice",
+      path: '/user/requestservice',
     },
-    { label: "My Requests", icon: <FaListAlt />, path: "/user/requests" },
+    { label: 'My Requests', icon: <FaListAlt />, path: '/user/requests' },
     {
-      label: "Notifications",
+      label: 'Notifications',
       icon: (
         <div className="relative">
           <FaBell />
@@ -61,11 +61,11 @@ export default function UserSidebar() {
           )}
         </div>
       ),
-      path: "/user/notifications",
+      path: '/user/notifications',
     },
-    { label: "Messages", icon: <FaEnvelopeOpenText />, path: "/user/messages" },
+    { label: 'Messages', icon: <FaEnvelopeOpenText />, path: '/user/messages' },
     {
-      label: "My Invoices",
+      label: 'My Invoices',
       icon: (
         <div className="relative">
           <FaFileInvoice />
@@ -76,19 +76,19 @@ export default function UserSidebar() {
           )}
         </div>
       ),
-      path: "/user/my-invoices",
+      path: '/user/my-invoices',
     },
     ,
     {
-      label: "Feedback",
+      label: 'Feedback',
       icon: <FaCommentDots />,
-      path: "/user/feedback",
+      path: '/user/feedback',
     },
-    { label: "My Profile", icon: <FaUserCircle />, path: "/user/profile" },
+    { label: 'My Profile', icon: <FaUserCircle />, path: '/user/profile' },
     {
-      label: "Change Password",
+      label: 'Change Password',
       icon: <FaKey />,
-      path: "/user/change-password",
+      path: '/user/change-password',
     },
   ];
 
@@ -106,7 +106,7 @@ export default function UserSidebar() {
         {/* Sidebar */}
         <div
           className={`fixed top-0 left-0 h-full w-64 bg-gray-800 text-white shadow-md z-40 transform transition-transform duration-300
-        ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
+        ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
         >
           {/* Sidebar Top */}
           <div className="text-2xl font-bold text-center py-4 border-b border-blue-600">

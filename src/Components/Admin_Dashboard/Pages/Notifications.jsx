@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { FaBell } from "react-icons/fa";
-import { useNotifications } from "../context/context";
-import { formatDate } from "./utils/formatDate";
-import NotificationsSkeleton from "../skeletons/Notifications";
-import { Pagination } from "../hooks/Pagination";
+import React, { useEffect, useState } from 'react';
+import { FaBell } from 'react-icons/fa';
+import { useNotifications } from '../context/context';
+import { formatDate } from './utils/formatDate';
+import NotificationsSkeleton from '../skeletons/Notifications';
+import { Pagination } from '../hooks/Pagination';
 
 export default function AdminNotifications() {
   const { markAllRead, fetchNotifications, notifications } = useNotifications();
@@ -22,7 +22,7 @@ export default function AdminNotifications() {
         setTotalPages(res);
       }
     } catch (error) {
-      console.error("Error fetching feedback:", error);
+      console.error('Error fetching feedback:', error);
     } finally {
       setLoading(false);
     }
@@ -35,7 +35,7 @@ export default function AdminNotifications() {
   return (
     <div className="lg:pl-64 md:pl-80 p-6 min-h-screen bg-gray-100">
       <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-        {notifications?.length > 0 ? "Notifications" : "No Admin Notification"}
+        {notifications?.length > 0 ? 'Notifications' : 'No Admin Notification'}
       </h1>
       {isLoading ? (
         <NotificationsSkeleton count={notifications?.length || 6} />
@@ -48,8 +48,8 @@ export default function AdminNotifications() {
                 className={`border-l-40 p-4  rounded-lg shadow-lg flex items-start gap-6 transition-all duration-300 ease-in-out transform lg:w-2xl
               ${
                 note?.read
-                  ? "bg-white border-gray-600 text-gray-800"
-                  : "bg-yellow-100 border-yellow-500 text-black"
+                  ? 'bg-white border-gray-600 text-gray-800'
+                  : 'bg-yellow-100 border-yellow-500 text-black'
               }`}
               >
                 <FaBell className="text-xl mt-1 text-yellow-400" />

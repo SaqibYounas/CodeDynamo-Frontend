@@ -1,6 +1,5 @@
 // import axios from "axios";
 
-
 // export const uploadImageToCloudinary = async (file) => {
 //   if (!file) return null;
 // console.log(file)
@@ -20,4 +19,3 @@
 //     return null;
 //   }
 // };
-

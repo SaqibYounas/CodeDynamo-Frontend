@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { useNotifications } from "../context/context";
-import { formatOnlyDate } from "./utils/formatDate";
-import ManageUsersSkeleton from "../skeletons/ManageUsers";
-import { Pagination } from "../hooks/Pagination";
+import { useState, useEffect } from 'react';
+import { useNotifications } from '../context/context';
+import { formatOnlyDate } from './utils/formatDate';
+import ManageUsersSkeleton from '../skeletons/ManageUsers';
+import { Pagination } from '../hooks/Pagination';
 
 function ManageUsers() {
   const [users, setUsers] = useState([]);
@@ -22,7 +22,7 @@ function ManageUsers() {
         setTotalPages(res);
       }
     } catch (error) {
-      console.error("Error fetching feedback:", error);
+      console.error('Error fetching feedback:', error);
       setFeedbackData([]);
     } finally {
       setLoading(false);
@@ -33,7 +33,7 @@ function ManageUsers() {
     setUsers((prev) =>
       prev.map((u) =>
         u.id === id
-          ? { ...u, status: u.status === "Blocked" ? "Active" : "Blocked" }
+          ? { ...u, status: u.status === 'Blocked' ? 'Active' : 'Blocked' }
           : u
       )
     );
@@ -70,18 +70,18 @@ function ManageUsers() {
                   <td className="p-2">{user.profileIdShort}</td>
                   <td className="p-2">{user.name}</td>
                   <td className="p-2">{user.email}</td>
-                  <td className="p-2">{user.phone || "N/A"}</td>
-                  <td className="p-2">{user.country || "N/A"}</td>
+                  <td className="p-2">{user.phone || 'N/A'}</td>
+                  <td className="p-2">{user.country || 'N/A'}</td>
                   <td className="p-2">{formatOnlyDate(user.createdAt)}</td>
                   <td className="p-2">
                     <span
                       className={`px-2 py-1 rounded text-xs font-semibold ${
-                        user.status === "Active"
-                          ? "bg-green-200 text-green-800"
-                          : "bg-red-200 text-red-800"
+                        user.status === 'Active'
+                          ? 'bg-green-200 text-green-800'
+                          : 'bg-red-200 text-red-800'
                       }`}
                     >
-                      {user.isDeleted ? "delete" : "Active"}
+                      {user.isDeleted ? 'delete' : 'Active'}
                     </span>
                   </td>
                   <td className="p-2 space-x-2">
@@ -89,7 +89,7 @@ function ManageUsers() {
                       onClick={() => handleBlock(user.id)}
                       className="px-3 py-1 text-sm bg-yellow-400 text-white rounded"
                     >
-                      {user.status === "Blocked" ? "Unblock" : "Block"}
+                      {user.status === 'Blocked' ? 'Unblock' : 'Block'}
                     </button>
                     <button
                       onClick={() => handleDelete(user.id)}

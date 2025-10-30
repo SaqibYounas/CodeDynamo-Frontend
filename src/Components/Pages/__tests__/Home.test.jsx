@@ -1,10 +1,8 @@
-import { render, screen } from "@testing-library/react";
-import { BrowserRouter, MemoryRouter } from "react-router-dom";
-import Home from "../Home";
+import { render, screen } from '@testing-library/react';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import Home from '../Home';
 
-describe("Home Page", () => {
-
-
+describe('Home Page', () => {
   it("renders 'Why Choose Us?' section", () => {
     render(
       <BrowserRouter>
@@ -21,7 +19,7 @@ describe("Home Page", () => {
         <Home />
       </BrowserRouter>
     );
-    const button = screen.getByRole("link", { name: /get started/i });
+    const button = screen.getByRole('link', { name: /get started/i });
     expect(button).toBeInTheDocument();
   });
 
@@ -35,13 +33,13 @@ describe("Home Page", () => {
     expect(cycleHeading).toBeInTheDocument();
   });
 
-  it("renders all 3 track record stats", () => {
+  it('renders all 3 track record stats', () => {
     render(
       <BrowserRouter>
         <Home />
       </BrowserRouter>
     );
-    let text=screen.getAllByText(/100/i);
+    let text = screen.getAllByText(/100/i);
     expect(text[0]).toBeInTheDocument();
     expect(text[1]).toBeInTheDocument();
     expect(screen.getByText(/60 Mins/i)).toBeInTheDocument();

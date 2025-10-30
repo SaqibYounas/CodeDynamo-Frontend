@@ -1,10 +1,10 @@
-import SideBar from "../../Admin_Dashboard/layouts/Sidebar";
-import TopBar from "./Topbar";
-import { Outlet } from "react-router-dom";
-import Loader from "./Loader";
-import { Suspense } from "react";
-import { useLoader } from "../context/Loaders";
-import Layout from "./Socket"; // ✅ Import your socket layout
+import SideBar from '../../Admin_Dashboard/layouts/Sidebar';
+import TopBar from './Topbar';
+import { Outlet } from 'react-router-dom';
+import Loader from './Loader';
+import { Suspense } from 'react';
+import { useLoader } from '../context/Loaders';
+import Layout from './Socket'; // ✅ Import your socket layout
 
 export default function AdminLayout() {
   const { loading } = useLoader();

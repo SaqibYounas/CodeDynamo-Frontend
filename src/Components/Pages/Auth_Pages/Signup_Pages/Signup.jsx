@@ -423,12 +423,12 @@
 // //   }
 // // };
 
-"use client";
-import { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { FaUserPlus, FaEye, FaEyeSlash } from "react-icons/fa";
-import { url } from "./Port";
-import { ProfilerWrapper } from "../../utils/Profiler";
+'use client';
+import { useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FaUserPlus, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { url } from './Port';
+import { ProfilerWrapper } from '../../utils/Profiler';
 
 function Signup() {
   const navigate = useNavigate();
@@ -436,15 +436,15 @@ function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const [response, setResponse] = useState("");
+  const [response, setResponse] = useState('');
   const [pending, setPending] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const [nameError, setNameError] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
-  const formKey = "signup-form";
+  const formKey = 'signup-form';
 
   useEffect(() => {
     const itemStr = localStorage.getItem(formKey);
@@ -460,8 +460,8 @@ function Signup() {
 
   const handleBlur = () => {
     const data = {
-      name: nameRef.current?.value || "",
-      email: emailRef.current?.value || "",
+      name: nameRef.current?.value || '',
+      email: emailRef.current?.value || '',
     };
     const withExpiry = { value: data, expiry: Date.now() + 900 * 1000 };
     localStorage.setItem(formKey, JSON.stringify(withExpiry));
@@ -473,35 +473,35 @@ function Signup() {
     const password = passwordRef.current.value.trim();
 
     let hasError = false;
-    setNameError("");
-    setEmailError("");
-    setPasswordError("");
-    setResponse("");
+    setNameError('');
+    setEmailError('');
+    setPasswordError('');
+    setResponse('');
 
     if (!name) {
-      setNameError("Enter your name.");
+      setNameError('Enter your name.');
       hasError = true;
     } else if (!name.match(/^[A-Za-z ]+$/)) {
-      setNameError("Name should contain only letters.");
+      setNameError('Name should contain only letters.');
       hasError = true;
     }
 
     if (!email) {
-      setEmailError("Please enter your email.");
+      setEmailError('Please enter your email.');
       hasError = true;
     } else if (
       !email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
     ) {
-      setEmailError("Invalid email format.");
+      setEmailError('Invalid email format.');
       hasError = true;
     }
 
     if (!password) {
-      setPasswordError("Please enter your password.");
+      setPasswordError('Please enter your password.');
       hasError = true;
     } else if (!password.match(/^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/)) {
       setPasswordError(
-        "Password must contain at least 8 characters and one special symbol."
+        'Password must contain at least 8 characters and one special symbol.'
       );
       hasError = true;
     }
@@ -516,32 +516,32 @@ function Signup() {
 
     const { name, email, password } = formData;
     setPending(true);
-    localStorage.setItem("email", email);
+    localStorage.setItem('email', email);
 
     try {
       const res = await fetch(`${url}/auth/signup`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ name, email, password }),
       });
       const data = await res.json();
 
       if (res.status === 409) {
-        setEmailError(data.message || "Email already exists");
+        setEmailError(data.message || 'Email already exists');
       } else if (res.status === 500) {
-        navigate("/auth/server-error");
+        navigate('/auth/server-error');
       } else if (res.status === 400) {
-        setEmailError(data.message || "Invalid email domain");
+        setEmailError(data.message || 'Invalid email domain');
       } else if (res.status === 200) {
-        navigate("/auth/verify");
+        navigate('/auth/verify');
       } else {
-        setResponse("Unknown response from server.");
+        setResponse('Unknown response from server.');
       }
 
       localStorage.removeItem(formKey);
     } catch {
-      setResponse("Network error! Please try again later.");
+      setResponse('Network error! Please try again later.');
     } finally {
       setPending(false);
     }
@@ -602,7 +602,7 @@ function Signup() {
                 placeholder="Enter your name"
                 ref={nameRef}
                 onBlur={handleBlur}
-                onChange={() => setNameError("")}
+                onChange={() => setNameError('')}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               />
               {nameError && (
@@ -619,7 +619,7 @@ function Signup() {
                 placeholder="Enter your email"
                 ref={emailRef}
                 onBlur={handleBlur}
-                onChange={() => setEmailError("")}
+                onChange={() => setEmailError('')}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               />
               {emailError && (
@@ -633,10 +633,10 @@ function Signup() {
               </label>
               <div className="relative">
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
                   placeholder="At least 8 characters"
                   ref={passwordRef}
-                  onChange={() => setPasswordError("")}
+                  onChange={() => setPasswordError('')}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                 />
                 <div
@@ -656,11 +656,11 @@ function Signup() {
               disabled={pending}
               className={`w-full py-2 rounded-lg transition duration-300 ${
                 pending
-                  ? "bg-gray-400 cursor-progress"
-                  : "bg-[#474BCA] hover:bg-blue-700 text-white cursor-pointer"
+                  ? 'bg-gray-400 cursor-progress'
+                  : 'bg-[#474BCA] hover:bg-blue-700 text-white cursor-pointer'
               }`}
             >
-              {pending ? "Signing up..." : "Sign Up"}
+              {pending ? 'Signing up...' : 'Sign Up'}
             </button>
 
             {response && (
