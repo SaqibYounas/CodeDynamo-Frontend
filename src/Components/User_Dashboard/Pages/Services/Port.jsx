@@ -1,3 +1,4 @@
-const port = 8003;
-const baseUrl = import.meta.env.VITE_URL;
-export const url = `${baseUrl}:${port}`;
+const baseUrl = " ";
+const port = import.meta.env.VITE_PORT;
+
+export const url = baseUrl ? (port ? `${baseUrl}:${port}` : baseUrl) : null;
