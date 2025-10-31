@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import socket from '../socket/socket';
 
-// Context Create
 const NotificationContexts = createContext();
 
 export const NotificationProviders = ({ children }) => {
