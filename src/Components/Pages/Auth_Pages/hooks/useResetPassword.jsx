@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { resetPasswordAPI } from '../api/auth';
+import { resetPasswordAPI } from '../api/resetPasswords';
 import { STATUS } from '../constant/statusCodes';
 import { resetMessages } from '../constant/resetMessages';
 
