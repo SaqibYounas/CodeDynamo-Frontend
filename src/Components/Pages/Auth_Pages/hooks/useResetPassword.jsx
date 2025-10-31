@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { resetPasswordAPI } from '../api/auth';
-import { STATUS } from '../constants/statusCodes';
-import { resetMessages } from '../constants/resetMessages';
+import { STATUS } from '../constant/statusCodes';
+import { resetMessages } from '../constant/resetMessages';
 
 export const useResetPassword = (email, navigate) => {
   const passwordRef = useRef();

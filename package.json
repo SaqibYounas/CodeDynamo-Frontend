@@ -13,7 +13,6 @@
     "format:check": "prettier . --check",
     "lint:staged": "lint-staged",
     "prepare": "echo 'skip husky install on vercel'"
-
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.10",
@@ -38,12 +37,16 @@
     "zustand": "^5.0.6"
   },
   "devDependencies": {
+    "@eslint/js": "^9.38.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@vitejs/plugin-react": "^4.5.2",
     "babel-jest": "^30.0.0",
-    "eslint": "^9.25.0",
+    "eslint": "^9.38.0",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.4.0",
     "husky": "^9.1.7",
     "jest": "^30.0.0",
     "jsdom": "^27.0.1",
