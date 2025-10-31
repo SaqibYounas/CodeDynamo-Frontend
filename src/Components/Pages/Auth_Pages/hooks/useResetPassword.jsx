@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { resetPasswordAPI } from '../api/resetPasswords';
-import { STATUS } from '../constant/statusCodes';
+import { STATUS_CODES } from '../constant/statusCodes';
 import { resetMessages } from '../constant/resetMessages';
 
 export const useResetPassword = (email, navigate) => {
@@ -41,10 +41,10 @@ export const useResetPassword = (email, navigate) => {
 
     const { status, data } = await resetPasswordAPI(email, password);
 
-    if (status === STATUS.OK && data.message === resetMessages.success) {
+    if (status === STATUS_CODES.OK && data.message === resetMessages.success) {
       setMessage(resetMessages.successRedirect);
       setTimeout(() => navigate('/auth/login'), 2000);
-    } else if (status === STATUS.SERVER_ERROR) {
+    } else if (status === STATUS_CODES.SERVER_ERROR) {
       setMessage(resetMessages.serverError);
     } else {
       setMessage(data?.message || resetMessages.networkError);
