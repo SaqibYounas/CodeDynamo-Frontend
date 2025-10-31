@@ -146,7 +146,7 @@
 import React from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { ProfilerWrapper } from '../../utils/Profiler';
-import { useResetPassword } from '../../hooks/useResetPassword';
+import { useResetPassword } from '../Hooks/useResetPassword';
 
 function ResetPassword() {
   const [searchParams] = useSearchParams();
