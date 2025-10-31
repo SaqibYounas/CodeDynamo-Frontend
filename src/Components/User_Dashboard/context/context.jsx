@@ -84,7 +84,7 @@ export const NotificationProvider = ({ children }) => {
         message,
         setUserMessages,
         setnewInvoice,
-        Inovice,
+        newInvoice,
         newInvoiceCount,
         setNewInvoiceCount,
       }}
