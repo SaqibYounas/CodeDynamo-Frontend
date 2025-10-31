@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
 import { url } from '../Pages/Services/Port';
-import { Inovice } from '../../../../../User_Backend/Server/models/invoice';
 const NotificationContext = createContext();
 
 export const NotificationProvider = ({ children }) => {
@@ -40,7 +39,7 @@ export const NotificationProvider = ({ children }) => {
         setNotifications(data.notifications);
         const unread = data.notifications.filter((n) => !n.read).length;
         setNewCount(unread);
-        return data.totalPages; // 👈 Now you have total pages
+        return data.totalPages;
       }
     } catch (err) {
       console.error('❌ Failed to fetch notifications', err);
