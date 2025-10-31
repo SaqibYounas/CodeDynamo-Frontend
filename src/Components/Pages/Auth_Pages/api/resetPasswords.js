@@ -1,4 +1,4 @@
-import { url } from '../../Pages/Auth_Pages/Port';
+import { url } from '../Login_Pages/Port';
 
 export const resetPasswordAPI = async (email, password) => {
   try {
