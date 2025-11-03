@@ -593,7 +593,7 @@ function Signup() {
             className="w-full space-y-4"
           >
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 text-start pb-1">
                 Full Name
               </label>
               <input
@@ -610,7 +610,7 @@ function Signup() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 text-start pb-1">
                 Email
               </label>
               <input
@@ -627,7 +627,7 @@ function Signup() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 text-start pb-1">
                 Password
               </label>
               <div className="relative">

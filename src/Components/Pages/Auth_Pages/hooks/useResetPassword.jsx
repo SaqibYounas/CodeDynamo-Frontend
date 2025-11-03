@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { resetPasswordAPI } from '../api/resetPasswords';
 import { STATUS_CODES } from '../constant/statusCodes';
-import { resetMessages } from '../constant/resetMessages';
+import { RESET_PASSWORD_MESSAGES } from '../constant/resetMessages';
 
 export const useResetPassword = (email, navigate) => {
   const passwordRef = useRef();
@@ -22,18 +22,18 @@ export const useResetPassword = (email, navigate) => {
     setMessage('');
 
     if (!password) {
-      setPasswordError(resetMessages.passwordRequired);
+      setPasswordError(RESET_PASSWORD_MESSAGES.passwordRequired);
       hasError = true;
     } else if (!/^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(password)) {
-      setPasswordError(resetMessages.passwordWeak);
+      setPasswordError(RESET_PASSWORD_MESSAGES.passwordWeak);
       hasError = true;
     }
 
     if (!confirmPass) {
-      setConfirmError(resetMessages.confirmRequired);
+      setConfirmError(RESET_PASSWORD_MESSAGES.confirmRequired);
       hasError = true;
     } else if (password !== confirmPass) {
-      setConfirmError(resetMessages.passwordMismatch);
+      setConfirmError(RESET_PASSWORD_MESSAGES.passwordMismatch);
       hasError = true;
     }
 
@@ -41,13 +41,16 @@ export const useResetPassword = (email, navigate) => {
 
     const { status, data } = await resetPasswordAPI(email, password);
 
-    if (status === STATUS_CODES.OK && data.message === resetMessages.success) {
-      setMessage(resetMessages.successRedirect);
+    if (
+      status === STATUS_CODES.SUCCESS &&
+      data.message === RESET_PASSWORD_MESSAGES.success
+    ) {
+      setMessage(RESET_PASSWORD_MESSAGES.successRedirect);
       setTimeout(() => navigate('/auth/login'), 2000);
     } else if (status === STATUS_CODES.SERVER_ERROR) {
-      setMessage(resetMessages.serverError);
+      setMessage(RESET_PASSWORD_MESSAGES.serverError);
     } else {
-      setMessage(data?.message || resetMessages.networkError);
+      setMessage(data?.message || RESET_PASSWORD_MESSAGES.networkError);
     }
   };
 
