@@ -8,23 +8,32 @@ export const useForgotPassword = (navigate) => {
   const [statusCode, setStatusCode] = useState(null);
 
   const handleForgotPassword = async (email) => {
-    const { status, data } = await checkEmail(email);
-    setStatusCode(status);
+    try {
+      const { status, data } = await checkEmail(email);
+      setStatusCode(status);
+      console.log(data, status);
 
-    if (status === STATUS_CODES.OK) {
-      if (data.message === forgotMessages.notRegistered) {
-        setMessage(forgotMessages.notRegistered);
-      } else if (data.message === forgotMessages.emailFound) {
-        navigate(`/auth/resetpassword?email=${email}`);
-      } else if (
-        data.message === forgotMessages.googleAccount &&
-        data.googleAccount === true
-      ) {
-        setMessage(forgotMessages.googleAccount);
+      if (status === STATUS_CODES.SUCCESS) {
+        if (data.message === forgotMessages.notRegistered) {
+          setMessage(forgotMessages.notRegistered);
+        } else if (data.message === forgotMessages.emailFound) {
+          navigate(`/auth/resetpassword?email=${email}`);
+        } else if (
+          data.message === forgotMessages.googleAccount &&
+          data.googleAccount === true
+        ) {
+          setMessage(forgotMessages.googleAccount);
+        } else {
+          setMessage(forgotMessages.networkError);
+        }
+      } else if (status === STATUS_CODES.SERVER_ERROR) {
+        setMessage(forgotMessages.serverError);
+      } else {
+        setMessage(forgotMessages.networkError);
       }
-    } else if (status === STATUS_CODES.SERVER_ERROR) {
-      setMessage(forgotMessages.serverError);
-    } else {
+    } catch (error) {
+      console.error('Forgot password error:', error);
+      setStatusCode(null);
       setMessage(forgotMessages.networkError);
     }
   };

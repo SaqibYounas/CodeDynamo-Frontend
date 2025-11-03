@@ -535,7 +535,6 @@ function Login() {
   return (
     <ProfilerWrapper id="Login">
       <div className="flex min-h-screen flex-col-reverse items-center justify-center gap-6 bg-[#F9F9FF] px-4 py-8 sm:px-8 lg:flex-row lg:gap-10 lg:px-16 lg:py-12">
-        {/* Left: Form */}
         <div className="flex w-full max-w-md flex-col items-center justify-center text-center lg:w-1/2 lg:items-start lg:text-left">
           <h2 className="mb-2 text-3xl font-bold text-gray-800">Login now</h2>
           <p className="mb-6 text-gray-600">Hi, Welcome back 👋</p>
@@ -565,7 +564,7 @@ function Login() {
           <form onSubmit={handleSubmit} className="w-full space-y-4">
             {/* Email */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm text-start pb-1 font-medium text-gray-700">
                 Email
               </label>
               <input
@@ -584,7 +583,7 @@ function Login() {
 
             {/* Password */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 text-start pb-1">
                 Password
               </label>
               <div className="relative">
@@ -609,10 +608,6 @@ function Login() {
             </div>
 
             <div className="flex items-center justify-between">
-              <label className="flex items-center text-sm text-gray-600">
-                <input type="checkbox" className="mr-2" />
-                Remember Me
-              </label>
               <Link
                 to="/auth/forgotpassword"
                 className="text-sm text-blue-700 hover:underline"
