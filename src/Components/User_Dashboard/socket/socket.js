@@ -1,4 +1,4 @@
-import { io } from "socket.io-client";
+import { io } from 'socket.io-client';
 import { url } from '../Pages/Services/Port';
 
 let socket = null;
@@ -6,7 +6,7 @@ let socket = null;
 if (url) {
   socket = io(url, {
     withCredentials: true,
-    autoConnect: false,      
+    autoConnect: false,
     reconnection: true,
     reconnectionAttempts: Infinity,
     reconnectionDelay: 3000,
@@ -14,7 +14,7 @@ if (url) {
 
   console.log(`Socket.IO ready at ${url}`);
 } else {
-  console.log("Backend not deployed yet, Socket.IO disabled");
+  console.log('Backend not deployed yet, Socket.IO disabled');
 }
 
 export default socket;

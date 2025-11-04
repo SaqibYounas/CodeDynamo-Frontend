@@ -564,7 +564,7 @@ function Login() {
           <form onSubmit={handleSubmit} className="w-full space-y-4">
             {/* Email */}
             <div>
-              <label className="block text-sm text-start pb-1 font-medium text-gray-700">
+              <label className="block pb-1 text-start text-sm font-medium text-gray-700">
                 Email
               </label>
               <input
@@ -583,7 +583,7 @@ function Login() {
 
             {/* Password */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 text-start pb-1">
+              <label className="block pb-1 text-start text-sm font-medium text-gray-700">
                 Password
               </label>
               <div className="relative">

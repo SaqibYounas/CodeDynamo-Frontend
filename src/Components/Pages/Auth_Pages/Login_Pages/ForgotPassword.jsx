@@ -105,7 +105,7 @@ function ForgotPassword() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const emails = email.current.value.trim();
-    console.log(emails)
+    console.log(emails);
     handleForgotPassword(emails);
   };
 
@@ -145,7 +145,6 @@ function ForgotPassword() {
           {message && (
             <div className="mt-4 text-center">
               <p className="font-medium text-red-600">{message}</p>
-              
             </div>
           )}
         </div>

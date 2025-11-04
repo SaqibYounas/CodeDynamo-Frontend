@@ -12,6 +12,7 @@ export const resetPasswordAPI = async (email, password) => {
     const data = await response.json();
     return { status: response.status, data };
   } catch (error) {
+    console.log(error);
     return { status: 'NETWORK_ERROR', data: null };
   }
 };
