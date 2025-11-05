@@ -423,147 +423,303 @@
 // //   }
 // // };
 
-import { useRef, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FaUserPlus, FaEye, FaEyeSlash } from 'react-icons/fa';
-import { url } from './Port';
+// import { useRef, useState, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { FaUserPlus, FaEye, FaEyeSlash } from 'react-icons/fa';
+// import { url } from './Port';
+// import { ProfilerWrapper } from '../../utils/Profiler';
+
+// function Signup() {
+//   const navigate = useNavigate();
+//   const nameRef = useRef();
+//   const emailRef = useRef();
+//   const passwordRef = useRef();
+
+//   const [response, setResponse] = useState('');
+//   const [pending, setPending] = useState(false);
+//   const [showPassword, setShowPassword] = useState(false);
+
+//   const [nameError, setNameError] = useState('');
+//   const [emailError, setEmailError] = useState('');
+//   const [passwordError, setPasswordError] = useState('');
+
+//   const formKey = 'signup-form';
+
+//   useEffect(() => {
+//     const itemStr = localStorage.getItem(formKey);
+//     if (!itemStr) return;
+//     const item = JSON.parse(itemStr);
+//     if (Date.now() > item.expiry) {
+//       localStorage.removeItem(formKey);
+//     } else {
+//       if (nameRef.current) nameRef.current.value = item.value.name;
+//       if (emailRef.current) emailRef.current.value = item.value.email;
+//     }
+//   }, []);
+
+//   const handleBlur = () => {
+//     const data = {
+//       name: nameRef.current?.value || '',
+//       email: emailRef.current?.value || '',
+//     };
+//     const withExpiry = { value: data, expiry: Date.now() + 900 * 1000 };
+//     localStorage.setItem(formKey, JSON.stringify(withExpiry));
+//   };
+
+//   const validateInputs = () => {
+//     const name = nameRef.current.value.trim();
+//     const email = emailRef.current.value.trim();
+//     const password = passwordRef.current.value.trim();
+
+//     let hasError = false;
+//     setNameError('');
+//     setEmailError('');
+//     setPasswordError('');
+//     setResponse('');
+
+//     if (!name) {
+//       setNameError('Enter your name.');
+//       hasError = true;
+//     } else if (!name.match(/^[A-Za-z ]+$/)) {
+//       setNameError('Name should contain only letters.');
+//       hasError = true;
+//     }
+
+//     if (!email) {
+//       setEmailError('Please enter your email.');
+//       hasError = true;
+//     } else if (
+//       !email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+//     ) {
+//       setEmailError('Invalid email format.');
+//       hasError = true;
+//     }
+
+//     if (!password) {
+//       setPasswordError('Please enter your password.');
+//       hasError = true;
+//     } else if (!password.match(/^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/)) {
+//       setPasswordError(
+//         'Password must contain at least 8 characters and one special symbol.'
+//       );
+//       hasError = true;
+//     }
+
+//     if (hasError) return null;
+//     return { name, email, password };
+//   };
+
+//   const writeData = async () => {
+//     const formData = validateInputs();
+//     if (!formData) return;
+
+//     const { name, email, password } = formData;
+//     setPending(true);
+//     localStorage.setItem('email', email);
+
+//     try {
+//       const res = await fetch(`${url}/auth/signup`, {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         credentials: 'include',
+//         body: JSON.stringify({ name, email, password }),
+//       });
+//       const data = await res.json();
+
+//       if (res.status === 409) {
+//         setEmailError(data.message || 'Email already exists');
+//       } else if (res.status === 500) {
+//         navigate('/auth/server-error');
+//       } else if (res.status === 400) {
+//         setEmailError(data.message || 'Invalid email domain');
+//       } else if (res.status === 200) {
+//         navigate('/auth/verify');
+//       } else {
+//         setResponse('Unknown response from server.');
+//       }
+
+//       localStorage.removeItem(formKey);
+//     } catch {
+//       setResponse('Network error! Please try again later.');
+//     } finally {
+//       setPending(false);
+//     }
+//   };
+
+//   const redirect = () => {
+//     localStorage.removeItem(formKey);
+//     window.location.href = `${url}/auth/google`;
+//   };
+
+//   return (
+//     <ProfilerWrapper id="Signup">
+//       <div className="flex min-h-screen flex-col-reverse items-center justify-center gap-6 bg-[#F9F9FF] px-4 py-8 sm:px-8 lg:flex-row lg:gap-10 lg:px-16 lg:py-12">
+//         {/* ---- Left Side (Form) ---- */}
+//         <div className="flex w-full max-w-md flex-col items-center justify-center text-center lg:w-1/2 lg:items-start lg:text-left">
+//           <h2 className="mb-2 text-3xl font-bold text-gray-800">
+//             Create Account
+//           </h2>
+//           <p className="mb-6 text-gray-600">Start your journey with us 🚀</p>
+
+//           {/* Google Signup */}
+//           <button
+//             onClick={redirect}
+//             className="flex w-full items-center justify-center gap-2 rounded-lg border border-gray-300 py-2 transition hover:bg-gray-50"
+//           >
+//             <img
+//               src="https://www.svgrepo.com/show/475656/google-color.svg"
+//               alt="Google"
+//               className="h-5 w-5"
+//             />
+//             <span className="cursor-pointer text-sm text-gray-700">
+//               Signup with Google
+//             </span>
+//           </button>
+
+//           {/* Divider */}
+//           <div className="my-6 flex w-full items-center">
+//             <div className="h-px flex-grow bg-gray-300" />
+//             <span className="px-3 text-sm text-gray-500">
+//               or Sign up with Email
+//             </span>
+//             <div className="h-px flex-grow bg-gray-300" />
+//           </div>
+
+//           <form
+//             onSubmit={(e) => {
+//               e.preventDefault();
+//               writeData();
+//             }}
+//             className="w-full space-y-4"
+//           >
+//             <div>
+//               <label className="block pb-1 text-start text-sm font-medium text-gray-700">
+//                 Full Name
+//               </label>
+//               <input
+//                 type="text"
+//                 placeholder="Enter your name"
+//                 ref={nameRef}
+//                 onBlur={handleBlur}
+//                 onChange={() => setNameError('')}
+//                 className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500"
+//               />
+//               {nameError && (
+//                 <p className="mt-1 text-sm text-red-600">{nameError}</p>
+//               )}
+//             </div>
+
+//             <div>
+//               <label className="block pb-1 text-start text-sm font-medium text-gray-700">
+//                 Email
+//               </label>
+//               <input
+//                 type="email"
+//                 placeholder="Enter your email"
+//                 ref={emailRef}
+//                 onBlur={handleBlur}
+//                 onChange={() => setEmailError('')}
+//                 className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500"
+//               />
+//               {emailError && (
+//                 <p className="mt-1 text-sm text-red-600">{emailError}</p>
+//               )}
+//             </div>
+
+//             <div>
+//               <label className="block pb-1 text-start text-sm font-medium text-gray-700">
+//                 Password
+//               </label>
+//               <div className="relative">
+//                 <input
+//                   type={showPassword ? 'text' : 'password'}
+//                   placeholder="At least 8 characters"
+//                   ref={passwordRef}
+//                   onChange={() => setPasswordError('')}
+//                   className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500"
+//                 />
+//                 <div
+//                   className="absolute inset-y-0 right-3 flex cursor-pointer items-center text-gray-600"
+//                   onClick={() => setShowPassword(!showPassword)}
+//                 >
+//                   {showPassword ? <FaEyeSlash /> : <FaEye />}
+//                 </div>
+//               </div>
+//               {passwordError && (
+//                 <p className="mt-1 text-sm text-red-600">{passwordError}</p>
+//               )}
+//             </div>
+
+//             <button
+//               type="submit"
+//               disabled={pending}
+//               className={`w-full rounded-lg py-2 transition duration-300 ${
+//                 pending
+//                   ? 'cursor-progress bg-gray-400'
+//                   : 'cursor-pointer bg-[#474BCA] text-white hover:bg-blue-700'
+//               }`}
+//             >
+//               {pending ? 'Signing up...' : 'Sign Up'}
+//             </button>
+
+//             {response && (
+//               <p className="mt-4 text-center text-sm font-medium text-red-600">
+//                 {response}
+//               </p>
+//             )}
+//           </form>
+//         </div>
+
+//         <div className="mb-6 flex w-full justify-center lg:mb-0 lg:w-1/2">
+//           <img
+//             src="/Pages/Login.png"
+//             alt="Signup Illustration"
+//             className="w-full max-w-xs object-contain sm:max-w-sm md:max-w-md lg:max-w-lg"
+//           />
+//         </div>
+//       </div>
+//     </ProfilerWrapper>
+//   );
+// }
+
+// export default Signup;
+
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { ProfilerWrapper } from '../../utils/Profiler';
+import { useSignup } from './hooks/useSignup';
+import { signupAPI } from './api/signupAPI';
 
-function Signup() {
-  const navigate = useNavigate();
-  const nameRef = useRef();
-  const emailRef = useRef();
-  const passwordRef = useRef();
-
-  const [response, setResponse] = useState('');
-  const [pending, setPending] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-
-  const [nameError, setNameError] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-
-  const formKey = 'signup-form';
-
-  useEffect(() => {
-    const itemStr = localStorage.getItem(formKey);
-    if (!itemStr) return;
-    const item = JSON.parse(itemStr);
-    if (Date.now() > item.expiry) {
-      localStorage.removeItem(formKey);
-    } else {
-      if (nameRef.current) nameRef.current.value = item.value.name;
-      if (emailRef.current) emailRef.current.value = item.value.email;
-    }
-  }, []);
-
-  const handleBlur = () => {
-    const data = {
-      name: nameRef.current?.value || '',
-      email: emailRef.current?.value || '',
-    };
-    const withExpiry = { value: data, expiry: Date.now() + 900 * 1000 };
-    localStorage.setItem(formKey, JSON.stringify(withExpiry));
-  };
-
-  const validateInputs = () => {
-    const name = nameRef.current.value.trim();
-    const email = emailRef.current.value.trim();
-    const password = passwordRef.current.value.trim();
-
-    let hasError = false;
-    setNameError('');
-    setEmailError('');
-    setPasswordError('');
-    setResponse('');
-
-    if (!name) {
-      setNameError('Enter your name.');
-      hasError = true;
-    } else if (!name.match(/^[A-Za-z ]+$/)) {
-      setNameError('Name should contain only letters.');
-      hasError = true;
-    }
-
-    if (!email) {
-      setEmailError('Please enter your email.');
-      hasError = true;
-    } else if (
-      !email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
-    ) {
-      setEmailError('Invalid email format.');
-      hasError = true;
-    }
-
-    if (!password) {
-      setPasswordError('Please enter your password.');
-      hasError = true;
-    } else if (!password.match(/^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/)) {
-      setPasswordError(
-        'Password must contain at least 8 characters and one special symbol.'
-      );
-      hasError = true;
-    }
-
-    if (hasError) return null;
-    return { name, email, password };
-  };
-
-  const writeData = async () => {
-    const formData = validateInputs();
-    if (!formData) return;
-
-    const { name, email, password } = formData;
-    setPending(true);
-    localStorage.setItem('email', email);
-
-    try {
-      const res = await fetch(`${url}/auth/signup`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ name, email, password }),
-      });
-      const data = await res.json();
-
-      if (res.status === 409) {
-        setEmailError(data.message || 'Email already exists');
-      } else if (res.status === 500) {
-        navigate('/auth/server-error');
-      } else if (res.status === 400) {
-        setEmailError(data.message || 'Invalid email domain');
-      } else if (res.status === 200) {
-        navigate('/auth/verify');
-      } else {
-        setResponse('Unknown response from server.');
-      }
-
-      localStorage.removeItem(formKey);
-    } catch {
-      setResponse('Network error! Please try again later.');
-    } finally {
-      setPending(false);
-    }
-  };
-
-  const redirect = () => {
-    localStorage.removeItem(formKey);
-    window.location.href = `${url}/auth/google`;
-  };
+export default function Signup() {
+  const {
+    nameRef,
+    emailRef,
+    passwordRef,
+    nameError,
+    emailError,
+    passwordError,
+    response,
+    pending,
+    showPassword,
+    setNameError,
+    setEmailError,
+    setPasswordError,
+    setShowPassword,
+    handleBlur,
+    handleSignup,
+    redirectToGoogle,
+  } = useSignup();
 
   return (
     <ProfilerWrapper id="Signup">
       <div className="flex min-h-screen flex-col-reverse items-center justify-center gap-6 bg-[#F9F9FF] px-4 py-8 sm:px-8 lg:flex-row lg:gap-10 lg:px-16 lg:py-12">
-        {/* ---- Left Side (Form) ---- */}
         <div className="flex w-full max-w-md flex-col items-center justify-center text-center lg:w-1/2 lg:items-start lg:text-left">
           <h2 className="mb-2 text-3xl font-bold text-gray-800">
             Create Account
           </h2>
           <p className="mb-6 text-gray-600">Start your journey with us 🚀</p>
 
-          {/* Google Signup */}
           <button
-            onClick={redirect}
+            onClick={redirectToGoogle}
             className="flex w-full items-center justify-center gap-2 rounded-lg border border-gray-300 py-2 transition hover:bg-gray-50"
           >
             <img
@@ -576,7 +732,6 @@ function Signup() {
             </span>
           </button>
 
-          {/* Divider */}
           <div className="my-6 flex w-full items-center">
             <div className="h-px flex-grow bg-gray-300" />
             <span className="px-3 text-sm text-gray-500">
@@ -588,10 +743,11 @@ function Signup() {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              writeData();
+              handleSignup(signupAPI);
             }}
             className="w-full space-y-4"
           >
+            {/* Name */}
             <div>
               <label className="block pb-1 text-start text-sm font-medium text-gray-700">
                 Full Name
@@ -601,14 +757,19 @@ function Signup() {
                 placeholder="Enter your name"
                 ref={nameRef}
                 onBlur={handleBlur}
-                onChange={() => setNameError('')}
+                onChange={() => {
+                  setNameError('');
+                }}
                 className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500"
               />
               {nameError && (
-                <p className="mt-1 text-sm text-red-600">{nameError}</p>
+                <p className="mt-1 text-sm font-semibold text-red-600">
+                  {nameError}
+                </p>
               )}
             </div>
 
+            {/* Email */}
             <div>
               <label className="block pb-1 text-start text-sm font-medium text-gray-700">
                 Email
@@ -618,14 +779,19 @@ function Signup() {
                 placeholder="Enter your email"
                 ref={emailRef}
                 onBlur={handleBlur}
-                onChange={() => setEmailError('')}
+                onChange={() => {
+                  setEmailError('');
+                }}
                 className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500"
               />
               {emailError && (
-                <p className="mt-1 text-sm text-red-600">{emailError}</p>
+                <p className="mt-1 text-sm font-semibold text-red-600">
+                  {emailError}
+                </p>
               )}
             </div>
 
+            {/* Password */}
             <div>
               <label className="block pb-1 text-start text-sm font-medium text-gray-700">
                 Password
@@ -635,7 +801,9 @@ function Signup() {
                   type={showPassword ? 'text' : 'password'}
                   placeholder="At least 8 characters"
                   ref={passwordRef}
-                  onChange={() => setPasswordError('')}
+                  onChange={() => {
+                    setPasswordError('');
+                  }}
                   className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500"
                 />
                 <div
@@ -646,7 +814,9 @@ function Signup() {
                 </div>
               </div>
               {passwordError && (
-                <p className="mt-1 text-sm text-red-600">{passwordError}</p>
+                <p className="mt-1 text-sm font-semibold text-red-600">
+                  {passwordError}
+                </p>
               )}
             </div>
 
@@ -681,5 +851,3 @@ function Signup() {
     </ProfilerWrapper>
   );
 }
-
-export default Signup;
