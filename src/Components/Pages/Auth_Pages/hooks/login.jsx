@@ -86,6 +86,7 @@ export const useLogin = () => {
     emailError,
     passwordError,
     showPassword,
+    setEmailError,
     setShowPassword,
     handleBlur,
     handleSubmit,

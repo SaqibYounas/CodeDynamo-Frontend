@@ -1,24 +1,20 @@
 // src/Components/Box/__test__/Box.test.jsx
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
-import { Box, Box_Two } from "../Box";
+import { describe, it, expect } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { Box, Box_Two } from '../Box';
 
-describe("Box Component", () => {
-  it("renders with image correctly", () => {
+describe('Box Component', () => {
+  it('renders with image correctly', () => {
     render(
-      <Box
-        image="test.png"
-        title="Test Title"
-        description="Test Description"
-      />
+      <Box image="test.png" title="Test Title" description="Test Description" />
     );
 
-    expect(screen.getByAltText("Test Title")).toBeInTheDocument();
-    expect(screen.getByText("Test Title")).toBeInTheDocument();
-    expect(screen.getByText("Test Description")).toBeInTheDocument();
+    expect(screen.getByAltText('Test Title')).toBeInTheDocument();
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
+    expect(screen.getByText('Test Description')).toBeInTheDocument();
   });
 
-  it("renders with icon correctly when no image", () => {
+  it('renders with icon correctly when no image', () => {
     render(
       <Box
         icon={<span>🌟</span>}
@@ -27,14 +23,14 @@ describe("Box Component", () => {
       />
     );
 
-    expect(screen.getByText("🌟")).toBeInTheDocument();
-    expect(screen.getByText("Icon Title")).toBeInTheDocument();
-    expect(screen.getByText("Icon Description")).toBeInTheDocument();
+    expect(screen.getByText('🌟')).toBeInTheDocument();
+    expect(screen.getByText('Icon Title')).toBeInTheDocument();
+    expect(screen.getByText('Icon Description')).toBeInTheDocument();
   });
 });
 
-describe("Box_Two Component", () => {
-  it("renders icon, title, and description correctly", () => {
+describe('Box_Two Component', () => {
+  it('renders icon, title, and description correctly', () => {
     render(
       <Box_Two
         icon={<span>🔥</span>}
@@ -43,8 +39,8 @@ describe("Box_Two Component", () => {
       />
     );
 
-    expect(screen.getByText("🔥")).toBeInTheDocument();
-    expect(screen.getByText("Box Two Title")).toBeInTheDocument();
-    expect(screen.getByText("Box Two Description")).toBeInTheDocument();
+    expect(screen.getByText('🔥')).toBeInTheDocument();
+    expect(screen.getByText('Box Two Title')).toBeInTheDocument();
+    expect(screen.getByText('Box Two Description')).toBeInTheDocument();
   });
 });
